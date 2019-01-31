@@ -1,4 +1,4 @@
-	{
+{
   "name": "speedy-dashboard",
   "version": "0.1.0",
   "private": true,
@@ -12,7 +12,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "deploy": "gh-pages -d build",
+    "sb": "start-storybook -p 9001 -c .storybook"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -22,5 +24,19 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "devDependencies": {
+    "gh-pages": "^2.0.1",
+    "typescript": "^3.2.4",
+    "ts-loader": "^5.3.3",
+    "tslint": "^5.12.1",
+    "tslint-clean-code": "^0.2.9",
+    "@storybook/react": "^4.1.9",
+    "@types/jest": "^23.3.13",
+    "@types/node": "^10.12.18",
+    "@types/react": "^16.7.20",
+    "@types/react-dom": "^16.0.11",
+    "@types/storybook__react": "^4.0.0",
+    "@types/react-router-dom": "^4.3.1"
+  }
 }
