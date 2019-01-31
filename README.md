@@ -15,10 +15,6 @@ A dashboard made with React, with part of the ideas for managing cards/ presenta
 
 The goal of this project is to build off of the work done by [React Array Method Visualizer](https://github.com/wilsonj806/react-array-method-visualizer), and build a dashboard with some number of selectable items. This will all be done in React.js and will also build off of the previous testing experience done in the [Picture Analyzer](https://github.com/wilsonj806/speedy-dashboard) project, only this time in Jest.
 
-In addition, I would like to implement Test Driven Development as much as possible in this project. It might be overkill for the scale of this project, but the testing I did in the Picture Analyzer project would have saved more time if I had done it at the start.
-
-Finally, I'd like to use this project to learn/ how to use/ consume RESTful APIs(probably Spotify, Google Calendar, a weather API, maybe Dribble, Dogs, WeTransfer).
-
 ### Features to be implemented by v0.25.0
 - Modal for adding cards in
 - Implementation for at least one card that requires an API call
