@@ -10,25 +10,25 @@ The purpose of this app is to give users a configurable dashboard. Expanding on 
 
 ## A more granular breakdown
 
-The app should have the below:
-- a pop up modal for adding new cards in
-- a dashboard that presents cards in a grid
-- cards that present different information depending on what card is selected
-- cards that can be drag and dropped into different positions
+1. The app should have the below:
+  - a pop up modal for adding new cards in
+  - a dashboard that presents cards in a grid
+  - cards that present different information depending on what card is selected
+  - cards that can be drag and dropped into different positions
 
-The user should be able to present the following:
-- Bare minimum:
-  - TODO list
-  - cat facts
-  - local weather
-  - dog pictures
-  - lorem generator
-- Requires slightly more complex API calls:
-  - Meetup list
-  - calendar
-  - emails
-  - spotify player
-  - WeTransfer
-- **Extra credit**
-  - card/ card extension for adding events to calendar:
-  - NYC transit
+2. The user should be able to present the following:
+  - Bare minimum:
+    - TODO list
+    - cat facts
+    - local weather
+    - dog pictures
+    - lorem generator
+  - Requires slightly more complex API calls:
+    - Meetup list
+    - calendar
+    - emails
+    - spotify player
+    - WeTransfer
+  - **Extra credit**
+    - card/ card extension for adding events to calendar:
+    - NYC transit
