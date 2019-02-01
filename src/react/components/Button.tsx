@@ -1,4 +1,4 @@
-import { Component, ReactNode, ReactChild } from 'react';
+import React ,{ Component, ReactNode, ReactChild } from 'react';
 
 // import { isFunc } from '../helper/typeCheck';
 

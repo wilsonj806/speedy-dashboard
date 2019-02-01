@@ -1,4 +1,4 @@
-import { Component, ReactNode, ReactChild } from 'react';
+import React ,{ Component, ReactNode, ReactChild } from 'react';
 
 // NOTE Dashboard interface for holding cards
 

@@ -1,29 +1,43 @@
-import { Component, ReactNode, ReactChild } from 'react';
+import React ,{ Component, ReactNode, ReactChild } from 'react';
 
 /* NOTE for integrating with <App/> need to pass a function in as a property like so:
 <Form handleSubmit={this.handleSubmit} /> */
-export class Form extends Component<any, any>{  
+
+/* NOTE  below implementation is for the actual form
+const initialState = {
+  priority: 0,
+  task: ''
+} */
+
+const initialState = {
+  name: '',
+  job: ''
+}
+
+type State = Readonly<typeof initialState>;
+
+export class Form extends Component<any, State>{
   constructor(props: any) { //https://reactjs.org/docs/react-component.html#constructor
     super(props); // needs to be called otherwise this.props will be undefined
-
-    this.initialState = {
-        name: '',
-        job: ''
-    };
-
-    this.state = this.initialState;
   }
+  readonly state: State = initialState;
 
-  handleChange = (event: any) => { // Analogous to using form.addEventListener('change',handleChange)
-    const {name, value} = event.target;
+  // NOTE Need to be explicit about the event type
 
-    this.setState({ //function/ method to set the State of a UI element
-        [name] : value
-    });
+  handleChange = (event: React.ChangeEvent<HTMLInputElement>) => { // Analogous to using form.addEventListener('change',handleChange)
+    const {name, value}: {name: string, value: string} = event.target;
+    if (Object.keys(this.state).includes(name)){
+      this.setState({ //function/ method to set the State of a UI element
+        [`${name}`] : value
+      } as Pick<State, keyof State>);
+    }
+    else {
+      throw new Error('keys don\'t match');
+    }
   }
   submitForm = () => {
     this.props.handleSubmit(this.state); // submit state of the form with the argument of the values inside this.state, note that we passed the handleSubmit function as a property of the Form component
-    this.setState(this.initialState); // reset form
+    this.setState(initialState); // reset form
   }
 
   render() {

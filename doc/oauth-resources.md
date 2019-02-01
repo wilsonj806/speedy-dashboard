@@ -36,3 +36,7 @@ This is the general standdard on how your app consumes external APIs. NOTE THIS 
 - https://basarat.gitbooks.io/typescript/docs/types/index-signatures.html
 - https://devblog.xero.com/typescript-and-react-whats-react-component-p-s-mean-cfddc65f81e1
 - https://levelup.gitconnected.com/ultimate-react-component-patterns-with-typescript-2-8-82990c516935
+- This series on making a React Form in TS
+  - [Part 1](https://www.carlrippon.com/building-super-simple-react-form-component-typescript-basics/)
+  - [Part 2](https://www.carlrippon.com/building-super-simple-react-form-component-typescript-basics/)
+  - [Part 3](https://www.carlrippon.com/building-react-form-component-typescript-basics/)
