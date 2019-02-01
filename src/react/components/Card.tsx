@@ -15,8 +15,11 @@ type BasicCard = {
 
 export class Card extends Component<Props, any> {
   render() {
+    const { className } = this.props;
     return (
-      <div>
+      <div
+        className={`card ${className ? className : null}`}
+      >
         Card here
       </div>
     )

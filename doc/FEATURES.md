@@ -25,10 +25,27 @@ The purpose of this app is to give users a configurable dashboard. Expanding on 
     - lorem generator
   - Requires slightly more complex API calls:
     - Meetup list
-    - calendar
+    - Google calendar
     - emails
     - spotify player
     - WeTransfer
   - **Extra credit**
     - card/ card extension for adding events to calendar:
     - NYC transit
+
+## Order to implement the above in
+
+Order is going to be done by difficulty, as certain things require some form of authentication.
+
+- Easy:
+  - To do list
+  - cat facts
+  - local weather
+  - dog pictures
+  - WeTransfer(probably)
+- Medium(requires authentication):
+  - email
+- Hard(authentication but more involved?)
+  - Spotify player
+  - Google calendar
+  - Meetup
