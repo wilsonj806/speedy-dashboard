@@ -11,7 +11,8 @@ storiesOf('Low Level Component/ Card', module)
       <Card>
         <p>hi</p>
       </Card>
-)});
+    )
+});
 
 storiesOf('Low Level Component/ Field', module)
   .add('Labeless input', () => {
@@ -19,7 +20,7 @@ storiesOf('Low Level Component/ Field', module)
       <Field
         type='number'
         name='example button'
-        generateLabel={false}
+        noLabel={true}
       />
     )
   })
@@ -36,4 +37,28 @@ storiesOf('Low Level Component/ Form', module)
   .add('Form ele ripped from CRA example', () => {
     return (
       <Form handleSubmit={function hi(){console.log('hi')}}/>
-)});
+    )
+  })
+.add('Same CRA form but with children', () => {
+  return (
+    <Form
+      handleSubmit={function hi(){console.log('hi')}}
+    >
+      <Field
+        type='text'
+        name='name'
+      />
+      <Field
+        type='text'
+        name='job'
+      />
+      <Field
+        type='submit'
+        name='submit'
+        noLabel={true}
+        value='submit'
+      />
+    </Form>
+  )
+  })
+;

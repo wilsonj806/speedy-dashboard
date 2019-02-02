@@ -6,10 +6,11 @@ interface Props {
   type: InputTypes,
   name: string,
   eventHandler?: any,
-  generateLabel?: boolean
+  noLabel?: boolean
+  value?: any
 }
 
-
+// TODO Figure out why submit buttons don't get a label even if you specify it in Properties
 const initialState = {
   value: ''
 }
@@ -24,19 +25,19 @@ export class Field extends Component<Props, State> {
   readonly state: State = initialState;
 
   capitalizeString(string: string): string {
-    if (string === null) throw new Error('Expecting string not to be null')
+    if (string == null) throw new Error('Expecting a string input')
     const regex = /\b[a-z]/i;
     const match = string.match(regex);
-    if (match == null) throw new Error('Error expecting the input string to have a length greater than 0')
+    if (match == null) throw new Error('Error expecting a non-zero length string')
     const capitalizedLetter = match[0].toUpperCase();
     const capitalizedString = string.replace(regex, capitalizedLetter);
     return capitalizedString;
   }
 
   render() {
-    const { type, name, eventHandler, generateLabel } = this.props;
+    const { type, name, eventHandler, noLabel } = this.props;
     const { value, } = this.state;
-    if (generateLabel === true) {
+    if (noLabel !== true) {
       const labelText = this.capitalizeString(name);
       return(
         <>

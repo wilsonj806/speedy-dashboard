@@ -11,6 +11,10 @@ import React ,{ Component, ReactNode, ReactChild } from 'react';
   task: ''
 } */
 
+interface Props {
+  children: ReactNode
+}
+
 const initialState = {
   name: '',
   job: ''
@@ -43,8 +47,9 @@ export class Form extends Component<any, State>{
   }
 
   render() {
-    const { name, job } = this.state;
-
+    const { children } = this.props
+    const { name, job, } = this.state;
+    if (!children) {
     return (
         <form>
             <label>Name</label>
@@ -65,6 +70,12 @@ export class Form extends Component<any, State>{
               onClick={this.submitForm} />
         </form>
     );
+    }
+    return (
+      <form>
+        {children}
+      </form>
+    )
   }
 
 }
