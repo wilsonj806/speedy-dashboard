@@ -38,6 +38,7 @@ The purpose of this app is to give users a configurable dashboard. Expanding on 
 Order is going to be done by difficulty, as certain things require some form of authentication.
 
 - Easy:
+  - "Add card" card
   - To do list
   - cat facts
   - local weather

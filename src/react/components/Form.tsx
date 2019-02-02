@@ -3,8 +3,10 @@ import React ,{ Component, ReactNode, ReactChild } from 'react';
 /* NOTE for integrating with <App/> need to pass a function in as a property like so:
 <Form handleSubmit={this.handleSubmit} /> */
 
-/* NOTE  below implementation is for the actual form
-const initialState = {
+/* NOTE  below implementation is for the actual form */
+
+
+/* const initialState = {
   priority: 0,
   task: ''
 } */
@@ -25,7 +27,7 @@ export class Form extends Component<any, State>{
   // NOTE Need to be explicit about the event type
 
   handleChange = (event: React.ChangeEvent<HTMLInputElement>) => { // Analogous to using form.addEventListener('change',handleChange)
-    const {name, value}: {name: string, value: string} = event.target;
+    const {name, value}: {name: string, value: any} = event.target;
     if (Object.keys(this.state).includes(name)){
       this.setState({ //function/ method to set the State of a UI element
         [`${name}`] : value
