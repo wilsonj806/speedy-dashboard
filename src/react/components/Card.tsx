@@ -1,15 +1,15 @@
 import React ,{ Component, ReactNode, ReactChild } from 'react';
 
 interface Props {
-  type?: string,
-  className?: string,
+  type?: string
+  className?: string
   children: ReactNode | BasicCard
 }
 
 type BasicCard = {
-  header: ReactChild | null,
-  media?: ReactChild,
-  content: ReactChild | null,
+  header: ReactChild | null
+  media?: ReactChild
+  content: ReactChild | null
   actions?: ReactChild
 };
 

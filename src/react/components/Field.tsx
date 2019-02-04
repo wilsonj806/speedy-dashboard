@@ -1,11 +1,11 @@
 import React ,{ Component, ReactNode, ReactChild } from 'react';
 
-type InputTypes = 'text' | 'number' | 'radio' | 'button' | 'submit' | 'checkbox'
+type InputTypes = 'text' | 'number' | 'radio' | 'checkbox'
 
 interface Props {
-  type: InputTypes,
-  name: string,
-  eventHandler?: any,
+  type: InputTypes
+  name: string
+  handleChangeFn?: any
   noLabel?: boolean
   value?: any
 }
@@ -24,6 +24,13 @@ export class Field extends Component<Props, State> {
   }
   readonly state: State = initialState;
 
+  handleChangeDefault = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const { value }: { value: any } = event.target;
+    this.setState({
+      'value' : value
+    });
+  }
+
   capitalizeString(string: string): string {
     if (string == null) throw new Error('Expecting a string input')
     const regex = /\b[a-z]/i;
@@ -34,9 +41,11 @@ export class Field extends Component<Props, State> {
     return capitalizedString;
   }
 
+
   render() {
-    const { type, name, eventHandler, noLabel } = this.props;
-    const { value, } = this.state;
+    const { type, name, noLabel, handleChangeFn } = this.props;
+    const { value } = this.state;
+    const handleChange = handleChangeFn || this.handleChangeDefault;
     if (noLabel !== true) {
       const labelText = this.capitalizeString(name);
       return(
@@ -50,7 +59,7 @@ export class Field extends Component<Props, State> {
             type={`${type}`}
             name={`${name}`}
             value={value}
-            onChange={eventHandler}
+            onChange={handleChange}
           />
         </>
       )
@@ -61,7 +70,7 @@ export class Field extends Component<Props, State> {
           type={`${type}`}
           name={`${name}`}
           value={value}
-          onChange={eventHandler}
+          onChange={handleChange}
         />
       </>
     )

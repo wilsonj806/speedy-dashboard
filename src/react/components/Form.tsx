@@ -1,4 +1,5 @@
 import React ,{ Component, ReactNode, ReactChild } from 'react';
+import { Field } from './Field';
 
 /* NOTE for integrating with <App/> need to pass a function in as a property like so:
 <Form handleSubmit={this.handleSubmit} /> */
@@ -34,7 +35,7 @@ export class Form extends Component<any, State>{
     const {name, value}: {name: string, value: any} = event.target;
     if (Object.keys(this.state).includes(name)){
       this.setState({ //function/ method to set the State of a UI element
-        [`${name}`] : value
+        name : value
       } as Pick<State, keyof State>);
     }
     else {

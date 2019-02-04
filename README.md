@@ -3,7 +3,7 @@
 ## Status
 
 [![GitHub tag (latest SemVer)](https://img.shields.io/github/tag/wilsonj806/speedy-dashboard.svg)](https://github.com/wilsonj806/speedy-dashboard)
-[![devDependencies Status](https://david-dm.org/wilsonj806/speedy-dashboard/dev-status.svg)]()
+
 
 ## General Description
 
@@ -29,7 +29,7 @@ The goal of this project is to build off of the work done by [React Array Method
 
 ### Features to be implemented by v0.75.0
 
-- 
+-
 
 ### Features to be implemented by v1.0.0
 

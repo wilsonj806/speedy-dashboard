@@ -4,8 +4,14 @@ import { storiesOf } from '@storybook/react';
 import { Card } from '../react/components/Card';
 import { Field } from '../react/components/Field';
 import { Form } from '../react/components/Form';
+import { Modal } from '../react/components/Modal';
+import { Button } from '../react/components/Button';
 
-storiesOf('Low Level Component/ Card', module)
+// NOTE Dummy Functions
+
+const sayHi = () => console.log('hi');
+
+storiesOf('Low Level Components/ Card', module)
   .add('basic card', () => {
     return (
       <Card>
@@ -14,7 +20,7 @@ storiesOf('Low Level Component/ Card', module)
     )
 });
 
-storiesOf('Low Level Component/ Field', module)
+storiesOf('Low Level Components/ Field', module)
   .add('Labeless input', () => {
     return (
       <Field
@@ -31,9 +37,26 @@ storiesOf('Low Level Component/ Field', module)
         name='exmaple'
       />
     )
-});
+  })
+  .add('Field with state', () => {
+    return (
+      <Field
+        type='text'
+        name='exmaple'
+      />
+    )
+  })
+  .add('Field with a different onchange handler', () => {
+    return (
+      <Field
+        type='text'
+        name='exmaple'
+        handleChangeFn={sayHi}
+      />
+    )
+  });
 
-storiesOf('Low Level Component/ Form', module)
+storiesOf('Low Level Components/ Form', module)
   .add('Form ele ripped from CRA example', () => {
     return (
       <Form handleSubmit={function hi(){console.log('hi')}}/>
@@ -42,7 +65,7 @@ storiesOf('Low Level Component/ Form', module)
 .add('Same CRA form but with children', () => {
   return (
     <Form
-      handleSubmit={function hi(){console.log('hi')}}
+      handleSubmit={sayHi}
     >
       <Field
         type='text'
@@ -52,13 +75,19 @@ storiesOf('Low Level Component/ Form', module)
         type='text'
         name='job'
       />
-      <Field
-        type='submit'
-        name='submit'
-        noLabel={true}
-        value='submit'
-      />
+      <Button
+        isHTMLInputSubmit={true}
+        innerText={null}
+        className='btn--submit'
+        handleClickFn={sayHi}>
+      </Button>
     </Form>
   )
+  });
+
+storiesOf('Low Level Components/ Modal', module)
+  .add('a basic modal', () => {
+    return (
+      <Modal/>
+    )
   })
-;
