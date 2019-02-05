@@ -1,7 +1,6 @@
 const isPrimative = (value: any): boolean =>
   typeof value === 'string' || typeof value === 'number' || typeof value === 'boolean'
 
-
 const isFunc = (obj: any): obj is Function =>
   typeof obj === 'function' && obj != undefined;
 

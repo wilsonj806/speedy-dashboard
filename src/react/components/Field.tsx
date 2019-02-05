@@ -8,7 +8,7 @@ interface Props {
   name: string
   handleChangeFn?: any
   noLabel?: boolean
-  value?: any
+  value?: string
 }
 
 // TODO Figure out why submit buttons don't get a label even if you specify it in Properties
@@ -51,14 +51,16 @@ export class Field extends Component<Props, State> {
       return(
         <>
           <label
+            key={0}
             htmlFor={`${name}`}
           >
             {labelText}
           </label>
           <input
+            key={1}
             type={`${type}`}
             name={`${name}`}
-            value={value}
+            value={this.props.value}
             onChange={handleChange}
           />
         </>

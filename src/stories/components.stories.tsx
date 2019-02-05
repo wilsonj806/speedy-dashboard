@@ -9,7 +9,10 @@ import { Button } from '../react/components/Button';
 
 // NOTE Dummy Functions
 
-const sayHi = () => console.log('hi');
+const sayHi = (event: React.MouseEvent<HTMLInputElement>) => {
+  event.preventDefault();
+  console.log('hi')
+};
 
 storiesOf('Low Level Components/ Card', module)
   .add('basic card', () => {
@@ -57,37 +60,6 @@ storiesOf('Low Level Components/ Field', module)
   });
 
 storiesOf('Low Level Components/ Form', module)
-  .add('Form ele ripped from CRA example', () => {
-    return (
-      <Form
-        handleSubmitFn={sayHi}
-        passingTemplate={false}
-      />
-    )
-  })
-.add('Same CRA form but with children', () => {
-  return (
-    <Form
-      handleSubmitFn={sayHi}
-      passingTemplate={false}
-    >
-      <Field
-        type='text'
-        name='name'
-      />
-      <Field
-        type='text'
-        name='job'
-      />
-      <Button
-        isHTMLInputSubmit={true}
-        innerText={null}
-        className='btn--submit'
-        handleClickFn={sayHi}>
-      </Button>
-    </Form>
-  )
-  })
 .add('New form', () => {
     return (
       <Form
@@ -97,20 +69,14 @@ storiesOf('Low Level Components/ Form', module)
         {[
           {
             type:'text',
-            name: 'dab',
-            value:''
+            name: 'task',
+            value:'',
           },
           {
             type:'text',
-            name: 'next-field',
+            name: 'priority',
             value:''
           },
-          <Button
-            isHTMLInputSubmit={true}
-            innerText={null}
-            className='btn--submit'
-            handleClickFn={sayHi}>
-          </Button>
         ]}
       </Form>
     )
