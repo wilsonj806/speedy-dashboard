@@ -59,13 +59,17 @@ storiesOf('Low Level Components/ Field', module)
 storiesOf('Low Level Components/ Form', module)
   .add('Form ele ripped from CRA example', () => {
     return (
-      <Form handleSubmit={function hi(){console.log('hi')}}/>
+      <Form
+        handleSubmitFn={sayHi}
+        passingTemplate={false}
+      />
     )
   })
 .add('Same CRA form but with children', () => {
   return (
     <Form
-      handleSubmit={sayHi}
+      handleSubmitFn={sayHi}
+      passingTemplate={false}
     >
       <Field
         type='text'
@@ -83,7 +87,34 @@ storiesOf('Low Level Components/ Form', module)
       </Button>
     </Form>
   )
-  });
+  })
+.add('New form', () => {
+    return (
+      <Form
+        handleSubmitFn={sayHi}
+        passingTemplate={true}
+      >
+        {[
+          {
+            type:'text',
+            name: 'dab',
+            value:''
+          },
+          {
+            type:'text',
+            name: 'next-field',
+            value:''
+          },
+          <Button
+            isHTMLInputSubmit={true}
+            innerText={null}
+            className='btn--submit'
+            handleClickFn={sayHi}>
+          </Button>
+        ]}
+      </Form>
+    )
+    });
 
 storiesOf('Low Level Components/ Modal', module)
   .add('a basic modal', () => {

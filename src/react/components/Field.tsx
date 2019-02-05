@@ -2,6 +2,7 @@ import React ,{ Component, ReactNode, ReactChild } from 'react';
 
 type InputTypes = 'text' | 'number' | 'radio' | 'checkbox'
 
+
 interface Props {
   type: InputTypes
   name: string
@@ -16,7 +17,6 @@ const initialState = {
 }
 
 type State = Readonly<typeof initialState>;
-
 
 export class Field extends Component<Props, State> {
   constructor(props: any) {

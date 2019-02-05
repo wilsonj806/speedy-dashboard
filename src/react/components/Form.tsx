@@ -1,4 +1,5 @@
 import React ,{ Component, ReactNode, ReactChild } from 'react';
+import { isTypedObj, isPrimative } from '../helper/typeCheck';
 import { Field } from './Field';
 
 /* NOTE for integrating with <App/> need to pass a function in as a property like so:
@@ -12,8 +13,21 @@ import { Field } from './Field';
   task: ''
 } */
 
+// FIXME Below isn't DRY, find a way to export standard types and interfaces
+type InputTypes = 'text' | 'number' | 'radio' | 'checkbox'
+
+type FieldTemplate = {
+  type: InputTypes
+  name: string
+  handleChangeFn?: any
+  noLabel?: boolean
+  value?: any
+}
+
 interface Props {
-  children: ReactNode
+  passingTemplate: boolean
+  handleSubmitFn: any
+  children?: ReactNode | FieldTemplate[] | ReactNode[]
 }
 
 const initialState = {
@@ -23,11 +37,22 @@ const initialState = {
 
 type State = Readonly<typeof initialState>;
 
-export class Form extends Component<any, State>{
+export class Form extends Component<Props, State>{
   constructor(props: any) { //https://reactjs.org/docs/react-component.html#constructor
     super(props); // needs to be called otherwise this.props will be undefined
   }
   readonly state: State = initialState;
+
+  checkChildren() {
+    const { children, passingTemplate } = this.props;
+    if (!children && (passingTemplate === true)) throw new Error('Error, expecting children')
+    if ((isPrimative(children) === false) && (children != null) && (children instanceof  Array)) {
+      const areExpectedType = children.every((child: any): boolean => {
+        return (isTypedObj(child, 'type'));
+      })
+      console.log(areExpectedType);
+    }
+  }
 
   // NOTE Need to be explicit about the event type
 
@@ -42,8 +67,9 @@ export class Form extends Component<any, State>{
       throw new Error('keys don\'t match');
     }
   }
+
   submitForm = () => {
-    this.props.handleSubmit(this.state); // submit state of the form with the argument of the values inside this.state, note that we passed the handleSubmit function as a property of the Form component
+    this.props.handleSubmitFn(this.state); // submit state of the form with the argument of the values inside this.state, note that we passed the handleSubmit function as a property of the Form component
     this.setState(initialState); // reset form
   }
 
@@ -72,6 +98,7 @@ export class Form extends Component<any, State>{
         </form>
     );
     }
+    this.checkChildren();
     return (
       <form>
         {children}
