@@ -82,7 +82,31 @@ storiesOf('Low Level Components/ Form', module)
 
 storiesOf('Low Level Components/ Modal', module)
   .add('a basic modal', () => {
+    const styling = {
+      background: 'pink',
+      height: '50vh'
+    };
+
+    const toggleModal = () => {
+      const modalVal = getComputedStyle(document.documentElement).getPropertyValue('--modal');
+      if (parseInt(modalVal) > 0){
+        document.documentElement.style.setProperty('--modal', '-2');
+      } else{
+        document.documentElement.style.setProperty('--modal', '2');
+      }
+    }
+
     return (
-      <Modal/>
+      <>
+        <div
+          style={styling}
+        >
+          <Button
+            innerText='Render me please'
+            handleClickFn ={toggleModal}
+          />
+        </div>
+        <Modal/>
+      </>
     )
   })

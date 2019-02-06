@@ -8,8 +8,13 @@ interface Props {
   children: ReactNode
 }
 
-const initialState: { [key: string]: any} = {
-  quantity: 0,
+interface DashState {
+  cardsRendered: string[]
+  [key: string]: any
+}
+
+const initialState: DashState = {
+  quantityRendered: 0,
   cardsRendered: [],
 }
 
