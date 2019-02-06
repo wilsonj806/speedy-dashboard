@@ -1,7 +1,6 @@
-import * as React from 'react';
+import React, { Component } from 'react';
 
-const { Component } = React;
-
+// NOTE In terms of order, put the <Modal/> component first
 export class App extends Component<any, any> {
   render() {
     return(

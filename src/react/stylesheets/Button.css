@@ -1,0 +1,18 @@
+:root{
+  --primaryBlue: #2196F3;
+  --info: #00BCD4;
+  --danger: #F44336;
+  --warn: #FFEB3B;
+  --success: #4CAF50;
+}
+
+
+.btn{
+  z-index: 1;
+}
+
+.btn--modal-header{
+  color: grey;
+  background: transparent;
+  border: 0 solid transparent;
+}

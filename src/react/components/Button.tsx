@@ -1,7 +1,9 @@
 import React ,{ Component, ReactNode, ReactChild } from 'react';
 
+import '../stylesheets/Button.css';
+
 interface Props {
-  className        ?: string,
+  type        ?: string,
   innerText         : string | null,
   isHTMLInputSubmit?: boolean,
   children         ?: ReactNode,
@@ -10,11 +12,11 @@ interface Props {
 
 export class Button extends Component<Props, any> {
   render() {
-    const { className, innerText, isHTMLInputSubmit, handleClickFn } = this.props;
+    const { type, innerText, isHTMLInputSubmit, handleClickFn } = this.props;
     if (isHTMLInputSubmit === true && handleClickFn != null) {
       return(
         <input
-          className={`btn ${className}`}
+          className={`btn btn--${type}`}
           type='submit'
           value='Submit'
           onClick={handleClickFn}
@@ -23,7 +25,7 @@ export class Button extends Component<Props, any> {
     }
     return (
       <button
-        className={`btn ${className}`}
+        className={`btn btn--${type}`}
         onClick={handleClickFn}
       >
         {innerText}

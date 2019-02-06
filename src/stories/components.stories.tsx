@@ -87,26 +87,24 @@ storiesOf('Low Level Components/ Modal', module)
       height: '50vh'
     };
 
-    const toggleModal = () => {
-      const modalVal = getComputedStyle(document.documentElement).getPropertyValue('--modal');
-      if (parseInt(modalVal) > 0){
-        document.documentElement.style.setProperty('--modal', '-2');
-      } else{
-        document.documentElement.style.setProperty('--modal', '2');
-      }
-    }
-
+    const jsxFrag = (
+      <div
+        style={styling}
+      >
+      <Button
+        innerText='Say hi'
+        handleClickFn={sayHi}
+      />
+      </div>
+    )
     return (
       <>
-        <div
-          style={styling}
-        >
-          <Button
-            innerText='Render me please'
-            handleClickFn ={toggleModal}
-          />
-        </div>
-        <Modal/>
+        <Modal
+          type='basic'
+          headerText={'I\'m a basic modal'}
+          children={'I\'m a basic modal'}
+        />
+          {jsxFrag}
       </>
     )
   })

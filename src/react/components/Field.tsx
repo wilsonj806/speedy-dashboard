@@ -1,4 +1,5 @@
 import React ,{ Component, ReactNode, ReactChild } from 'react';
+import { capitalizeString } from '../helper/helperUtils';
 
 type InputTypes = 'text' | 'number' | 'radio' | 'checkbox'
 
@@ -30,21 +31,11 @@ export class Field extends Component<Props, State> {
     });
   }
 
-  capitalizeString(string: string): string {
-    if (string == null) throw new Error('Expecting a string input')
-    const regex = /\b[a-z]/i;
-    const match = string.match(regex);
-    if (match == null) throw new Error('Error expecting a non-zero length string')
-    const capitalizedLetter = match[0].toUpperCase();
-    const capitalizedString = string.replace(regex, capitalizedLetter);
-    return capitalizedString;
-  }
-
   render() {
     const { type, name, noLabel, handleChangeFn, value } = this.props;
     const handleChange = handleChangeFn || this.handleChangeDefault;
     if (noLabel !== true) {
-      const labelText = this.capitalizeString(name);
+      const labelText = capitalizeString(name);
       return(
         <>
           <label
