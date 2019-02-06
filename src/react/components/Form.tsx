@@ -95,9 +95,9 @@ export class Form extends Component<Props, State>{
       >
         {toRender}
         <Button
+          type='submit'
           isHTMLInputSubmit={true}
           innerText={null}
-          className='btn--submit'
           handleClickFn={this.submitForm}>
         </Button>
       </form>

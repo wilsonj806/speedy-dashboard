@@ -28,8 +28,13 @@
 }
 
 .modal__header{
+  border-bottom: 1px solid grey;
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-between;
   align-items: center;
+}
+
+.heading--modal{
+  margin: 5px 5px;
 }

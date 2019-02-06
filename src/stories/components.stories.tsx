@@ -1,5 +1,6 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
+import { StubbedApp } from '../react/test-stubs/Stubbed-App-modal'
 
 import { Card } from '../react/components/Card';
 import { Field } from '../react/components/Field';
@@ -82,29 +83,13 @@ storiesOf('Low Level Components/ Form', module)
 
 storiesOf('Low Level Components/ Modal', module)
   .add('a basic modal', () => {
-    const styling = {
-      background: 'pink',
-      height: '50vh'
-    };
-
-    const jsxFrag = (
-      <div
-        style={styling}
-      >
-      <Button
-        innerText='Say hi'
-        handleClickFn={sayHi}
-      />
-      </div>
-    )
     return (
-      <>
+      <StubbedApp>
         <Modal
           type='basic'
           headerText={'I\'m a basic modal'}
           children={'I\'m a basic modal'}
         />
-          {jsxFrag}
-      </>
+      </StubbedApp>
     )
   })
