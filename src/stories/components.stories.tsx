@@ -10,8 +10,7 @@ import { Button } from '../react/components/Button';
 // NOTE Dummy Functions
 
 const sayHi = (event: React.MouseEvent<HTMLInputElement>) => {
-  event.preventDefault();
-  console.log('hi')
+  console.log('hi');
 };
 
 storiesOf('Low Level Components/ Card', module)
@@ -64,7 +63,6 @@ storiesOf('Low Level Components/ Form', module)
     return (
       <Form
         handleSubmitFn={sayHi}
-        passingTemplate={true}
       >
         {[
           {

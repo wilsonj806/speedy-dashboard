@@ -3,26 +3,29 @@ import { isTypedObj, isFunc } from '../helper/typeCheck';
 import { Field } from './Field';
 import { Button } from './Button';
 
+//TODO Make the keys for state settable by the user
+
 // FIXME Below isn't DRY, find a way to export standard types and interfaces
 type InputTypes = 'text' | 'number' | 'radio' | 'checkbox'
 
 type FieldTemplate = {
-  type: InputTypes
-  name: string
+  type    : InputTypes
+  name    : string
   noLabel?: boolean
-  value?: any
+  value  ?: any
 }
 
 interface Props {
-  className?: string
-  passingTemplate: boolean
-  handleSubmitFn: any
+  className     ?: string
+  handleSubmitFn : any
   handleChangeFn?: any
-  children?: Array<FieldTemplate | Component | ReactElement<any> >
+  children      ?: Array<FieldTemplate | Component<any> | ReactElement<any>>
 }
 
+/* NOTE If <Form/> is to be reused, convert initialState into an Interface and let
+the user define the keys of State via Props */
 const initialState: { [key: string]: any } = {
-  task: '',
+  task    : '',
   priority: ''
 }
 
@@ -35,8 +38,8 @@ export class Form extends Component<Props, State>{
   readonly state: State = initialState;
 
   renderChildren() {
-    const { children, passingTemplate } = this.props;
-    if ((children == null) && (passingTemplate === true)) throw new Error('Error, expecting children')
+    const { children } = this.props;
+    if ((children == null)) throw new Error('Error, expecting children')
     if (children instanceof  Array) {
       const toRender  = children.map((child: any, index: number): ReactNode => {
         if (isTypedObj(child, 'props')) return child;
@@ -62,10 +65,6 @@ export class Form extends Component<Props, State>{
     `)
   }
 
-  // NOTE Need to be explicit about the event type
-
-  // TODO Also make sure this is updating the state of the applicable <Field/> component
-
   handleFormChangeDefault = (event: React.ChangeEvent<HTMLInputElement>) => {
     const {name, value}: {name: string, value: string} = event.target;
     if (Object.keys(this.state).includes(name)){
@@ -78,16 +77,16 @@ export class Form extends Component<Props, State>{
     }
   }
 
-
-  submitForm = () => {
+  submitForm = (event: React.MouseEvent<HTMLInputElement>) => {
+    event.preventDefault();
     const { handleSubmitFn } = this.props;
     if (isFunc(handleSubmitFn) !== true) throw new Error('Error!: expecting this.props.handleSubmitFn to be a Function!');
-    this.props.handleSubmitFn(this.state); // submit state of the form with the argument of the values inside this.state, note that we passed the handleSubmit function as a property of the Form component
-    this.setState(initialState); // reset form
+    handleSubmitFn(this.state);
+    this.setState(initialState);
   }
 
   render() {
-    const { children, className, handleSubmitFn } = this.props
+    const { children, className } = this.props
     if (!children) throw new Error('Error expecting children')
     const toRender = this.renderChildren();
     return (
@@ -99,10 +98,9 @@ export class Form extends Component<Props, State>{
           isHTMLInputSubmit={true}
           innerText={null}
           className='btn--submit'
-          handleClickFn={handleSubmitFn}>
+          handleClickFn={this.submitForm}>
         </Button>
       </form>
     )
   }
-
 }

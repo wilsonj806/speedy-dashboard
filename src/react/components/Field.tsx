@@ -11,7 +11,6 @@ interface Props {
   value?: string
 }
 
-// TODO Figure out why submit buttons don't get a label even if you specify it in Properties
 const initialState = {
   value: ''
 }
@@ -41,10 +40,8 @@ export class Field extends Component<Props, State> {
     return capitalizedString;
   }
 
-
   render() {
-    const { type, name, noLabel, handleChangeFn } = this.props;
-    const { value } = this.state;
+    const { type, name, noLabel, handleChangeFn, value } = this.props;
     const handleChange = handleChangeFn || this.handleChangeDefault;
     if (noLabel !== true) {
       const labelText = this.capitalizeString(name);
@@ -60,7 +57,7 @@ export class Field extends Component<Props, State> {
             key={1}
             type={`${type}`}
             name={`${name}`}
-            value={this.props.value}
+            value={value}
             onChange={handleChange}
           />
         </>

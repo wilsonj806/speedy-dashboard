@@ -1,19 +1,16 @@
 import React ,{ Component, ReactNode, ReactChild } from 'react';
 
-// import { isFunc } from '../helper/typeCheck';
-
 interface Props {
-  className?: string,
-  innerText: string | null,
+  className        ?: string,
+  innerText         : string | null,
   isHTMLInputSubmit?: boolean,
-  children?: ReactNode,
-  handleClickFn?: any,
+  children         ?: ReactNode,
+  handleClickFn    ?: any,
 }
-
 
 export class Button extends Component<Props, any> {
   render() {
-    const { className, innerText, children, isHTMLInputSubmit, handleClickFn } = this.props;
+    const { className, innerText, isHTMLInputSubmit, handleClickFn } = this.props;
     if (isHTMLInputSubmit === true && handleClickFn != null) {
       return(
         <input
