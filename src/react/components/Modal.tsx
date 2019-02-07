@@ -11,6 +11,7 @@ interface Props {
   className?: string
   children: ReactNode
   updateParentState?: any
+  contentModifier?: string
 }
 
 interface ModalState {
@@ -31,30 +32,31 @@ export class Modal extends Component<Props, State> {
 
   // REVIEW Determine whether or not toggleState() should reside inside or outside the component class
 
-  toggleState = (event: React.MouseEvent<HTMLElement>) => {
-    event.stopPropagation();
-    if (event.target instanceof Element) {
-      const targetClasses: DOMTokenList = event.target.classList;
-      const isModalWrapper = targetClasses.contains('modal-wrapper');
-      const isModalCloseBtn = targetClasses.contains('btn--modal-header');
+  toggleState = (curriedType: string) =>
+    (event: React.MouseEvent<HTMLElement>) => {
+      event.stopPropagation();
+      if (event.target instanceof Element) {
+        const targetClasses: DOMTokenList = event.target.classList;
+        const isModalWrapper = targetClasses.contains('modal-wrapper');
+        const isModalCloseBtn = targetClasses.contains('btn--modal-header');
 
-      if ((isModalWrapper === true) || (isModalCloseBtn === true)) {
-        if (isFunc(this.props.updateParentState)) {this.props.updateParentState(event)}
+        if ((isModalWrapper === true) || (isModalCloseBtn === true)) {
+          if (isFunc(this.props.updateParentState)) {this.props.updateParentState(curriedType)}
+        }
+      } else {
+        throw new Error(`
+          Error expecting mouse event to trigger on an HTML element
+          Event was triggered on: ${event.target} instead
+        `)
       }
-    } else {
-      throw new Error(`
-        Error expecting mouse event to trigger on an HTML element
-        Event was triggered on: ${event.target} instead
-      `)
-    }
   }
 
   render() {
-    const { type, className, children, headerText } = this.props;
+    const { type, className, children, headerText, contentModifier } = this.props;
     return (
       <div
           className='modal-wrapper'
-          onClick={this.toggleState}
+          onClick={this.toggleState(this.props.type)}
       >
         <section
           className={`modal ${className ? className : null} modal--${type}`}
@@ -70,14 +72,14 @@ export class Modal extends Component<Props, State> {
             <Button
               type='modal-header'
               innerText='&times;'
-              handleClickFn={this.toggleState}
+              handleClickFn={this.toggleState(this.props.type)}
             />
           </header>
-          <div
-            className='modal__content'
+          <section
+            className={`modal__content ${contentModifier ? contentModifier : ''}`}
           >
             {children}
-          </div>
+          </section>
         </section>
       </div>
     )

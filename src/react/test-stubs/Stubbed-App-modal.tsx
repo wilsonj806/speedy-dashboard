@@ -25,16 +25,10 @@ export class StubbedApp extends Component<Props, any> {
     }
   }
 
-  componentWillUpdate = (nextProps: Props) => {
-    if (nextProps.children == null) {
-      this.setState({renderChild: initialState.renderChild});
-    }
-  }
-
   sayHi = () => console.log('hi');
 
-  toggleState = (event: React.MouseEvent<HTMLElement>) => {
-    event.stopPropagation();
+  toggleState = (type: string |  React.MouseEvent<HTMLElement>) => {
+    console.log(type instanceof Object);
     this.setState((prevState: State) => ({renderChild: !prevState.renderChild}))
   }
 

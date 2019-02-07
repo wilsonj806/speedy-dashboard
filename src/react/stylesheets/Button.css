@@ -9,6 +9,20 @@
 
 .btn{
   z-index: 1;
+  border: 0 solid transparent;
+  border-radius: 4px;
+  padding: 4px 8px;
+  margin: 0 8px;
+  color: white;
+  user-select: none;
+}
+
+.btn--std{
+  background: var(--primaryBlue);
+}
+
+.btn--info{
+  background: var(--info);
 }
 
 .btn--modal-header{

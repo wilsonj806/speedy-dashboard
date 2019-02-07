@@ -3,7 +3,7 @@ import React ,{ Component, ReactNode, ReactChild } from 'react';
 import '../stylesheets/Button.css';
 
 interface Props {
-  type        ?: string,
+  type             ?: string,
   innerText         : string | null,
   isHTMLInputSubmit?: boolean,
   children         ?: ReactNode,
@@ -13,10 +13,11 @@ interface Props {
 export class Button extends Component<Props, any> {
   render() {
     const { type, innerText, isHTMLInputSubmit, handleClickFn } = this.props;
+    const btnClass = (type && (type !== 'submit')) ? type : 'std';
     if (isHTMLInputSubmit === true && handleClickFn != null) {
       return(
         <input
-          className={`btn btn--${type}`}
+          className={`btn btn--${btnClass}`}
           type='submit'
           value='Submit'
           onClick={handleClickFn}
@@ -25,7 +26,7 @@ export class Button extends Component<Props, any> {
     }
     return (
       <button
-        className={`btn btn--${type}`}
+        className={`btn btn--${btnClass}`}
         onClick={handleClickFn}
       >
         {innerText}

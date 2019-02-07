@@ -22,19 +22,28 @@
 }
 
 .modal{
+  width: 40vw;
+  border-radius: 0.5rem;
   background: white;
-  max-width: 65vw;
-  min-width: 40vw;
 }
 
 .modal__header{
-  border-bottom: 1px solid grey;
+  border-bottom: 1px solid rgb(194, 194, 194);
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-between;
   align-items: center;
 }
 
+.btn--modal-header{
+  font-size: 1.5rem;
+}
+
 .heading--modal{
-  margin: 5px 5px;
+  margin: 1.2rem 0.76rem;
+  padding: 0.25rem 1rem;
+}
+
+.modal__content{
+  padding: 0 1rem;
 }
