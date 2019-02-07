@@ -1,12 +1,15 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { StubbedApp } from '../react/test-stubs/Stubbed-App-modal'
+import { MultipleSupport } from '../react/test-stubs/MultiModal'
 
 import { Card } from '../react/components/Card';
 import { Field } from '../react/components/Field';
 import { Form } from '../react/components/Form';
 import { Modal } from '../react/components/Modal';
 import { Button } from '../react/components/Button';
+
+import '../react/stylesheets/index.css';
 
 // NOTE Dummy Functions
 
@@ -98,8 +101,8 @@ storiesOf('Low Level Components/ Form', module)
         {[
           {
             type:'text',
-            name: 'task',
-            value:'',
+            name:'task',
+            value:''
           },
           {
             type:'text',
@@ -114,25 +117,23 @@ storiesOf('Low Level Components/ Form', module)
 storiesOf('Low Level Components/ Modal', module)
   .add('a basic modal', () => {
     return (
-      <StubbedApp>
         <Modal
           type='basic'
           headerText={'I\'m a basic modal'}
           children={'I\'m a basic modal'}
         />
-      </StubbedApp>
     )
   })
-  .add('modal with content', () => {
+  .add('simple modal with partial integration', () => {
     return (
       <StubbedApp>
         <Modal
           type='basic'
           headerText={'I\'m a basic modal'}
         >
-          <p>This file holds the text for the various sections of the page. Ideally this would be handled via asynchronous import from an external file, but that's slightly beyond what I'm trying to accomplish for v0.5.0. It probably will be added in at some point though as copy and pasting in the text into the relevant sections is not at all efficient.</p>
-          <p>This file holds the text for the various sections of the page. Ideally this would be handled via asynchronous import from an external file, but that's slightly beyond what I'm trying to accomplish for v0.5.0. It probably will be added in at some point though as copy and pasting in the text into the relevant sections is not at all efficient.</p>
+          <p>I should close if the user clicks outside the modal or clicks on the close button</p>
+
         </Modal>
       </StubbedApp>
     )
-  });
+  })

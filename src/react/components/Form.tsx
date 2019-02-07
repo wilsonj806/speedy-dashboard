@@ -9,7 +9,7 @@ import { Button } from './Button';
 type InputTypes = 'text' | 'number' | 'radio' | 'checkbox'
 
 type FieldTemplate = {
-  type    : InputTypes
+  type    : string
   name    : string
   noLabel?: boolean
   value  ?: any
@@ -19,7 +19,7 @@ interface Props {
   className     ?: string
   handleSubmitFn : any
   handleChangeFn?: any
-  children      ?: Array<FieldTemplate | Component<any> | ReactElement<any>>
+  children      ?: Array<FieldTemplate>
 }
 
 /* NOTE If <Form/> is to be reused, convert initialState into an Interface and let

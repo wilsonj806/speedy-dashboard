@@ -37,7 +37,11 @@ export class StubbedApp extends Component<Props, any> {
     const styling = {
       background: 'pink',
       height: '100vh',
-      width: '100vw'
+      width: '100vw',
+      display: 'flex',
+      flexFlow: 'column nowrap',
+      justifyContent: 'center',
+      alignItems: 'center',
     };
 
     const updatedChild = React.Children.map(children, (child: any) =>{
