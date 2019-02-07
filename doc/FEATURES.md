@@ -20,8 +20,8 @@ The purpose of this app is to give users a configurable dashboard. Expanding on 
   - Bare minimum:
     - TODO list
     - cat facts
+    - cat pictures
     - local weather
-    - dog pictures
     - lorem generator
   - Requires slightly more complex API calls:
     - Meetup list
@@ -38,10 +38,11 @@ The purpose of this app is to give users a configurable dashboard. Expanding on 
 Order is going to be done by difficulty, as certain things require some form of authentication.
 
 - Easy:
+  - "Add card" card
   - To do list
   - cat facts
+  - cat pictures
   - local weather
-  - dog pictures
   - WeTransfer(probably)
 - Medium(requires authentication):
   - email
