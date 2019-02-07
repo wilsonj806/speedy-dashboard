@@ -3,7 +3,14 @@
 ## Status
 
 [![GitHub tag (latest SemVer)](https://img.shields.io/github/tag/wilsonj806/speedy-dashboard.svg)](https://github.com/wilsonj806/speedy-dashboard)
+![Current package.json version](https://img.shields.io/github/package-json/v/wilsonj806/speedy-dashboard.svg?label=current%20version)
+![Top language](https://img.shields.io/github/languages/top/wilsonj806/speedy-dashboard.svg)
 
+## Extra Documentation
+
+Extra documentation is listed below:
+- [Current Progress](doc/current-progress.md)
+- [Features](doc/FEATURES.md)
 
 ## General Description
 
