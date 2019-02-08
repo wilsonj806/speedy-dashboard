@@ -1,6 +1,6 @@
 import React ,{ Component, ReactNode, ReactChild } from 'react';
 
-import '../stylesheets/Button.css';
+import './Button.css';
 
 interface Props {
   type             ?: string

@@ -1,10 +1,10 @@
 import React ,{ Component, ReactNode, ReactChild } from 'react';
-import { isFunc } from '../helper/typeCheck';
-import { capitalizeString } from '../helper/helperUtils';
+import { isFunc } from '../../../helper/typeCheck';
+import { capitalizeString } from '../../../helper/helperUtils';
 
-import { Button } from './Button';
-import { Heading } from './Heading';
-import '../stylesheets/Modal.css';
+import { Button } from '../../base/Button/Button';
+import { Heading } from '../../base/Heading/Heading';
+import './Modal.css';
 
 interface Props {
   type: string,

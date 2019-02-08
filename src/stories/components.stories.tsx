@@ -3,12 +3,12 @@ import { storiesOf } from '@storybook/react';
 import { StubbedApp } from '../react/test-stubs/SingleModalDisplay'
 import { MultipleSupport } from '../react/test-stubs/MultiModalDisplay'
 
-import { Heading } from '../react/components/Heading';
-import { Card } from '../react/components/Card';
-import { Field } from '../react/components/Field';
-import { Form } from '../react/components/Form';
-import { Modal } from '../react/components/Modal';
-import { Button } from '../react/components/Button';
+import { Heading } from '../react/components/base/Heading/Heading';
+import { Card } from '../react/components/presentational/Card/Card';
+import { Field } from '../react/components/base/Field/Field';
+import { Form } from '../react/components/stateful/Forms/Form';
+import { Modal } from '../react/components/presentational/Modal/Modal';
+import { Button } from '../react/components/base/Button/Button';
 
 
 import '../react/stylesheets/index.css';

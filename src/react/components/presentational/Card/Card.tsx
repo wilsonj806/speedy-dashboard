@@ -13,7 +13,7 @@ type BasicCard = {
   actions?: ReactChild
 };
 
-export class Card extends Component<Props, any> {
+export class Card extends Component<Props> {
   render() {
     const { children, type } = this.props;
     if (!children) throw new Error('Erorr expecting children elements');

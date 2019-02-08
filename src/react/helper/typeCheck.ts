@@ -5,7 +5,7 @@ const isFunc = (obj: any): obj is Function =>
   typeof obj === 'function' && obj != undefined;
 
 const isTypedObj = <T extends object>(obj: any, keyFromType: string): obj is T =>
-  obj != null && keyFromType in obj
+  isPrimative(obj) === false && obj != null && keyFromType in obj
 
 export {
   isPrimative,

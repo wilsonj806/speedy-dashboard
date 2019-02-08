@@ -1,6 +1,6 @@
 import React ,{ Component, ReactNode, ReactChild } from 'react';
 
-import '../stylesheets/Heading.css'
+import './Paragraph.css'
 
 
 interface Props {
