@@ -30,7 +30,6 @@ export class MultipleSupport extends Component<Props, State> {
   sayHi = () => console.log('hi');
 
   toggleState = (value: string |  React.MouseEvent<HTMLElement>) => {
-    console.log(typeof value);
     if (typeof value === 'string') {
       this.setState((prevState: State) => {
         const { renderModals } = prevState;

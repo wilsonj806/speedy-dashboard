@@ -1,13 +1,12 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import { StubbedApp } from '../react/test-stubs/Stubbed-App-modal'
-import { MultipleSupport } from '../react/test-stubs/MultiModal'
+import { StubbedApp } from '../react/test-stubs/SingleModalDisplay'
+import { MultipleSupport } from '../react/test-stubs/MultiModalDisplay'
 
-import { Card } from '../react/components/Card';
-import { Field } from '../react/components/Field';
 import { Form } from '../react/components/Form';
 import { Modal } from '../react/components/Modal';
-import { Button } from '../react/components/Button';
+import { Dash } from '../react/components/Dash';
+
 
 import '../react/stylesheets/index.css';
 
@@ -17,9 +16,18 @@ const sayHi = (event: React.MouseEvent<HTMLInputElement>) => {
   console.log('hi');
 };
 
-storiesOf('Component Groups/ Modals', module)
+storiesOf('Component Groups/ Group of Modals', module)
   .add('multiple modals', () => {
     return (
       <MultipleSupport/>
+    )
+  });
+
+  storiesOf('Component Groups/ Dash', module)
+  .add('basic dash with default cards', () => {
+    return (
+      <Dash>
+        {null}
+      </Dash>
     )
   });

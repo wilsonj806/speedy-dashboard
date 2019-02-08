@@ -1,7 +1,7 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import { StubbedApp } from '../react/test-stubs/Stubbed-App-modal'
-import { MultipleSupport } from '../react/test-stubs/MultiModal'
+import { StubbedApp } from '../react/test-stubs/SingleModalDisplay'
+import { MultipleSupport } from '../react/test-stubs/MultiModalDisplay'
 
 import { Card } from '../react/components/Card';
 import { Field } from '../react/components/Field';
@@ -50,9 +50,23 @@ storiesOf('Low Level Components/ Button', module)
 storiesOf('Low Level Components/ Card', module)
   .add('basic card', () => {
     return (
-      <Card>
-        <p>hi</p>
-      </Card>
+      <Card
+        type='basic'
+      >
+      {{
+        header: 'I\'m a card with a header and some content',
+        content: (
+          <>
+            <p>
+              Here's some content
+            </p>
+            <p>
+              Here's some more content
+            </p>
+          </>
+        ),
+      }}
+    </Card>
     )
 });
 
@@ -135,5 +149,16 @@ storiesOf('Low Level Components/ Modal', module)
 
         </Modal>
       </StubbedApp>
+    )
+  })
+
+storiesOf('Low Level Components/ extra', module)
+  .add('a thing that renders something simple', () => {
+    const isGoingToRender: boolean = true;
+    const div = (<div>I'm a div</div>);
+    return (
+      <>
+        {(isGoingToRender) ? div : null}
+      </>
     )
   })
