@@ -4,9 +4,11 @@
 
 - Modals
   - Simple modals with multiple ways of closing it
-    ![Simple modal](./img/basic-modal.gif)
+
+    <img src='./img/basic-modal-compressor.gif' width='720px'>
   - Stateful modals
-    ![Multiple modals with state](./img/multiple-modals.gif)
+
+    <img src='./img/multiple-modals-compressor.gif' width='720px'>
 - Forms
   - TBA
 - Cards
