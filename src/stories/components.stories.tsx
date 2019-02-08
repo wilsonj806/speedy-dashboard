@@ -1,14 +1,10 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import { StubbedApp } from '../react/test-stubs/SingleModalDisplay'
-import { MultipleSupport } from '../react/test-stubs/MultiModalDisplay'
 
-import { Heading } from '../react/components/base/Heading/Heading';
-import { Card } from '../react/components/presentational/Card/Card';
-import { Field } from '../react/components/base/Field/Field';
-import { Form } from '../react/components/stateful/Forms/Form';
-import { Modal } from '../react/components/presentational/Modal/Modal';
 import { Button } from '../react/components/base/Button/Button';
+import { Field } from '../react/components/base/Field/Field';
+import { Heading } from '../react/components/base/Heading/Heading';
+import { Paragraph } from '../react/components/base/Paragraph/Paragraph';
 
 
 import '../react/stylesheets/index.css';
@@ -25,24 +21,7 @@ const cssCenter = {
   alignItems: 'center'
 }
 
-storiesOf('Low Level Components/ Heading', module)
-  .add('heading that should throw', () => {
-    return (
-      <Heading type='lg' headingLvl={0}>Add Cards In!</Heading>
-    )
-  })
-  .add('h1 heading', () => {
-    return (
-      <Heading type='lg' headingLvl={1}>Add Cards In!</Heading>
-    )
-})
-.add('h6', () => {
-  return (
-    <Heading type='lg' headingLvl={6}>Add Cards In!</Heading>
-  )
-});
-
-storiesOf('Low Level Components/ Button', module)
+storiesOf('Base/ Button', module)
   .add('basic button', () => {
     return (
       <div style={cssCenter}>
@@ -66,30 +45,7 @@ storiesOf('Low Level Components/ Button', module)
     )
 });
 
-storiesOf('Low Level Components/ Card', module)
-  .add('basic card', () => {
-    return (
-      <Card
-        type='basic'
-      >
-      {{
-        header: 'I\'m a card with a header and some content',
-        content: (
-          <>
-            <p>
-              Here's some content
-            </p>
-            <p>
-              Here's some more content
-            </p>
-          </>
-        ),
-      }}
-    </Card>
-    )
-});
-
-storiesOf('Low Level Components/ Field', module)
+storiesOf('Base/ Field', module)
   .add('Labeless input', () => {
     return (
       <Field
@@ -125,59 +81,35 @@ storiesOf('Low Level Components/ Field', module)
     )
   });
 
-storiesOf('Low Level Components/ Form', module)
-.add('New form', () => {
+storiesOf('Base/ Heading', module)
+  .add('heading that should throw', () => {
     return (
-      <Form
-        handleSubmitFn={sayHi}
-      >
-        {[
-          {
-            type:'text',
-            name:'task',
-            value:''
-          },
-          {
-            type:'text',
-            name: 'priority',
-            value:''
-          },
-        ]}
-      </Form>
-    )
-    });
-
-storiesOf('Low Level Components/ Modal', module)
-  .add('a basic modal', () => {
-    return (
-        <Modal
-          type='basic'
-          headerText={'I\'m a basic modal'}
-          children={'I\'m a basic modal'}
-        />
+      <Heading type='lg' headingLvl={0}>Add Cards In!</Heading>
     )
   })
-  .add('simple modal with partial integration', () => {
+  .add('h1 heading', () => {
     return (
-      <StubbedApp>
-        <Modal
-          type='basic'
-          headerText={'I\'m a basic modal'}
-        >
-          <p>I should close if the user clicks outside the modal or clicks on the close button</p>
+      <Heading type='lg' headingLvl={1}>Add Cards In!</Heading>
+    )
+})
+.add('h6', () => {
+  return (
+    <Heading type='lg' headingLvl={6}>Add Cards In!</Heading>
+  )
+});
 
-        </Modal>
-      </StubbedApp>
+storiesOf('Base/ Paragraph', module)
+  .add('paragraph with text', () => {
+    return (
+      <Paragraph>
+        Sed varius euismod mi vel mollis. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Cras quam sapien, semper id leo sed, gravida ultrices eros. Cras ipsum magna, mollis ut dui ac, blandit rutrum elit.
+      </Paragraph>
     )
   })
-
-/* storiesOf('Low Level Components/ extra', module)
-  .add('a thing that renders something simple', () => {
-    const isGoingToRender: boolean = true;
-    const div = (<div>I'm a div</div>);
+  .add('paragraph with embedded link', () => {
     return (
-      <>
-        {(isGoingToRender) ? div : null}
-      </>
+      <Paragraph>
+        Sed varius euismod mi vel <a href='https://www.google.com/'>I'm a link</a>. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Cras quam sapien, semper id leo sed, gravida ultrices eros. Cras ipsum magna, mollis ut dui ac, blandit rutrum elit.
+      </Paragraph>
     )
-  }) */
+  });

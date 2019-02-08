@@ -4,18 +4,18 @@ import './Paragraph.css'
 
 
 interface Props {
-  modifier?: string,
-  children: string,
+  type?: string,
+  children: any,
 };
 
 // TODO Revise to be a Functional component
 
 export const Paragraph = (props: Props): JSX.Element => {
-  const { children, modifier } = props;
+  const { children, type } = props;
   if (!children) throw new Error('Erorr expecting children elements');
   return (
     <p
-      className={`prgh ${modifier ? `prgh--${modifier}` : ''}`}
+      className={`prgh ${type ? `prgh--${type}` : ''}`}
     >
       {children}
     </p>

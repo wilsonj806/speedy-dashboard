@@ -1,0 +1,13 @@
+.dash{
+  width: 100%;
+  min-height: 65vh;
+  padding: 1rem 0;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.dash--storybook-test{
+  background-color: rgb(112, 195, 228);
+}

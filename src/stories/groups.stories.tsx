@@ -53,26 +53,43 @@ const BasicCard = (
   </Card>
 )
 
-storiesOf('Component Groups/ Group of Modals', module)
-  .add('multiple modals', () => {
+storiesOf('Presentational Components/ Card', module)
+  .add('basic card', () => {
     return (
-      <MultipleSupport/>
+      <Card
+        type='basic'
+      >
+      {{
+        header: (<Heading headingLvl={2}>I'm a card with a header and some content</Heading>),
+        content: (
+          <>
+            <p>
+              Here's some content
+            </p>
+            <p>
+              Here's some more content
+            </p>
+          </>
+        ),
+      }}
+    </Card>
     )
-  });
+});
 
-storiesOf('Component Groups/ Dash', module)
+storiesOf('Presentational Components/ Dash', module)
   .add('dash that should throw', () => {
     return (
       <Dash
-        OpenModal={<span>hi</span>}
+      OpenModal={<span>hi</span>}
       >
-        {null}
-      </Dash>
-    )
+          {null}
+        </Dash>
+      )
   })
   .add('basic dash with default cards', () => {
     return (
       <Dash
+        type='storybook-test'
         OpenModal={AddAction}
       >
         {null}
@@ -82,9 +99,61 @@ storiesOf('Component Groups/ Dash', module)
   .add('dash with a bunch of cards', () => {
     return (
       <Dash
+        type='storybook-test'
         OpenModal={null}
       >
         {[BasicCard, BasicCard]}
       </Dash>
+    )
+  });
+
+storiesOf('Presentational Components/ Form', module)
+  .add('New form', () => {
+    return (
+      <Form
+        handleSubmitFn={sayHi}
+      >
+        {[
+          {
+            type:'text',
+            name:'task',
+            value:''
+          },
+          {
+            type:'text',
+            name: 'priority',
+            value:''
+          },
+        ]}
+      </Form>
+    )
+  });
+
+storiesOf('Presentational Components/ Modal', module)
+  .add('a basic modal', () => {
+    return (
+      <Modal
+        type='basic'
+        headerText={'I\'m a basic modal'}
+        children={'I\'m a basic modal'}
+      />
+    )
+  })
+  .add('simple modal with partial integration', () => {
+    return (
+      <StubbedApp>
+        <Modal
+          type='basic'
+          headerText={'I\'m a basic modal'}
+        >
+          <p>I should close if the user clicks outside the modal or clicks on the close button</p>
+
+        </Modal>
+      </StubbedApp>
+    )
+  })
+  .add('multiple modals', () => {
+    return (
+      <MultipleSupport/>
     )
   });

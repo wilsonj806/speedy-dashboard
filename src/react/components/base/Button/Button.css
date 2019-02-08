@@ -17,6 +17,10 @@
   user-select: none;
 }
 
+.btn:not(.btn--modal-header){
+  box-shadow: 4px 4px 3px rgba(0, 0, 0, 0.1);
+}
+
 .btn--std{
   background: var(--primaryBlue);
 }

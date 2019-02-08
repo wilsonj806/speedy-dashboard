@@ -1,5 +1,7 @@
 import React ,{ Component, ReactNode, ReactChild } from 'react';
 
+import './Card.css';
+
 interface Props {
   type?: string,
   children: BasicCard,

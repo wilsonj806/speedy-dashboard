@@ -1,12 +1,11 @@
 import React ,{ Component, ReactNode, ReactElement } from 'react';
 import { isPrimative, isTypedObj } from '../../../helper/typeCheck';
 
+import './Dash.css';
 
 import { Card } from '../Card/Card';
 import { Button } from '../../base/Button/Button';
 import { Heading } from '../../base/Heading/Heading';
-
-// NOTE Dashboard interface for holding cards
 
 /* NOTE Dash will NOT know its children ahead of time
   <Dash/> will however, have some preset components passed in because they'll need to be there one way or another
@@ -14,7 +13,6 @@ import { Heading } from '../../base/Heading/Heading';
 
 interface Props {
   type?: string
-  className?: string
   OpenModal: ReactElement<any, any> | null
   children: ReactNode | null
 }
@@ -37,12 +35,12 @@ const AddCard = (
 
 export class Dash extends Component<Props> {
   render() {
-    const { className, children, OpenModal } = this.props
+    const { type, children, OpenModal } = this.props
     if ((isTypedObj(OpenModal, 'type')) &&(OpenModal.type.name === 'Card')) {
       const AddAdditionalCards = OpenModal;
       return (
         <section
-          className={`dash-grid ${className}`}
+          className={`dash dash--${type ? type : ''}`}
         >
           {children ? children : AddCard}
           {AddAdditionalCards}
@@ -51,12 +49,12 @@ export class Dash extends Component<Props> {
     } else if (OpenModal === null) {
       return (
         <section
-          className={`dash-grid ${className}`}
+          className={`dash dash--${type ? type : ''}`}
         >
           {children ? children : AddCard}
         </section>
       )
-    }else {
+    } else {
       throw new Error('Error expecting OpenModal to be a Card')
     }
   }
