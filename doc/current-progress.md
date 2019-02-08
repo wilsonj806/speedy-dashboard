@@ -8,7 +8,7 @@
     <img src='./img/basic-modal-compressor.gif' width='720px'>
   - Stateful modals
 
-    <img src='./img/multiple-modals-compressor.gif' width='720px'>
+    <img src='./img/multiple-modal-compressor.gif' width='720px'>
 - Forms
   - TBA
 - Cards
