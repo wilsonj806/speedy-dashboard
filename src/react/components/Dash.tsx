@@ -2,6 +2,7 @@ import React ,{ Component, ReactNode, ReactChild } from 'react';
 
 import { Card } from './Card';
 import { Button } from './Button';
+import { Heading } from './Heading';
 
 // NOTE Dashboard interface for holding cards
 
@@ -34,7 +35,7 @@ const initialState: DashState = {
 
 type State = Readonly<typeof initialState>
 const sayHi = () => console.log('hi');
-const AddCard = (
+const AddAction = (
   <Card
     type='add-cards'
   >
@@ -52,6 +53,16 @@ const AddCard = (
         )
       }
     }
+  </Card>
+);
+const AddCard = (
+  <Card
+    type='ind-add'
+  >
+    {{
+      header: (<Heading type='lg' headingLvl={2}>Add Cards In!</Heading>),
+      content: null
+    }}
   </Card>
 )
 
@@ -71,8 +82,8 @@ export class Dash extends Component<Props, State> {
       <section
         className={`dash-grid ${className}`}
       >
-        {children}
-        {AddCard}
+        {children ? children : AddCard}
+        {AddAction}
       </section>
     )
   }

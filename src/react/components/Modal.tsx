@@ -3,6 +3,7 @@ import { isFunc } from '../helper/typeCheck';
 import { capitalizeString } from '../helper/helperUtils';
 
 import { Button } from './Button';
+import { Heading } from './Heading';
 import '../stylesheets/Modal.css';
 
 interface Props {
@@ -64,11 +65,12 @@ export class Modal extends Component<Props, State> {
           <header
             className='modal__header'
           >
-            <h2
-              className='heading heading--modal'
+            <Heading
+              type='modal'
+              headingLvl={2}
             >
               {headerText}
-            </h2>
+            </Heading>
             <Button
               type='modal-header'
               innerText='&times;'

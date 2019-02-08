@@ -11,28 +11,29 @@ interface Props {
   target           ?: string
 }
 
-export class Button extends Component<Props, any> {
-  render() {
-    const { type, innerText, isHTMLInputSubmit, handleClickFn, target } = this.props;
-    const btnClass = (type && (type !== 'submit')) ? type : 'std';
-    if (isHTMLInputSubmit === true && handleClickFn != null) {
-      return(
-        <input
-          className={`btn btn--${btnClass}`}
-          type='submit'
-          value='Submit'
-          onClick={handleClickFn}
-        />
-      )
-    }
-    return (
-      <button
+// TODO Revise to be a Functional component
+
+export const Button = (props: Props): JSX.Element => {
+  const { type, innerText, isHTMLInputSubmit, handleClickFn, target } = props;
+
+  const btnClass = (type && (type !== 'submit')) ? type : 'std';
+  if (isHTMLInputSubmit === true && handleClickFn != null) {
+    return(
+      <input
         className={`btn btn--${btnClass}`}
+        type='submit'
+        value='Submit'
         onClick={handleClickFn}
-        data-target={target}
-      >
-        {innerText}
-      </button>
+      />
     )
   }
+  return (
+    <button
+      className={`btn btn--${btnClass}`}
+      onClick={handleClickFn}
+      data-target={target}
+    >
+      {innerText}
+    </button>
+  )
 }

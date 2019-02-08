@@ -3,11 +3,13 @@ import { storiesOf } from '@storybook/react';
 import { StubbedApp } from '../react/test-stubs/SingleModalDisplay'
 import { MultipleSupport } from '../react/test-stubs/MultiModalDisplay'
 
+import { Heading } from '../react/components/Heading';
 import { Card } from '../react/components/Card';
 import { Field } from '../react/components/Field';
 import { Form } from '../react/components/Form';
 import { Modal } from '../react/components/Modal';
 import { Button } from '../react/components/Button';
+
 
 import '../react/stylesheets/index.css';
 
@@ -22,6 +24,23 @@ const cssCenter = {
   justifyContent: 'center',
   alignItems: 'center'
 }
+
+storiesOf('Low Level Components/ Heading', module)
+  .add('heading that should throw', () => {
+    return (
+      <Heading type='lg' headingLvl={0}>Add Cards In!</Heading>
+    )
+  })
+  .add('h1 heading', () => {
+    return (
+      <Heading type='lg' headingLvl={1}>Add Cards In!</Heading>
+    )
+})
+.add('h6', () => {
+  return (
+    <Heading type='lg' headingLvl={6}>Add Cards In!</Heading>
+  )
+});
 
 storiesOf('Low Level Components/ Button', module)
   .add('basic button', () => {
@@ -152,7 +171,7 @@ storiesOf('Low Level Components/ Modal', module)
     )
   })
 
-storiesOf('Low Level Components/ extra', module)
+/* storiesOf('Low Level Components/ extra', module)
   .add('a thing that renders something simple', () => {
     const isGoingToRender: boolean = true;
     const div = (<div>I'm a div</div>);
@@ -161,4 +180,4 @@ storiesOf('Low Level Components/ extra', module)
         {(isGoingToRender) ? div : null}
       </>
     )
-  })
+  }) */
