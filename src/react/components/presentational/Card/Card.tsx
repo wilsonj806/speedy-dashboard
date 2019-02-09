@@ -22,11 +22,11 @@ export class Card extends Component<Props> {
       const { header, content, media, actions } = children;
       return(
         <div
-          className={`card card--${type ? type : ''}`}
+          className={`card ${type ? `card--${type}` : ''}`}
         >
           {header ? <header className='card__header'>{header}</header> : null}
           {media ? <div className='card__media'>{media}</div> : null}
-          <div className='card__content'>{content}</div>
+          {content ? <div className='card__content'>{content}</div> : null}
           {actions ? <div className='card__actions'>{actions}</div> : null}
         </div>
       )

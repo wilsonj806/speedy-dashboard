@@ -21,24 +21,22 @@ const sayHi = (event: React.MouseEvent<HTMLInputElement>) => {
   console.log('hi');
 };
 
-const AddAction = (
+const AddMore = (
   <Card
     type='add-cards'
   >
-    {
-      {
+    {{
         header: null,
         content: null,
         actions: (
           <Button
-            type='add-card'
+            type='add-cards'
             innerText='+'
             target='addCards'
             handleClickFn={sayHi}
           />
         )
-      }
-    }
+    }}
   </Card>
 );
 
@@ -48,7 +46,11 @@ const BasicCard = (
   >
     {{
       header: (<Heading headingLvl={2} type='lg'>I'm a basic card</Heading>),
-      content: (<Paragraph>I'm a basic card with basic content</Paragraph>)
+      content: (
+        <Paragraph>
+        Sed varius euismod mi vel mollis. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Cras quam sapien, semper id leo sed, gravida ultrices eros. Cras ipsum magna, mollis ut dui ac, blandit rutrum elit.
+      </Paragraph>
+      )
     }}
   </Card>
 )
@@ -80,7 +82,7 @@ storiesOf('Presentational Components/ Dash', module)
   .add('dash that should throw', () => {
     return (
       <Dash
-      OpenModal={<span>hi</span>}
+      AddMore={<span>hi</span>}
       >
           {null}
         </Dash>
@@ -90,7 +92,7 @@ storiesOf('Presentational Components/ Dash', module)
     return (
       <Dash
         type='storybook-test'
-        OpenModal={AddAction}
+        AddMore={AddMore}
       >
         {null}
       </Dash>
@@ -100,9 +102,29 @@ storiesOf('Presentational Components/ Dash', module)
     return (
       <Dash
         type='storybook-test'
-        OpenModal={null}
+        AddMore={null}
       >
         {[BasicCard, BasicCard]}
+      </Dash>
+    )
+  })
+  .add('dash with two rows of cards', () => {
+    return (
+      <Dash
+        type='storybook-test'
+        AddMore={null}
+      >
+        {[BasicCard, BasicCard, BasicCard, BasicCard, BasicCard, BasicCard]}
+      </Dash>
+    )
+  })
+  .add('dash with two rows of cards and an additional card for adding more', () => {
+    return (
+      <Dash
+        type='storybook-test'
+        AddMore={AddMore}
+      >
+        {[BasicCard, BasicCard, BasicCard, BasicCard, BasicCard, BasicCard]}
       </Dash>
     )
   });
@@ -147,7 +169,6 @@ storiesOf('Presentational Components/ Modal', module)
           headerText={'I\'m a basic modal'}
         >
           <p>I should close if the user clicks outside the modal or clicks on the close button</p>
-
         </Modal>
       </StubbedApp>
     )

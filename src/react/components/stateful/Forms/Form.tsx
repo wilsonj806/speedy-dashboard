@@ -16,7 +16,7 @@ type FieldTemplate = {
 }
 
 interface Props {
-  className     ?: string
+  type          ?: string
   handleSubmitFn : any
   handleChangeFn?: any
   children      ?: Array<FieldTemplate>
@@ -86,12 +86,12 @@ export class Form extends Component<Props, State>{
   }
 
   render() {
-    const { children, className } = this.props
+    const { children, type } = this.props
     if (!children) throw new Error('Error expecting children')
     const toRender = this.renderChildren();
     return (
       <form
-        className={`form ${className}`}
+        className={`form ${type ? `form--${type}` : ''}`}
       >
         {toRender}
         <Button

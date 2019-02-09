@@ -9,7 +9,6 @@ import './Modal.css';
 interface Props {
   type: string,
   headerText: string
-  className?: string
   children: ReactNode
   updateParentState?: any
   contentModifier?: string
@@ -53,14 +52,14 @@ export class Modal extends Component<Props, State> {
   }
 
   render() {
-    const { type, className, children, headerText, contentModifier } = this.props;
+    const { type, children, headerText, contentModifier } = this.props;
     return (
       <div
           className='modal-wrapper'
           onClick={this.toggleState(this.props.type)}
       >
         <section
-          className={`modal ${className ? className : null} modal--${type}`}
+          className={`modal ${type ? `modal--${type}` : ''}`}
         >
           <header
             className='modal__header'
@@ -78,7 +77,7 @@ export class Modal extends Component<Props, State> {
             />
           </header>
           <section
-            className={`modal__content ${contentModifier ? contentModifier : ''}`}
+            className={`modal__content ${contentModifier ? `modal__content--${contentModifier}` : ''}`}
           >
             {children}
           </section>

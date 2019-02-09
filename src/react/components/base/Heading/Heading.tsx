@@ -15,7 +15,7 @@ export const Heading = (props: Props): JSX.Element => {
     case 1:
       return (
         <h1
-          className={`heading heading--${type}`}
+          className={`heading ${type ? `heading--${type}` : ''}`}
         >
           {children}
         </h1>
@@ -23,7 +23,7 @@ export const Heading = (props: Props): JSX.Element => {
     case 2:
       return (
         <h2
-          className={`heading heading--${type}`}
+          className={`heading ${type ? `heading--${type}` : ''}`}
         >
           {children}
         </h2>
@@ -31,7 +31,7 @@ export const Heading = (props: Props): JSX.Element => {
     case 3:
       return (
         <h3
-          className={`heading heading--${type}`}
+          className={`heading ${type ? `heading--${type}` : ''}`}
         >
           {children}
         </h3>
@@ -39,7 +39,7 @@ export const Heading = (props: Props): JSX.Element => {
     case 4:
       return (
         <h4
-        className={`heading heading--${type}`}
+        className={`heading ${type ? `heading--${type}` : ''}`}
         >
           {children}
         </h4>
@@ -47,7 +47,7 @@ export const Heading = (props: Props): JSX.Element => {
     case 5:
       return (
         <h4
-        className={`heading heading--${type}`}
+        className={`heading ${type ? `heading--${type}` : ''}`}
         >
           {children}
         </h4>
@@ -55,7 +55,7 @@ export const Heading = (props: Props): JSX.Element => {
     case 6:
       return (
         <h6
-        className={`heading heading--${type}`}
+        className={`heading ${type ? `heading--${type}` : ''}`}
         >
           {children}
         </h6>

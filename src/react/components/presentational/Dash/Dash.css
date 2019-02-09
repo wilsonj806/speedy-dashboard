@@ -3,11 +3,48 @@
   min-height: 65vh;
   padding: 1rem 0;
   display: flex;
-  flex-flow: row nowrap;
+  flex-flow: row wrap;
   justify-content: flex-start;
   align-items: flex-start;
 }
 
 .dash--storybook-test{
   background-color: rgb(112, 195, 228);
+}
+
+.card--ind-add{
+  width: 16rem;
+  border: 3px dashed rgb(175, 175, 175);
+  background: rgba(255, 255, 255, 0.95);
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.heading--ind-add{
+  text-align: center;
+}
+
+.card--add-cards{
+  max-width: 12rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn--add-cards{
+  height: 8rem;
+  width: 8rem;
+  border-radius: 5rem;
+  font-size: 5rem;
+  background: var(--primaryBlue);
+}
+
+.btn--add-cards:hover{
+  background: var(--primaryActBlue);
+}
+.btn--add-cards:active{
+  background: var(--primaryActBlue);
+  box-shadow: 4px 4px 3px rgba(0, 0, 0, 0.1);
 }

@@ -1,9 +1,14 @@
 :root{
   --primaryBlue: #2196F3;
+  --primaryActBlue: #1d7cca;
   --info: #00BCD4;
+  --infoAct: #0098ac;
   --danger: #F44336;
+  --dangerAct: #c5382e;
   --warn: #FFEB3B;
+  --warn: #dbc605;
   --success: #4CAF50;
+  --success: #3c8b3f;
 }
 
 
@@ -18,15 +23,29 @@
 }
 
 .btn:not(.btn--modal-header){
-  box-shadow: 4px 4px 3px rgba(0, 0, 0, 0.1);
+  box-shadow: 8px 8px 3px rgba(0, 0, 0, 0.1);
 }
 
 .btn--std{
   background: var(--primaryBlue);
 }
+.btn--std:hover{
+  background: var(--primaryActBlue);
+}
+.btn--std:active{
+  background: var(--primaryActBlue);
+  box-shadow: 4px 4px 3px rgba(0, 0, 0, 0.1);
+}
 
 .btn--info{
   background: var(--info);
+}
+.btn--info:hover{
+  background: var(--infoAct);
+}
+.btn--info:active{
+  background: var(--infoAct);
+  box-shadow: 4px 4px 3px rgba(0, 0, 0, 0.1);
 }
 
 .btn--modal-header{
