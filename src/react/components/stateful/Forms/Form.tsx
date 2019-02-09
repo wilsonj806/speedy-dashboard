@@ -1,7 +1,7 @@
 import React ,{ Component, ReactNode, ReactElement, ReactNodeArray } from 'react';
-import { isTypedObj, isFunc } from '../helper/typeCheck';
-import { Field } from './Field';
-import { Button } from './Button';
+import { isTypedObj, isFunc } from '../../../helper/typeCheck';
+import { Field } from '../../base/Field/Field';
+import { Button } from '../../base/Button/Button';
 
 //TODO Make the keys for state settable by the user
 
@@ -16,7 +16,7 @@ type FieldTemplate = {
 }
 
 interface Props {
-  className     ?: string
+  type          ?: string
   handleSubmitFn : any
   handleChangeFn?: any
   children      ?: Array<FieldTemplate>
@@ -86,12 +86,12 @@ export class Form extends Component<Props, State>{
   }
 
   render() {
-    const { children, className } = this.props
+    const { children, type } = this.props
     if (!children) throw new Error('Error expecting children')
     const toRender = this.renderChildren();
     return (
       <form
-        className={`form ${className}`}
+        className={`form ${type ? `form--${type}` : ''}`}
       >
         {toRender}
         <Button

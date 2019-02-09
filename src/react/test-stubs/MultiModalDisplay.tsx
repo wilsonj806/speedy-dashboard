@@ -1,7 +1,7 @@
 import React, { Component, ReactNode, ReactElement } from 'react';
 
-import { Button } from '../components/Button';
-import { Modal } from '../components/Modal';
+import { Button } from '../components/base/Button/Button';
+import { Modal } from '../components/presentational/Modal/Modal';
 
 
 interface Props {
@@ -30,7 +30,6 @@ export class MultipleSupport extends Component<Props, State> {
   sayHi = () => console.log('hi');
 
   toggleState = (value: string |  React.MouseEvent<HTMLElement>) => {
-    console.log(typeof value);
     if (typeof value === 'string') {
       this.setState((prevState: State) => {
         const { renderModals } = prevState;

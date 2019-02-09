@@ -1,5 +1,5 @@
 import React ,{ Component, ReactNode, ReactChild } from 'react';
-import { capitalizeString } from '../helper/helperUtils';
+import { capitalizeString } from '../../../helper/helperUtils';
 
 type InputTypes = 'text' | 'number' | 'radio' | 'checkbox'
 
