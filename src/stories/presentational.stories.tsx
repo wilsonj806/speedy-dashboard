@@ -26,7 +26,7 @@ const AddMore = (
     type='add-cards'
   >
     {{
-        header: null,
+        header: (<Heading type='ind-add' headingLvl={3}>Add Cards In!</Heading>),
         content: null,
         actions: (
           <Button
@@ -118,7 +118,7 @@ storiesOf('Presentational Components/ Dash', module)
       </Dash>
     )
   })
-  .add('dash with two rows of cards and an additional card for adding more', () => {
+  .add('dash with cards and the default card', () => {
     return (
       <Dash
         type='storybook-test'

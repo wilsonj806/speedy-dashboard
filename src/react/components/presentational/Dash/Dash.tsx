@@ -27,7 +27,7 @@ const AddCard = (
     type='ind-add'
   >
     {{
-      header: (<Heading type='ind-add' headingLvl={2}>Add Cards In!</Heading>),
+      header: (null),
       content: null
     }}
   </Card>

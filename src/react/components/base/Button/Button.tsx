@@ -20,7 +20,7 @@ export const Button = (props: Props): JSX.Element => {
   if (isHTMLInputSubmit === true && handleClickFn != null) {
     return(
       <input
-        className={`btn ${type ? `btn--${type}` : ''}`}
+        className={`btn btn--submit`}
         type='submit'
         value='Submit'
         onClick={handleClickFn}
@@ -29,7 +29,7 @@ export const Button = (props: Props): JSX.Element => {
   }
   return (
     <button
-      className={`btn ${type ? `btn--${type}` : ''}`}
+      className={`btn ${type ? `btn--${type}` : 'btn--std'}`}
       onClick={handleClickFn}
       data-target={target}
     >
