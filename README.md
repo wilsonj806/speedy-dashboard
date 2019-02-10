@@ -58,6 +58,8 @@ TBA
 
 ## Cloning instructions
 
+### General Overview
+
 You'll need to have some version of Node.js(and subsequently npm, which is included) installed. Currently running everything on Node v10.10.0/ NPM v6.4.1 but it should work fine on older versions of Node/ NPM.
 - if you do need to download Node, you can download it through the below links:
   - [Offical Node site](https://nodejs.org/en/download/)
@@ -71,6 +73,12 @@ git clone https://github.com/wilsonj806/speedy-dashboard.git
 ```
 
 Change your working directory to the folder of the newly cloned repo and run ```npm install``` in your command line interface.
+
+### Using TypeScript
+
+**NOTE** As this project uses a large amount of TypeScript, a code editor/ IDE with TypeScript/ TSLint support is **STRONGLY** recommended.
+- Visual Studio/ Visual Studio Code is recommended, but Sublime, WebStorm, Eclipse and other editors support it as well
+  - See the [official site](https://www.typescriptlang.org/index.html#download-links) for more
 
 ### Running Storybook
 
