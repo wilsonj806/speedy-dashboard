@@ -10,7 +10,7 @@
 
 .dash--storybook-test{
   background-color: rgb(112, 195, 228);
-  height: 100vh;
+  min-height: 100vh;
 }
 
 .card--ind-add{
@@ -30,7 +30,7 @@
 .card--add-cards{
   max-width: 12rem;
   display: flex;
-  flex-flow: column wrap;
+  flex-flow: column nowrap;
   justify-content: flex-start;
   align-items: center;
 }
@@ -45,6 +45,9 @@
   border-radius: 5rem;
   font-size: 5rem;
   background: var(--primaryBlue);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .btn--add-cards:hover{

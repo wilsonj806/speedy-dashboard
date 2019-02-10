@@ -26,12 +26,12 @@ const AddMore = (
     type='add-cards'
   >
     {{
-        header: (<Heading type='ind-add' headingLvl={3}>Add Cards In!</Heading>),
+        header: (<Heading type='ind-add' headingLvl={2}>Add Cards In!</Heading>),
         content: null,
         actions: (
           <Button
             type='add-cards'
-            innerText='+'
+            innerText='&#43;'
             target='addCards'
             handleClickFn={sayHi}
           />
