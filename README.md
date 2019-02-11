@@ -20,7 +20,7 @@ A dashboard made with React, with part of the ideas for managing cards/ presenta
 
 ### General goals
 
-The goal of this project is to build off of the work done by [React Array Method Visualizer](https://github.com/wilsonj806/react-array-method-visualizer), and build a dashboard with some number of selectable items. This will all be done in React.js and will also build off of the previous testing experience done in the [Picture Analyzer](https://github.com/wilsonj806/speedy-dashboard) project, only this time in Jest.
+The goal of this project is to build off of the work done by [React Array Method Visualizer](https://github.com/wilsonj806/react-array-method-visualizer), and build a dashboard with some number of selectable items.
 
 ### Features to be implemented by v0.25.0
 
@@ -33,24 +33,21 @@ The goal of this project is to build off of the work done by [React Array Method
 - Support for larger cards/ cards that change size
 - Implementation for all cards requiring simple API calls
 - Modals for adding cards, and an information/ help dialog
-- Tests for some components
 
 ### Features to be implemented by v0.75.0
 
 - At least one card that makes calls with OAuth/ to a RESTful API
 - Partial styling, probably based on something on Dribble
--
 
 ### Features to be implemented by v1.0.0
 
 - Support for drag and dropping cards around
 - Full styling for components
 - Sidebar for adding preset cards quickly
-- Tests for project-critical components
 
 ### Post v1.0.0
 
-TBA
+- Tests for components using Jest, Enzyme, and etc
 
 ## Current issues
 

@@ -28,7 +28,7 @@ const AddMore = (
     {{
         header: (<Heading type='ind-add' headingLvl={3}>Add Cards In!</Heading>),
         content: null,
-        actions: (
+        action: (
           <Button
             type='add-cards'
             innerText='+'
@@ -45,7 +45,9 @@ const BasicCard = (
     type='basic'
   >
     {{
-      header: (<Heading headingLvl={2} type='lg'>I'm a basic card</Heading>),
+      header: ([
+        <Heading headingLvl={2}>I'm a card with a header and some content</Heading>,
+      ]),
       content: (
         <Paragraph>
         Sed varius euismod mi vel mollis. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Cras quam sapien, semper id leo sed, gravida ultrices eros. Cras ipsum magna, mollis ut dui ac, blandit rutrum elit.
@@ -62,7 +64,9 @@ storiesOf('Presentational Components/ Card', module)
         type='basic'
       >
       {{
-        header: (<Heading headingLvl={2}>I'm a card with a header and some content</Heading>),
+        header: ([
+          <Heading headingLvl={2}>I'm a card with a header and some content</Heading>,
+        ]),
         content: (
           <>
             <p>

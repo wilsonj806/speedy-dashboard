@@ -1,10 +1,7 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 
-import { Button } from '../react/components/base/Button/Button';
-import { Field } from '../react/components/base/Field/Field';
-import { Heading } from '../react/components/base/Heading/Heading';
-import { Paragraph } from '../react/components/base/Paragraph/Paragraph';
+import { LoremStub } from '../react/components/app-specific/LoremStub';
 
 
 import '../react/stylesheets/index.css';
@@ -21,26 +18,9 @@ const cssCenter = {
   alignItems: 'center'
 }
 
-storiesOf('Base/ Button', module)
-  .add('basic button', () => {
+storiesOf('App Specific/ Lorem Card', module)
+  .add('Lorem stubbed integration', () => {
     return (
-      <div style={cssCenter}>
-        <Button
-          type='std'
-          innerText={`Click me`}
-          handleClickFn={sayHi}
-          />
-      </div>
+      <LoremStub/>
     )
-  })
-  .add('info button', () => {
-    return (
-      <div style={cssCenter}>
-        <Button
-          type='info'
-          innerText={`Info`}
-          handleClickFn={sayHi}
-          />
-      </div>
-    )
-});
+  });

@@ -3,6 +3,7 @@ import React ,{ Component, ReactNode, ReactChild } from 'react';
 import './Button.css';
 
 interface Props {
+  id               ?: string
   type             ?: string
   innerText         : string | null
   isHTMLInputSubmit?: boolean

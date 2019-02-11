@@ -17,3 +17,7 @@
 .card__content{
   padding: 0.5rem 1rem;
 }
+
+.card__action{
+  float: bottom;
+}
