@@ -2,8 +2,13 @@
 
 ## Features Completed
 
-- Cards
-  - TBA
+- App Specific Cards
+  - Cat facts and image
+
+  <img src='./img/cat-card.gif' width='720px'>
+  - Lorem generator
+
+  <img src='./img/lorem-card.gif' width='720px'>
 - Dash
   - Dashboard with default card and an additional card that displays a dialog box for adding more in
 
