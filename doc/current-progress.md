@@ -6,6 +6,7 @@
   - Cat facts and image
 
   <img src='./img/cat-card.gif' width='720px'>
+
   - Lorem generator
 
   <img src='./img/lorem-card.gif' width='720px'>
