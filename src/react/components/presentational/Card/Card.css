@@ -1,23 +1,31 @@
 .card{
   width: 24rem;
-  height: 15rem;
+  min-height: 15rem;
   margin: 0 1rem;
   border: 1px solid rgb(228, 228, 228);
   border-radius: 5px;
   background:  rgb(255, 255, 255);
   box-shadow: 4px 4px 3px rgba(0, 0, 0, 0.1);
-
+  display: grid;
+  grid-template-rows: auto 2fr auto;
+  grid-template-areas:
+    "header"
+    "card-content"
+    "action"
 }
 
 .card__header{
+  grid-area: header;
   padding: 0 1rem;
   border-bottom: 1px solid rgb(228, 228, 228);
 }
 
 .card__content{
+  grid-area: card-content;
   padding: 0.5rem 1rem;
 }
 
 .card__action{
+  grid-area: action;
   float: bottom;
 }

@@ -12,7 +12,7 @@ interface Props {
 type BasicCard = {
   header: ReactElement<any> | ReactElement<any>[] | null,
   media?: ReactChild,
-  content: ReactChild | null,
+  content: ReactElement<any> | ReactElement<any>[] | null,
   action?: ReactElement<any> | ReactElement<any>[]
 };
 

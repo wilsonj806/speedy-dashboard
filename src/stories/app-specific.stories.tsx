@@ -1,7 +1,8 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 
-import { LoremStub } from '../react/components/app-specific/LoremStub';
+import { LoremPartial } from '../react/components/app-specific/LoremPartial';
+import { CatPartial } from '../react/components/app-specific/CatPartial';
 
 
 import '../react/stylesheets/index.css';
@@ -19,8 +20,15 @@ const cssCenter = {
 }
 
 storiesOf('App Specific/ Lorem Card', module)
-  .add('Lorem stubbed integration', () => {
+  .add('Lorem Card', () => {
     return (
-      <LoremStub/>
+      <LoremPartial/>
+    )
+  });
+
+storiesOf('App Specific/ Cat Card', module)
+  .add('Cat Card', () => {
+    return (
+      <CatPartial/>
     )
   });
