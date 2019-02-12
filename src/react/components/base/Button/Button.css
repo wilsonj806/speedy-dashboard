@@ -38,6 +38,17 @@
   box-shadow: 4px 4px 3px rgba(0, 0, 0, 0.1);
 }
 
+.btn--submit{
+  background: var(--primaryBlue);
+}
+.btn--submit:hover{
+  background: var(--primaryActBlue);
+}
+.btn--submit:active{
+  background: var(--primaryActBlue);
+  box-shadow: 4px 4px 3px rgba(0, 0, 0, 0.1);
+}
+
 .btn--info{
   background: var(--info);
 }

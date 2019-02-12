@@ -1,6 +1,6 @@
 .card{
   width: 16rem;
-  height: 15rem;
+  min-height: 15rem;
   margin: 1rem 1rem;
   border: 1px solid rgb(228, 228, 228);
   border-radius: 5px;
@@ -13,7 +13,6 @@
     "card-content"
     "action"
   ;
-  overflow: scroll;
 }
 
 .card__header{
@@ -35,13 +34,11 @@
 @media (min-width: 1024px) {
   .card{
     width: 22rem;
-    height: 15rem;
   }
 }
 
 @media (min-width: 1440px) {
   .card{
     width: 24rem;
-    height: 15rem;
   }
 }

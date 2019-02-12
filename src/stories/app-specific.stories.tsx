@@ -16,19 +16,24 @@ const cssCenter = {
   height: '100vh',
   display: 'flex',
   justifyContent: 'center',
-  alignItems: 'center'
+  alignItems: 'center',
+  background: 'rgb(255, 185, 55)'
 }
 
 storiesOf('App Specific/ Lorem Card', module)
   .add('Lorem Card', () => {
     return (
-      <LoremPartial/>
+      <div style={cssCenter}>
+        <LoremPartial/>
+      </div>
     )
   });
 
 storiesOf('App Specific/ Cat Card', module)
   .add('Cat Card', () => {
     return (
-      <CatPartial/>
+      <div style={cssCenter}>
+        <CatPartial/>
+      </div>
     )
   });
