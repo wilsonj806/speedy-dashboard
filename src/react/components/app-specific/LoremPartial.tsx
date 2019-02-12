@@ -36,17 +36,17 @@ const initialState: BasicObj = {
 
 type State = Readonly<typeof initialState>
 
-const loremEndpoint = 'https://baconipsum.com/api/?type=meat-and-filler&paras=1';
+const externalCorsProxy = 'https://cors-anywhere.herokuapp.com/';
+const loremEndpoint = 'https://loripsum.net/api/1/short/plaintext';
 
 export class LoremPartial extends Component<any, State> {
   readonly state: State = initialState;
 
   getLoremFetch = async () => {
-    const responseStr = await fetch(loremEndpoint, fetchInit)
-      .then((blob: any) => blob.clone().json())
+    const responseStr = await fetch(externalCorsProxy + loremEndpoint, fetchInit)
+      .then((blob: any) => blob.clone())
       .then((val: any) => {
-        const parsedJson = val[0];
-        const response = parsedJson.toString();
+        const response = val.text();
         return response;
       })
     .catch((error: any) => console.error(error));
@@ -79,7 +79,7 @@ export class LoremPartial extends Component<any, State> {
               type=''
               headingLvl={2}
             >
-              Bacon Ipsum Generator
+              Lorem Ipsum Generator
             </Heading>
           ),
           content: (
