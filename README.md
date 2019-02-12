@@ -10,6 +10,7 @@
 
 Extra documentation is listed below:
 - [Current Progress](doc/current-progress.md)
+- [Issues](doc/ISSUES.md)
 - [Features](doc/FEATURES.md)
 
 ## General Description
@@ -49,10 +50,6 @@ The goal of this project is to build off of the work done by [React Array Method
 - Tests for project-critical components
 
 ### Post v1.0.0
-
-TBA
-
-## Current issues
 
 TBA
 

@@ -7,10 +7,10 @@
 - Dash
   - Dashboard with default card and an additional card that displays a dialog box for adding more in
 
-  <img src='./img/aaaa>
+  <img src='./img/basic-dash-default.png' width='720px'>
   - Basic dashboard with generic cards
 
-  <img src='./img/aaaaaa>
+  <img src='./img/generic-cards-dash.png' width='720px'>
 - Forms
   - TBA
 - Modals
