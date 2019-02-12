@@ -43,8 +43,8 @@ Order is going to be done by difficulty, as certain things require some form of 
   - cat facts
   - cat pictures
   - local weather
-  - WeTransfer(probably)
 - Medium(requires authentication):
+  - WeTransfer(probably)
   - email
 - Hard(authentication but more involved?)
   - Spotify player

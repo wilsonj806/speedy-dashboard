@@ -4,12 +4,10 @@ import { isPrimative, isTypedObj } from '../../../helper/typeCheck';
 import './Dash.css';
 
 import { Card } from '../Card/Card';
-import { Heading } from '../../base/Heading/Heading';
 
 /* NOTE Dash will NOT know its children ahead of time
   <Dash/> will however, have some preset components passed in because they'll need to be there one way or another
  */
-
 
 /* NOTE AddMore Prop is for DIRECTLY adding in a <Card/> that will tell the main app to show a Modal interface for adding additional Cards in */
 interface Props {
@@ -27,7 +25,7 @@ const AddCard = (
     type='ind-add'
   >
     {{
-      header: (<Heading type='ind-add' headingLvl={2}>Add Cards In!</Heading>),
+      header: null,
       content: null
     }}
   </Card>

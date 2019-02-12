@@ -1,0 +1,14 @@
+/* NOTE Component Modifers
+Holds custom component styling */
+
+.card--lorem{
+  height: auto;
+}
+
+.card--cat{
+  height: auto;
+}
+
+.card__content > .image{
+  max-height: 15rem;
+}
