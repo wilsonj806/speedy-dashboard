@@ -31,33 +31,32 @@ do React.Children.map() and React.cloneElement() */
 
 // REVIEW Keep stuff simple! If you don't need to pass props to check an element, DON'T
 
+const genericStyle={
+  height: '200vh',
+  padding: '0.5rem',
+  margin: '0',
+  background: 'rgb(255, 185, 55)'
+}
 
 export class AddMorePartial extends Component<any, State> {
 
   readonly state: State = initialState
 
-  toggleModalState = (value: string |  React.MouseEvent<HTMLElement>) => {
+  toggleModalState = (value: React.MouseEvent<HTMLElement>) => {
     // console.log(this.props.children);
-    if (typeof value === 'string') {
-      this.setState((prevState: State) => {
-        const { renderModal } = prevState;
-        return ({
-          renderModal: !renderModal
-        })
-      });
-      return;
-    } else if (value.target instanceof HTMLElement) {
+    if (value.target instanceof HTMLElement) {
       const { target } = value.target.dataset;
-      if (typeof target !== 'string') throw new Error('Error expecting target to be a string');
+      console.log(target);
+      // if (typeof target !== 'string') throw new Error('Error expecting target to be a string');
       this.setState((prevState: State) => ({
         renderModal: !prevState.renderModal
       }))
     }
   }
 
-  toggleCardState = (value: React.MouseEvent<HTMLElement>) => {
-    if (value.target instanceof HTMLElement) {
-      const { target } = value.target.dataset;
+  toggleCardState = (event: React.MouseEvent<HTMLElement>) => {
+    if (event.target instanceof HTMLElement) {
+      const { target } = event.target.dataset;
       if (typeof target !== 'string') return;
 
       this.setState((prevState: State) => {
@@ -86,9 +85,10 @@ export class AddMorePartial extends Component<any, State> {
     const AddMore = (
       <Modal
         key={0}
+        id='add-more'
         type='add-more'
         headerText='Add Cards in'
-        updateParentState={this.toggleModalState}
+        handleCloseFn={this.toggleModalState}
       >
         <Button
           innerText={renderCards.basic1 === false ? 'Add card 1' : 'Remove card 1'}
@@ -107,6 +107,7 @@ export class AddMorePartial extends Component<any, State> {
       {renderModal ? AddMore : null}
       <section
         onClick={this.toggleCardState}
+        style={genericStyle}
       >
         {cardsToRender}
         <Button

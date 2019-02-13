@@ -11,7 +11,8 @@ import { Dash } from '../presentational/Dash/Dash';
 const BasicCard = (
   <Card
     key={0}
-    type='basic basic2'
+    id='basicCard1'
+    type='basic basic1'
   >
     {{
       header: ([
@@ -35,6 +36,7 @@ const BasicCard = (
 const BasicCard2 = (
   <Card
     key={1}
+    id='basicCard2'
     type='basic basic2'
   >
     {{

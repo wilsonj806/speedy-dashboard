@@ -3,11 +3,7 @@ import React, { Component, ReactNode, ReactElement } from 'react';
 import { Button } from '../../../base/Button/Button';
 import { Modal } from '../../../presentational/Modal/Modal';
 
-
-interface Props {
-  children?: ReactElement<any>
-  renderChild?: boolean
-}
+// NOTE In terms of order, put the <Modal/> component first
 
 const initialState = {
   renderChild: false
@@ -15,7 +11,6 @@ const initialState = {
 
 type State = Readonly<typeof initialState>
 
-// NOTE In terms of order, put the <Modal/> component first
 export class StubbedApp extends Component<Props, any> {
   readonly state: State = initialState;
   constructor(props: any) {
@@ -27,9 +22,17 @@ export class StubbedApp extends Component<Props, any> {
 
   sayHi = () => console.log('hi');
 
-  toggleState = (type: string |  React.MouseEvent<HTMLElement>) => {
-    console.log(type instanceof Object);
-    this.setState((prevState: State) => ({renderChild: !prevState.renderChild}))
+// NOTE the below assumes that toggleState is sent to a button element for toggling the thing
+
+  toggleState = (event: React.MouseEvent<HTMLElement>) => {
+    if (!(event.target instanceof HTMLElement)) throw new Error('wrong type');
+    const targetModalClass = ['.modal-wrapper', '.btn--close']
+    const { classList } = event.target;
+    if ( classList.contains(targetModalClass[0]) || classList.contains(targetModalClass[1])) {
+      this.setState((prevState: State) => ({renderChild: !prevState.renderChild}))
+    } else{
+      this.setState((prevState: State) => ({renderChild: !prevState.renderChild}))
+    }
   }
 
   render() {
@@ -45,7 +48,7 @@ export class StubbedApp extends Component<Props, any> {
     };
 
     const updatedChild = React.Children.map(children, (child: any) =>{
-      return React.cloneElement(child, { updateParentState: this.toggleState })
+      return React.cloneElement(child, { handleCloseFn: this.toggleState })
     });
 /*     const toRender = ((this.state.renderChild === true) ? (
       <Modal
@@ -72,4 +75,9 @@ export class StubbedApp extends Component<Props, any> {
       </>
     )
   }
+}
+
+interface Props {
+  children?: ReactElement<any>
+  renderChild?: boolean
 }

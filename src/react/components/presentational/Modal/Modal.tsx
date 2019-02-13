@@ -6,58 +6,19 @@ import { Button } from '../../base/Button/Button';
 import { Heading } from '../../base/Heading/Heading';
 import './Modal.css';
 
-interface Props {
-  type: string,
-  headerText: string
-  children: ReactNode
-  updateParentState?: any
-  contentModifier?: string
-}
-
-interface ModalState {
-  [key: string]: any
-}
-
-const initialState: ModalState = {
-  renderModal: true
-}
-
-type State = Readonly<typeof initialState>
-
-export class Modal extends Component<Props, State> {
+export class Modal extends Component<Props> {
   constructor(props: any) {
     super(props);
-    if (!this.props.updateParentState) {console.warn('warning expecting a parent to handle <Modal/> render state')}
-  }
-
-  // REVIEW Determine whether or not toggleState() should reside inside or outside the component class
-  // REVIEW Also check if this is even necessary
-
-  toggleState = (curriedType: string) =>
-    (event: React.MouseEvent<HTMLElement>) => {
-      event.stopPropagation();
-      if (event.target instanceof Element) {
-        const targetClasses: DOMTokenList = event.target.classList;
-        const isModalWrapper = targetClasses.contains('modal-wrapper');
-        const isModalCloseBtn = targetClasses.contains('btn--modal-header');
-
-        if ((isModalWrapper === true) || (isModalCloseBtn === true)) {
-          if (isFunc(this.props.updateParentState)) {this.props.updateParentState(curriedType)}
-        }
-      } else {
-        throw new Error(`
-          Error expecting mouse event to trigger on an HTML element
-          Event was triggered on: ${event.target} instead
-        `)
-      }
+    if (!this.props.handleCloseFn) {console.warn('warning expecting a parent to handle <Modal/> render state')}
   }
 
   render() {
-    const { type, children, headerText, contentModifier } = this.props;
+    const { type, children, headerText, contentModifier, handleCloseFn, id } = this.props;
     return (
       <div
-          className='modal-wrapper'
-          onClick={this.toggleState(this.props.type)}
+        className='modal-wrapper'
+        onClick={handleCloseFn}
+        id={id}
       >
         <section
           className={`modal ${type ? `modal--${type}` : ''}`}
@@ -72,9 +33,8 @@ export class Modal extends Component<Props, State> {
               {headerText}
             </Heading>
             <Button
-              type='modal-header'
+              type='close'
               innerText='&times;'
-              handleClickFn={this.toggleState(this.props.type)}
             />
           </header>
           <section
@@ -86,4 +46,17 @@ export class Modal extends Component<Props, State> {
       </div>
     )
   }
+}
+
+interface Props {
+  id               : string
+  type             : string,
+  headerText       : string
+  children         : ReactNode
+  handleCloseFn   ?: any
+  contentModifier ?: string
+}
+
+interface ModalState {
+  [key: string]: any
 }

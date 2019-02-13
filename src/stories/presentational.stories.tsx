@@ -159,9 +159,11 @@ storiesOf('Presentational Components/ Modal', module)
   .add('a basic modal', () => {
     return (
       <Modal
+        id='basic'
         type='basic'
         headerText={'I\'m a basic modal'}
         children={'I\'m a basic modal'}
+        handleCloseFn={null}
       />
     )
   })
@@ -169,6 +171,7 @@ storiesOf('Presentational Components/ Modal', module)
     return (
       <StubbedApp>
         <Modal
+          id='basic'
           type='basic'
           headerText={'I\'m a basic modal'}
         >

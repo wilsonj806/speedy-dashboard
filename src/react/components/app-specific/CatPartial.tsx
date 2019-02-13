@@ -96,7 +96,7 @@ export class CatPartial extends Component<any, State> {
             <Paragraph
               type='lorem'
             >
-              {(catFact && catImg) ? catFact : 'Click the button to see a cat fact.'}
+              {(catFact !== '') && (catImg !== '') ? catFact : 'Click the button to see a cat fact.'}
             </Paragraph>
             {catImg ? <Image src={catImg} alt='cat image'/> : null}
             </>
