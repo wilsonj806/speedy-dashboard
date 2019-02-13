@@ -1,7 +1,7 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import { StubbedApp } from '../react/test-stubs/SingleModalDisplay'
-import { MultipleSupport } from '../react/test-stubs/MultiModalDisplay'
+import { StubbedApp } from '../react/components/presentational/Modal/test-stubs/SingleModalDisplay'
+import { MultipleSupport } from '../react/components/presentational/Modal/test-stubs/MultiModalDisplay'
 
 import { Heading } from '../react/components/base/Heading/Heading';
 import { Paragraph } from '../react/components/base/Paragraph/Paragraph';

@@ -3,6 +3,7 @@ import { storiesOf } from '@storybook/react';
 
 import { LoremPartial } from '../react/components/app-specific/LoremPartial';
 import { CatPartial } from '../react/components/app-specific/CatPartial';
+import { AddMorePartial } from '../react/components/app-specific/AddMorePartial';
 
 
 import '../react/stylesheets/index.css';
@@ -35,5 +36,12 @@ storiesOf('App Specific/ Cat Card', module)
       <div style={cssCenter}>
         <CatPartial/>
       </div>
+    )
+  });
+
+  storiesOf('App Specific/ Add More Cards Dialog', module)
+  .add('Basic Add More Dialog', () => {
+    return (
+      <AddMorePartial/>
     )
   });

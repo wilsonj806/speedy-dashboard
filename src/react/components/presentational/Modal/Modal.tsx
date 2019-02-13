@@ -31,6 +31,7 @@ export class Modal extends Component<Props, State> {
   }
 
   // REVIEW Determine whether or not toggleState() should reside inside or outside the component class
+  // REVIEW Also check if this is even necessary
 
   toggleState = (curriedType: string) =>
     (event: React.MouseEvent<HTMLElement>) => {

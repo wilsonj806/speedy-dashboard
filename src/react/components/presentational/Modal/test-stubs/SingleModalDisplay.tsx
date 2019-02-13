@@ -1,7 +1,7 @@
 import React, { Component, ReactNode, ReactElement } from 'react';
 
-import { Button } from '../components/base/Button/Button';
-import { Modal } from '../components/presentational/Modal/Modal';
+import { Button } from '../../../base/Button/Button';
+import { Modal } from '../../../presentational/Modal/Modal';
 
 
 interface Props {
