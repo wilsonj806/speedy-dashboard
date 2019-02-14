@@ -30,7 +30,6 @@ interface Props {
 }
 
 const initialState: BasicObj = {
-  renderModal: false,
   renderCards: {
     basic1: false,
     basic2: false,
@@ -46,7 +45,7 @@ const genericStyle={
   background: 'rgb(255, 185, 55)'
 }
 
-export class AddMorePartial extends Component<Props, State> {
+export class AddMore extends Component<Props, State> {
   constructor(props: Props) {
     super(props);
     if (!this.props.cardsToDisplay) {
@@ -54,33 +53,9 @@ export class AddMorePartial extends Component<Props, State> {
     }
   }
 
-
-  toggleModalState = (event: React.MouseEvent<HTMLElement>) => {
-    // console.log(this.props.children);
-    if (event.target instanceof HTMLElement) {
-      const { classList, dataset } = event.target;
-      const { target } = dataset;
-      const targetModalClass = ['modal-wrapper', 'btn--close'];
-      const classCheck = (classList.contains(targetModalClass[0]) || classList.contains(targetModalClass[1]));
-
-      if (classCheck === true && !target) {
-        this.setState((prevState: State) => ({
-          renderModal: !prevState.renderModal
-        }));
-        return;
-      } else if (classCheck === false && target === 'add-more') {
-        this.setState((prevState: State) => ({
-          renderModal: !prevState.renderModal
-        }));
-        return;
-      }
-    }
-  }
-
   toggleCardState = (event: React.MouseEvent<HTMLElement>) => {
     if (event.target instanceof HTMLElement) {
       const { target } = event.target.dataset;
-      console.log(target);
       if (typeof target !== 'string') return;
       if (Object.keys(this.state.renderCards).includes(target)) {
       this.setState((prevState: State) => {
@@ -102,19 +77,15 @@ export class AddMorePartial extends Component<Props, State> {
 
   render() {
     const { id, handleCloseFn } = this.props
-    const { renderModal, renderCards } = this.state
-    const cardsToRender = [
-      (renderCards.basic1 ? BasicCard : null),
-      (renderCards.basic2 ? BasicCard2 : null),
-    ];
+    const { renderCards } = this.state
 
-    const AddMore = (
+    return(
       <Modal
         key={0}
         id={id ? id : 'add-more'}
         type='add-more'
         headerText='Add Cards in'
-        handleCloseFn={handleCloseFn ? handleCloseFn : this.toggleModalState}
+        handleCloseFn={handleCloseFn}
       >
         <Button
           innerText={renderCards.basic1 === false ? 'Add card 1' : 'Remove card 1'}
@@ -127,22 +98,6 @@ export class AddMorePartial extends Component<Props, State> {
           handleClickFn={this.toggleCardState}
         />
       </Modal>
-    )
-    return(
-      <>
-      {renderModal ? AddMore : null}
-      <section
-        onClick={this.toggleCardState}
-        style={genericStyle}
-      >
-        {cardsToRender}
-        <Button
-          innerText='Add Cards'
-          target='add-more'
-          handleClickFn={this.toggleModalState}
-        />
-      </section>
-      </>
     )
   }
 }

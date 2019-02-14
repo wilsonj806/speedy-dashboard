@@ -15,13 +15,9 @@ export class Modal extends Component<Props> {
   render() {
     const { type, children, headerText, contentModifier, handleCloseFn, id } = this.props;
     return (
-      <div
-        className='modal-wrapper'
-        onClick={handleCloseFn}
-        id={id}
-      >
         <section
           className={`modal ${type ? `modal--${type}` : ''}`}
+          id={id}
         >
           <header
             className='modal__header'
@@ -44,7 +40,6 @@ export class Modal extends Component<Props> {
             {children}
           </section>
         </section>
-      </div>
     )
   }
 }

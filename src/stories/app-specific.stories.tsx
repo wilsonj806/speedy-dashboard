@@ -1,9 +1,11 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 
+import { ModalController } from '../react/components/presentational/ModalController/ModalController';
+
 import { LoremPartial } from '../react/components/app-specific/LoremPartial';
 import { CatPartial } from '../react/components/app-specific/CatPartial';
-import { AddMorePartial } from '../react/components/app-specific/AddMorePartial';
+import { AddMore } from '../react/components/app-specific/AddMore';
 
 
 import '../react/stylesheets/index.css';
@@ -42,6 +44,6 @@ storiesOf('App Specific/ Cat Card', module)
   storiesOf('App Specific/ Add More Cards Dialog', module)
   .add('Basic Add More Dialog', () => {
     return (
-      <AddMorePartial/>
+      <AddMore/>
     )
   });

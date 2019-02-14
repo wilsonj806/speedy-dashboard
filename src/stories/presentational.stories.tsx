@@ -4,11 +4,14 @@ import { storiesOf } from '@storybook/react';
 import { Heading } from '../react/components/base/Heading/Heading';
 import { Paragraph } from '../react/components/base/Paragraph/Paragraph';
 import { Button } from '../react/components/base/Button/Button';
+
 import { Card } from '../react/components/presentational/Card/Card';
-import { Form } from '../react/components/stateful/Forms/Form';
 import { Modal } from '../react/components/presentational/ModalController/Modal/Modal';
-import { ModalController } from '../react/components/presentational/ModalController/ModalController';
+
+
 import { Dash } from '../react/components/presentational/Dash/Dash';
+import { ModalController } from '../react/components/presentational/ModalController/ModalController';
+import { StubbedApp } from '../react/components/presentational/ModalController/StubbedApp';
 
 
 import '../react/stylesheets/index.css';
@@ -131,7 +134,7 @@ storiesOf('Presentational Components/ Dash', module)
       </Dash>
     )
   });
-
+/*
 storiesOf('Presentational Components/ Form', module)
   .add('New form', () => {
     return (
@@ -153,7 +156,7 @@ storiesOf('Presentational Components/ Form', module)
       </Form>
     )
   });
-
+ */
 storiesOf('Presentational Components/ Modal', module)
   .add('a basic modal', () => {
     return (
@@ -188,5 +191,10 @@ storiesOf('Presentational Components/ Modal', module)
             </Paragraph>
           </section>
         </>
+      )
+    })
+    .add('modal controller with parent passing props', () => {
+      return(
+        <StubbedApp/>
       )
     })

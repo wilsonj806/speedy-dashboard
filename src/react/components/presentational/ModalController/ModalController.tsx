@@ -1,6 +1,6 @@
 import React ,{ Component, ReactNode, ReactElement, ReactNodeArray } from 'react';
 
-import { AddMorePartial } from '../../app-specific/AddMorePartial';
+import { AddMore } from '../../app-specific/AddMore';
 import { Modal } from './Modal/Modal';
 
 import './Modal.css';
@@ -23,35 +23,27 @@ export class ModalController extends Component<Props, any>{
     }
   }
 
-  hideModal = (event: React.MouseEvent<HTMLElement>) => {
-    if (!(event.target instanceof HTMLElement)) throw new Error(`Expecting a HTMLElement as the target of the event, got ${event.target} instead`);
-
-    const targetModalClass = ['modal-wrapper', 'btn--close'];
-    const { classList, dataset, id } = event.target;
-
-    const classCheck = (classList.contains(targetModalClass[0]) || classList.contains(targetModalClass[1]));
-
-    if (classCheck === true) {
-      event.stopPropagation();
-      console.log('hello there!');
-      return;
-    }
-  }
-
   renderModal= (): ReactElement<any, any> | null => {
     const { toDisplay, handleCloseFn } = this.props;
     switch(toDisplay) {
       case 'HELP':
         return (
-          <div>
-            Specific modal for Help here
-          </div>
+          <Modal
+            key={1}
+            id='help'
+            type='help'
+            headerText={'It\'s me the help Modal!'}
+            handleCloseFn={handleCloseFn}
+          >
+            <p>I'm the helper modal. Hi!</p>
+          </Modal>
         );
 
       case 'ADD':
           return (
-            <AddMorePartial
+            <AddMore
               id='add-more'
+              handleCloseFn={handleCloseFn}
             />
           );
       case 'BASIC':
@@ -61,7 +53,7 @@ export class ModalController extends Component<Props, any>{
             id='basic'
             type='basic'
             headerText='This is a Basic modal that is expected to work'
-            handleCloseFn={handleCloseFn? handleCloseFn : this.hideModal}
+            handleCloseFn={handleCloseFn}
           >
             <p>This file holds the text for the various sections of the page. Ideally this would be handled via asynchronous import from an external file, but that's slightly beyond what I'm trying to accomplish for v0.5.0. It probably will be added in at some point though as copy and pasting in the text into the relevant sections is not at all efficient.</p>
           </Modal>
@@ -75,13 +67,17 @@ export class ModalController extends Component<Props, any>{
     const { handleCloseFn, id } = this.props;
     const toRender = this.renderModal();
     return (
-      <section
-        id={id ? id : 'modal-controller'}
-        className='modal-wrapper'
-        onClick={handleCloseFn ? handleCloseFn : this.hideModal}
-      >
-        {toRender}
-      </section>
+      <>
+        { toRender == null ? null :
+        (<section
+          id={id ? id : 'modal-controller'}
+          className='modal-wrapper'
+          onClick={handleCloseFn}
+        >
+          {toRender}
+        </section>)
+        }
+      </>
   )
   }
 }
@@ -90,6 +86,6 @@ type Modals = 'HELP' | 'ADD' | 'BASIC'
 
 interface Props {
   id ?: string
-  handleCloseFn ?: any
+  handleCloseFn : any
   toDisplay ?: Modals | null
 }
