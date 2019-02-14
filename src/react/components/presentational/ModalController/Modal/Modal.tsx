@@ -1,10 +1,10 @@
 import React ,{ Component, ReactNode, ReactChild } from 'react';
-import { isFunc } from '../../../helper/typeCheck';
-import { capitalizeString } from '../../../helper/helperUtils';
+import { isFunc } from '../../../../helper/typeCheck';
+import { capitalizeString } from '../../../../helper/helperUtils';
 
-import { Button } from '../../base/Button/Button';
-import { Heading } from '../../base/Heading/Heading';
-import './Modal.css';
+import { Button } from '../../../base/Button/Button';
+import { Heading } from '../../../base/Heading/Heading';
+import '../Modal.css';
 
 export class Modal extends Component<Props> {
   constructor(props: any) {
@@ -35,6 +35,7 @@ export class Modal extends Component<Props> {
             <Button
               type='close'
               innerText='&times;'
+              handleClickFn={handleCloseFn}
             />
           </header>
           <section

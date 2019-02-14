@@ -5,7 +5,7 @@ import { Paragraph } from '../base/Paragraph/Paragraph';
 import { Button } from '../base/Button/Button';
 import { Card } from '../presentational/Card/Card';
 import { Form } from '../stateful/Forms/Form';
-import { Modal } from '../presentational/Modal/Modal';
+import { Modal } from '../presentational/ModalController/Modal/Modal';
 import { Dash } from '../presentational/Dash/Dash';
 
 const BasicCard = (
@@ -20,7 +20,7 @@ const BasicCard = (
           I'm a card with some content
         </Heading>,
         <Button
-          type='modal-header'
+          type='close'
           target='basic1'
           innerText='&times;'
         />
@@ -45,7 +45,7 @@ const BasicCard2 = (
           I'm a different card with some content
         </Heading>,
         <Button
-          type='modal-header'
+          type='close'
           innerText='&times;'
           target='basic2'
         />

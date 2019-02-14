@@ -12,9 +12,22 @@ import { Paragraph } from '../base/Paragraph/Paragraph';
 import { Button } from '../base/Button/Button';
 
 import { Card } from '../presentational/Card/Card';
-import { Modal } from '../presentational/Modal/Modal';
+import { Modal } from '../presentational/ModalController/Modal/Modal';
+
+// TODO Refactor to accomodate for the ModalController.tsx component
 
 interface BasicObj { [key: string]: any}
+
+interface CardsToDisplay {
+  basic1 : boolean
+  basic2 : boolean
+}
+
+interface Props {
+  id?: string
+  handleCloseFn?: any
+  cardsToDisplay ?: CardsToDisplay
+}
 
 const initialState: BasicObj = {
   renderModal: false,
@@ -26,11 +39,6 @@ const initialState: BasicObj = {
 
 type State= Readonly<typeof initialState>
 
-/* REVIEW Defining the Modal in the render() space is dumb, for full <App/> integration
-do React.Children.map() and React.cloneElement() */
-
-// REVIEW Keep stuff simple! If you don't need to pass props to check an element, DON'T
-
 const genericStyle={
   height: '200vh',
   padding: '0.5rem',
@@ -38,27 +46,43 @@ const genericStyle={
   background: 'rgb(255, 185, 55)'
 }
 
-export class AddMorePartial extends Component<any, State> {
+export class AddMorePartial extends Component<Props, State> {
+  constructor(props: Props) {
+    super(props);
+    if (!this.props.cardsToDisplay) {
+      this.state = initialState
+    }
+  }
 
-  readonly state: State = initialState
 
-  toggleModalState = (value: React.MouseEvent<HTMLElement>) => {
+  toggleModalState = (event: React.MouseEvent<HTMLElement>) => {
     // console.log(this.props.children);
-    if (value.target instanceof HTMLElement) {
-      const { target } = value.target.dataset;
-      console.log(target);
-      // if (typeof target !== 'string') throw new Error('Error expecting target to be a string');
-      this.setState((prevState: State) => ({
-        renderModal: !prevState.renderModal
-      }))
+    if (event.target instanceof HTMLElement) {
+      const { classList, dataset } = event.target;
+      const { target } = dataset;
+      const targetModalClass = ['modal-wrapper', 'btn--close'];
+      const classCheck = (classList.contains(targetModalClass[0]) || classList.contains(targetModalClass[1]));
+
+      if (classCheck === true && !target) {
+        this.setState((prevState: State) => ({
+          renderModal: !prevState.renderModal
+        }));
+        return;
+      } else if (classCheck === false && target === 'add-more') {
+        this.setState((prevState: State) => ({
+          renderModal: !prevState.renderModal
+        }));
+        return;
+      }
     }
   }
 
   toggleCardState = (event: React.MouseEvent<HTMLElement>) => {
     if (event.target instanceof HTMLElement) {
       const { target } = event.target.dataset;
+      console.log(target);
       if (typeof target !== 'string') return;
-
+      if (Object.keys(this.state.renderCards).includes(target)) {
       this.setState((prevState: State) => {
         const { renderCards } = prevState;
         return (
@@ -70,12 +94,14 @@ export class AddMorePartial extends Component<any, State> {
           }
         )
       });
+      }
     } else {
       throw new Error('aaaaaaa broken things')
     }
   }
 
   render() {
+    const { id, handleCloseFn } = this.props
     const { renderModal, renderCards } = this.state
     const cardsToRender = [
       (renderCards.basic1 ? BasicCard : null),
@@ -85,10 +111,10 @@ export class AddMorePartial extends Component<any, State> {
     const AddMore = (
       <Modal
         key={0}
-        id='add-more'
+        id={id ? id : 'add-more'}
         type='add-more'
         headerText='Add Cards in'
-        handleCloseFn={this.toggleModalState}
+        handleCloseFn={handleCloseFn ? handleCloseFn : this.toggleModalState}
       >
         <Button
           innerText={renderCards.basic1 === false ? 'Add card 1' : 'Remove card 1'}

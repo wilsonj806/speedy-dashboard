@@ -1,14 +1,13 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import { StubbedApp } from '../react/components/presentational/Modal/test-stubs/SingleModalDisplay'
-import { MultipleSupport } from '../react/components/presentational/Modal/test-stubs/MultiModalDisplay'
 
 import { Heading } from '../react/components/base/Heading/Heading';
 import { Paragraph } from '../react/components/base/Paragraph/Paragraph';
 import { Button } from '../react/components/base/Button/Button';
 import { Card } from '../react/components/presentational/Card/Card';
 import { Form } from '../react/components/stateful/Forms/Form';
-import { Modal } from '../react/components/presentational/Modal/Modal';
+import { Modal } from '../react/components/presentational/ModalController/Modal/Modal';
+import { ModalController } from '../react/components/presentational/ModalController/ModalController';
 import { Dash } from '../react/components/presentational/Dash/Dash';
 
 
@@ -166,22 +165,28 @@ storiesOf('Presentational Components/ Modal', module)
         handleCloseFn={null}
       />
     )
-  })
-  .add('simple modal with partial integration', () => {
-    return (
-      <StubbedApp>
-        <Modal
-          id='basic'
-          type='basic'
-          headerText={'I\'m a basic modal'}
-        >
-          <p>I should close if the user clicks outside the modal or clicks on the close button</p>
-        </Modal>
-      </StubbedApp>
-    )
-  })
-  .add('multiple modals', () => {
-    return (
-      <MultipleSupport/>
-    )
   });
+
+
+  const generalStyling = {
+    background: 'rgb(180,255,90)',
+    height: '100vh'
+  }
+
+  storiesOf('Presentational Components/ ModalController', module)
+    .add('modal controller no parent state', () => {
+      return(
+        <>
+          <ModalController
+            toDisplay='BASIC'
+          />
+          <section
+            style={generalStyling}
+          >
+            <Paragraph>
+            beyond what I'm trying to accomplish for v0.5.0. It probably will be added in at some point though as copy and pasting in the text into the relevant secti
+            </Paragraph>
+          </section>
+        </>
+      )
+    })
