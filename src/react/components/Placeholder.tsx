@@ -1,12 +1,12 @@
 import React from 'react';
 
-import { Heading } from '../base/Heading/Heading';
-import { Paragraph } from '../base/Paragraph/Paragraph';
-import { Button } from '../base/Button/Button';
-import { Card } from '../presentational/Card/Card';
-import { Form } from '../stateful/Forms/Form';
-import { Modal } from '../presentational/ModalController/Modal/Modal';
-import { Dash } from '../presentational/Dash/Dash';
+import { Heading } from './base/Heading/Heading';
+import { Paragraph } from './base/Paragraph/Paragraph';
+import { Button } from './base/Button/Button';
+import { Card } from './presentational/Card/Card';
+import { Form } from './stateful/Forms/Form';
+import { Modal } from './presentational/ModalController/Modal/Modal';
+import { Dash } from './presentational/Dash/Dash';
 
 const BasicCard = (
   <Card

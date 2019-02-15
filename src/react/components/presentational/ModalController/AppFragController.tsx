@@ -4,6 +4,8 @@ import { Button } from '../../base/Button/Button';
 import { Modal } from './Modal/Modal';
 import { ModalController } from './ModalController';
 
+import { AddCardState as renderCards, RenderModalState  } from '../../State';
+
 import './Modal.css';
 
 interface BasicObj {
@@ -14,17 +16,15 @@ interface Props {
 
 }
 
-const initialState: BasicObj = {
-  toDisplay: '',
-  renderCards: {
-    basic1: false,
-    basic2: false
-  }
-}
+const initialState: BasicObj = Object.assign({},
+  RenderModalState,
+  {
+    renderCards: {...renderCards}
+  });
 
 type State = Readonly<typeof initialState>
 
-export class MinIntController extends Component<Props, State> {
+export class AppFragController extends Component<Props, State> {
   readonly state: State = initialState;
 
   handleModalDisplay = (event: React.MouseEvent<HTMLElement>): void => {

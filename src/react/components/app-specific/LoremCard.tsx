@@ -1,11 +1,15 @@
 import React, { Component } from 'react';
 
-import './Comp-modifiers.css';
 
-import { Card } from '../presentational/Card/Card';
 import { Heading } from '../base/Heading/Heading';
 import { Paragraph } from '../base/Paragraph/Paragraph';
 import { Button } from '../base/Button/Button';
+
+import { Card } from '../presentational/Card/Card';
+
+import { LoremGETState } from '../State';
+
+import './Comp-modifiers.css';
 
 /* NOTE This is an example of how an <App/> might integrate the Lorem card in and does not try to
 fully integrate everything in.
@@ -30,9 +34,7 @@ const fetchInit: FetchParam = {
 
 interface BasicObj { [key: string]: any}
 
-const initialState: BasicObj = {
-  loremStr: ''
-}
+const initialState: BasicObj = { ...LoremGETState }
 
 type State = Readonly<typeof initialState>
 

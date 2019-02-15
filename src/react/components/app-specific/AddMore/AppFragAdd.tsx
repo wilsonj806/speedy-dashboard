@@ -4,7 +4,9 @@ import { Button } from '../../base/Button/Button';
 import { Modal } from '../../presentational/ModalController/Modal/Modal';
 import { ModalController } from '../../presentational/ModalController/ModalController';
 
-import { BasicCard, BasicCard2 } from '../Placeholder';
+import { BasicCard, BasicCard2 } from '../../Placeholder';
+
+import { AddCardState as renderCards, RenderModalState  } from '../../State';
 
 /* TODO Add handling for adding UNIQUE KEYS for each Card rendered in
 Something something:
@@ -36,17 +38,13 @@ interface Props {
 
 }
 
-const initialState: BasicObj = {
-  toDisplay: '',
-  renderCards: {
-    basic1: false,
-    basic2: false,
-  }
-}
+const initialState: BasicObj = Object.assign({}, RenderModalState, {
+  renderCards: {...renderCards}
+});
 
 type State = Readonly<typeof initialState>
 
-export class MinIntAdd extends Component<Props, State> {
+export class AppFragAdd extends Component<Props, State> {
   readonly state: State = initialState;
 
   handleModalDisplay = (event: React.MouseEvent<HTMLElement>): void => {

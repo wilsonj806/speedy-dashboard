@@ -2,9 +2,8 @@
 
 import React, { Component, ReactElement } from 'react';
 
-import '../Comp-modifiers.css';
 
-import { BasicCard, BasicCard2 } from '../Placeholder';
+import { BasicCard, BasicCard2 } from '../../Placeholder';
 
 import { Heading } from '../../base/Heading/Heading';
 import { Image } from '../../base/Image/Image';
@@ -14,9 +13,9 @@ import { Button } from '../../base/Button/Button';
 import { Card } from '../../presentational/Card/Card';
 import { Modal } from '../../presentational/ModalController/Modal/Modal';
 
-// TODO Refactor to accomodate for the ModalController.tsx component
+import '../Comp-modifiers.css';
 
-interface BasicObj { [key: string]: any}
+// TODO Refactor to accomodate for the ModalController.tsx component
 
 interface CardsToDisplay {
   basic1 : boolean
@@ -35,14 +34,6 @@ interface RenderCards {
   basic1 : boolean
   basic2 : boolean
 }
-/* const initialState: BasicObj = {
-  renderCards: {
-    basic1: false,
-    basic2: false,
-  }
-}
-
-type State= Readonly<typeof initialState> */
 
 const genericStyle={
   height: '200vh',

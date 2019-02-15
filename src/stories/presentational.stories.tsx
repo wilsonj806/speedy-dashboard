@@ -11,7 +11,7 @@ import { Modal } from '../react/components/presentational/ModalController/Modal/
 
 import { Dash } from '../react/components/presentational/Dash/Dash';
 import { ModalController } from '../react/components/presentational/ModalController/ModalController';
-import { MinIntController } from '../react/components/presentational/ModalController/MinIntController';
+import { AppFragController } from '../react/components/presentational/ModalController/AppFragController';
 
 
 import '../react/stylesheets/index.css';
@@ -202,6 +202,6 @@ storiesOf('Presentational Components/ Modal', module)
     })
     .add('modal controller with parent passing props', () => {
       return(
-        <MinIntController/>
+        <AppFragController/>
       )
     })

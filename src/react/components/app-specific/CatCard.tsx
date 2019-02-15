@@ -1,12 +1,16 @@
 import React, { Component, ReactElement } from 'react';
 
-import './Comp-modifiers.css';
-
-import { Card } from '../presentational/Card/Card';
 import { Heading } from '../base/Heading/Heading';
 import { Image } from '../base/Image/Image';
 import { Paragraph } from '../base/Paragraph/Paragraph';
 import { Button } from '../base/Button/Button';
+
+import { Card } from '../presentational/Card/Card';
+
+import { CatGETState } from '../State';
+
+import './Comp-modifiers.css';
+
 
 /* NOTE This is an example of how an <App/> might integrate the Cat card in and does not try to
 fully integrate everything in.
@@ -39,10 +43,7 @@ const fetchInit: FetchParam = {
 
 interface BasicObj { [key: string]: any}
 
-const initialState: BasicObj = {
-  catFact: '',
-  catImg: ''
-}
+const initialState: BasicObj = {...CatGETState }
 
 type State = Readonly<typeof initialState>
 

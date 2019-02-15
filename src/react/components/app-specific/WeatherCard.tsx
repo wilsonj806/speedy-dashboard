@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 
-import './Comp-modifiers.css';
-
-import { Card } from '../presentational/Card/Card';
 import { Heading } from '../base/Heading/Heading';
 import { Image } from '../base/Image/Image';
 import { Paragraph } from '../base/Paragraph/Paragraph';
 import { Button } from '../base/Button/Button';
+
+import { Card } from '../presentational/Card/Card';
+
+import './Comp-modifiers.css';
 
 type AccessTypes = 'GET' | 'POST' | 'PUT'
 type FetchMode = 'cors' | 'no-cors' | 'same-origin'
@@ -27,8 +28,7 @@ const fetchInit: FetchParam = {
 interface BasicObj { [key: string]: any}
 
 const initialState: BasicObj = {
-  catFact: '',
-  catImg: ''
+
 }
 
 type State = Readonly<typeof initialState>

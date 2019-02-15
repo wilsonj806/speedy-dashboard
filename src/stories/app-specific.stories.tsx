@@ -6,7 +6,7 @@ import { ModalController } from '../react/components/presentational/ModalControl
 import { LoremCard } from '../react/components/app-specific/LoremCard';
 import { CatCard } from '../react/components/app-specific/CatCard';
 import { AddMore } from '../react/components/app-specific/AddMore/AddMore';
-import { MinIntAdd } from '../react/components/app-specific/AddMore/MinIntAdd';
+import { AppFragAdd } from '../react/components/app-specific/AddMore/AppFragAdd';
 
 
 import '../react/stylesheets/index.css';
@@ -54,9 +54,9 @@ storiesOf('App Specific/ Add More Cards Dialog', module)
       />
     )
   })
-  .add('Partial Integration', () => {
+  .add('App fragment with Add More', () => {
     return (
-      <MinIntAdd
+      <AppFragAdd
 
       />
     )
