@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, ReactElement } from 'react';
 
 
 import { Heading } from '../base/Heading/Heading';
@@ -18,23 +18,12 @@ Also note that the methods should be slightly renamed when copying them in
 
 // REVIEW If a Node server is integrated in for CORS AND it can do 'GET' on Loripsum.net, switch out the thing
 
-type AccessTypes = 'GET' | 'POST' | 'PUT'
-type FetchMode = 'cors' | 'no-cors' | 'same-origin'
-
-interface FetchParam {
-  method: AccessTypes
-  mode: FetchMode
-  header?: object
-}
-
-const fetchInit: FetchParam = {
+const fetchInit: Local.FetchParam = {
   method: 'GET',
   mode: 'cors'
 }
 
-interface BasicObj { [key: string]: any}
-
-const initialState: BasicObj = { ...LoremGETState }
+const initialState: Local.BasicObj = { ...LoremGETState }
 
 type State = Readonly<typeof initialState>
 
@@ -44,7 +33,7 @@ const loremEndpoint = 'https://loripsum.net/api/1/short/plaintext';
 export class LoremCard extends Component<any, State> {
   readonly state: State = initialState;
 
-  getLoremFetch = async () => {
+  getLoremFetch = async (): Promise<void> => {
     const responseStr = await fetch(externalCorsProxy + loremEndpoint, fetchInit)
       .then((blob: any): Promise<Response> => blob.clone())
       .then((val: Response): Promise<string> => {
@@ -55,7 +44,7 @@ export class LoremCard extends Component<any, State> {
     this.setState({loremStr: responseStr});
   }
 
-  getLoremXhr = () => {
+  getLoremXhr = (): void => {
     const xhr = new XMLHttpRequest();
     xhr.open('GET', loremEndpoint, true);
     xhr.onload = () => {
@@ -68,7 +57,7 @@ export class LoremCard extends Component<any, State> {
     xhr.send();
   }
 
-  render() {
+  render =(): ReactElement<any, any> => {
     const { loremStr } = this.state;
     return (
       <Card

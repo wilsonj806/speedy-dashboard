@@ -1,12 +1,15 @@
 {
   "compilerOptions": {
     "outDir": "build/dist",
-
     "module": "esnext",
     "noEmit": true,
     "jsx": "preserve",
     "target": "es5",
     "moduleResolution": "node",
+    "typeRoots": [
+      "./node_modules/@types",
+      "./src/@types"
+    ],
     "lib": [
       "es6",
       "dom",
@@ -26,9 +29,7 @@
     "resolveJsonModule": true,
     "isolatedModules": true
   },
-
   "exclude": [
-    "node_modules",
     "build",
     "scripts",
     "acceptance-tests",

@@ -3,11 +3,6 @@
 import React, { Component, ReactElement } from 'react';
 
 
-import { BasicCard, BasicCard2 } from '../../Placeholder';
-
-import { Heading } from '../../base/Heading/Heading';
-import { Image } from '../../base/Image/Image';
-import { Paragraph } from '../../base/Paragraph/Paragraph';
 import { Button } from '../../base/Button/Button';
 
 import { Card } from '../../presentational/Card/Card';
@@ -22,7 +17,7 @@ interface CardsToDisplay {
   basic2 : boolean
 }
 
-interface Props {
+interface AddModalProps {
   id             ?: string
   renderCards     : RenderCards
   handleCloseFn  ?: any
@@ -35,16 +30,9 @@ interface RenderCards {
   basic2 : boolean
 }
 
-const genericStyle={
-  height: '200vh',
-  padding: '0.5rem',
-  margin: '0',
-  background: 'rgb(255, 185, 55)'
-}
+export class AddMore extends Component<AddModalProps> {
 
-export class AddMore extends Component<Props> {
-
-  render() {
+  render = (): ReactElement<any, any> => {
     const { id, handleCloseFn, handleCardFn, renderCards } = this.props
 
     return(

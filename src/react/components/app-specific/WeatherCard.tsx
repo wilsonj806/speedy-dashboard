@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, ReactElement } from 'react';
 
 import { Heading } from '../base/Heading/Heading';
 import { Image } from '../base/Image/Image';
@@ -9,26 +9,12 @@ import { Card } from '../presentational/Card/Card';
 
 import './Comp-modifiers.css';
 
-type AccessTypes = 'GET' | 'POST' | 'PUT'
-type FetchMode = 'cors' | 'no-cors' | 'same-origin'
-type CredentialTypes = "same-origin" | "include" | "omit" | undefined
-
-interface FetchParam {
-  method: AccessTypes
-  mode: FetchMode
-  credentials?: CredentialTypes,
-  header?: object
-}
-
-const fetchInit: FetchParam = {
+const fetchInit: Local.FetchParam = {
   method: 'GET',
   mode: 'cors',
 }
 
-interface BasicObj { [key: string]: any}
-
-const initialState: BasicObj = {
-
+const initialState: Local.BasicObj = {
 }
 
 type State = Readonly<typeof initialState>
@@ -41,7 +27,7 @@ export class WeatherCard extends Component<any, State> {
 
   readonly state: State = initialState;
 
-  getWeather = async () => {
+  getWeather = async (): Promise<void> => {
     const responseStr = await fetch(weatherEndpoint + corsProxy, fetchInit)
       .then((blob: any) => {console.log(blob);return blob.clone().json()})
       .then((val: any) => {
@@ -52,7 +38,7 @@ export class WeatherCard extends Component<any, State> {
     this.setState({catFact: responseStr});
   }
 
-  render() {
+  render = (): ReactElement<any, any> => {
     return(
       <Card
         type='weather'

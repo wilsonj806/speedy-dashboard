@@ -19,31 +19,18 @@ Also note that the methods should be slightly renamed when copying them in
 
 // NOTE API site https://alexwohlbruck.github.io/cat-facts/docs/endpoints/facts.html
 
-type AccessTypes = 'GET' | 'POST' | 'PUT'
-type FetchMode = 'cors' | 'no-cors' | 'same-origin'
-type CredentialTypes = "same-origin" | "include" | "omit" | undefined
-
-interface FetchParam {
-  method: AccessTypes
-  mode: FetchMode
-  credentials?: CredentialTypes,
-  header?: object
-}
-
 const catHeader = new Headers()
 catHeader.append('Access-Control-Allow-Origin', '*');
 // catHeader.append('Access-Control-Allow-Credentials', 'true');
 
 
-const fetchInit: FetchParam = {
+const fetchInit: Local.FetchParam = {
   method: 'GET',
   mode: 'cors',
   header: catHeader,
 }
 
-interface BasicObj { [key: string]: any}
-
-const initialState: BasicObj = {...CatGETState }
+const initialState: Local.BasicObj = {...CatGETState }
 
 type State = Readonly<typeof initialState>
 
@@ -68,7 +55,9 @@ export class CatCard extends Component<any, State> {
         return response;
       })
     .catch((error: any) => console.error(error));
+
     this.setState({catFact: responseStr});
+
     const responseImg: string | void = await fetch(catEndpoint2, fetchInit)
       .then((blob: Response): Promise<Response> => {
         return blob.clone().json();
@@ -78,6 +67,7 @@ export class CatCard extends Component<any, State> {
         return response;
       })
     .catch((error: any): void => console.error(error));
+
     this.setState({catImg: responseImg});
   }
 

@@ -5,19 +5,15 @@ import { Modal } from './Modal/Modal';
 
 import './Modal.css';
 
-interface BasicObj {
-  [key: string] : any
-}
-
-const initialState: BasicObj = {
+const initialState: Local.BasicObj = {
   toDisplay: ''
 }
 
 // NOTE Should be passing state in as a prop for Modal Controller to read
 // TODO For any state passing as props, UPDATE TO USE THE CONTEXT API AT SOME POINT
 // TODO Look into using React refs for passing props also
-export class ModalController extends Component<Props, any>{
-  constructor(props: Props) {
+export class ModalController extends Component<ModalControllerProps, any>{
+  constructor(props: ModalControllerProps) {
     super(props);
     if (!this.props.toDisplay) {
       this.state = initialState;
@@ -66,7 +62,7 @@ export class ModalController extends Component<Props, any>{
     }
   }
 
-  render() {
+  render = (): ReactElement<any,any> => {
     const { handleCloseFn, id } = this.props;
     const toRender = this.renderModal();
     return (
@@ -87,7 +83,7 @@ export class ModalController extends Component<Props, any>{
 
 type Modals = 'HELP' | 'ADD' | 'BASIC'
 
-interface Props {
+interface ModalControllerProps {
   id           ?: string
   renderCards   : RenderCards
   handleCardFn  : any

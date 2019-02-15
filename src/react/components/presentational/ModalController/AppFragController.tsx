@@ -8,15 +8,8 @@ import { AddCardState as renderCards, RenderModalState  } from '../../State';
 
 import './Modal.css';
 
-interface BasicObj {
-  [key: string] : any
-}
 
-interface Props {
-
-}
-
-const initialState: BasicObj = Object.assign({},
+const initialState: Local.BasicObj = Object.assign({},
   RenderModalState,
   {
     renderCards: {...renderCards}
@@ -24,11 +17,15 @@ const initialState: BasicObj = Object.assign({},
 
 type State = Readonly<typeof initialState>
 
-export class AppFragController extends Component<Props, State> {
+export class AppFragController extends Component<any, State> {
   readonly state: State = initialState;
 
   handleModalDisplay = (event: React.MouseEvent<HTMLElement>): void => {
-    if (!(event.target instanceof HTMLElement)) throw new Error(`Expecting a HTMLElement as the target of the event, got ${event.target} instead`);
+    if (!(event.target instanceof HTMLElement)) {
+      throw new Error(`
+        Expecting a HTMLElement as the target of the event, got ${event.target} instead
+      `)
+    }
     const { target } = event.target.dataset;
 
     this.setState({
@@ -38,7 +35,11 @@ export class AppFragController extends Component<Props, State> {
   }
 
   hideModal = (event: React.MouseEvent<HTMLElement>) => {
-    if (!(event.target instanceof HTMLElement)) throw new Error(`Expecting a HTMLElement as the target of the event, got ${event.target} instead`);
+    if (!(event.target instanceof HTMLElement)) {
+      throw new Error(`
+        Expecting a HTMLElement as the target of the event, got ${event.target} instead
+      `)
+    }
 
     const targetModalClass = ['modal-wrapper', 'btn--close'];
     const { classList } = event.target;
