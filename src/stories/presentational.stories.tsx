@@ -11,7 +11,7 @@ import { Modal } from '../react/components/presentational/ModalController/Modal/
 
 import { Dash } from '../react/components/presentational/Dash/Dash';
 import { ModalController } from '../react/components/presentational/ModalController/ModalController';
-import { StubbedApp } from '../react/components/presentational/ModalController/StubbedApp';
+import { MinIntController } from '../react/components/presentational/ModalController/MinIntController';
 
 
 import '../react/stylesheets/index.css';
@@ -176,11 +176,18 @@ storiesOf('Presentational Components/ Modal', module)
     height: '100vh'
   }
 
+
   storiesOf('Presentational Components/ ModalController', module)
     .add('modal controller no parent state', () => {
       return(
         <>
           <ModalController
+            renderCards={{
+              basic1: false,
+              basic2: false
+            }}
+            handleCardFn={null}
+            handleCloseFn={null}
             toDisplay='BASIC'
           />
           <section
@@ -195,6 +202,6 @@ storiesOf('Presentational Components/ Modal', module)
     })
     .add('modal controller with parent passing props', () => {
       return(
-        <StubbedApp/>
+        <MinIntController/>
       )
     })

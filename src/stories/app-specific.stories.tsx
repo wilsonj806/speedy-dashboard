@@ -5,7 +5,8 @@ import { ModalController } from '../react/components/presentational/ModalControl
 
 import { LoremPartial } from '../react/components/app-specific/LoremPartial';
 import { CatPartial } from '../react/components/app-specific/CatPartial';
-import { AddMore } from '../react/components/app-specific/AddMore';
+import { AddMore } from '../react/components/app-specific/AddMore/AddMore';
+import { MinIntAdd } from '../react/components/app-specific/AddMore/MinIntAdd';
 
 
 import '../react/stylesheets/index.css';
@@ -41,9 +42,22 @@ storiesOf('App Specific/ Cat Card', module)
     )
   });
 
-  storiesOf('App Specific/ Add More Cards Dialog', module)
+storiesOf('App Specific/ Add More Cards Dialog', module)
   .add('Basic Add More Dialog', () => {
     return (
-      <AddMore/>
+      <AddMore
+        renderCards={{
+          basic1: false,
+          basic2: false
+        }}
+        handleCardFn={null}
+      />
+    )
+  })
+  .add('Partial Integration', () => {
+    return (
+      <MinIntAdd
+
+      />
     )
   });

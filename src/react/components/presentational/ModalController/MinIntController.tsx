@@ -15,12 +15,16 @@ interface Props {
 }
 
 const initialState: BasicObj = {
-  toDisplay: ''
+  toDisplay: '',
+  renderCards: {
+    basic1: false,
+    basic2: false
+  }
 }
 
 type State = Readonly<typeof initialState>
 
-export class StubbedApp extends Component<Props, State> {
+export class MinIntController extends Component<Props, State> {
   readonly state: State = initialState;
 
   handleModalDisplay = (event: React.MouseEvent<HTMLElement>): void => {
@@ -51,7 +55,7 @@ export class StubbedApp extends Component<Props, State> {
   }
 
   render() {
-    const { toDisplay } = this.state;
+    const { toDisplay, renderCards } = this.state;
     const generalStyling = {
       background: 'rgb(180,255,90)',
       height: '100vh'
@@ -59,6 +63,8 @@ export class StubbedApp extends Component<Props, State> {
     return (
       <>
       <ModalController
+        renderCards={renderCards}
+        handleCardFn={null}
         handleCloseFn={this.hideModal}
         toDisplay={toDisplay}
       />

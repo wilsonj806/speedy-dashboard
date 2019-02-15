@@ -1,6 +1,6 @@
 import React ,{ Component, ReactNode, ReactElement, ReactNodeArray } from 'react';
 
-import { AddMore } from '../../app-specific/AddMore';
+import { AddMore } from '../../app-specific/AddMore/AddMore';
 import { Modal } from './Modal/Modal';
 
 import './Modal.css';
@@ -14,6 +14,7 @@ const initialState: BasicObj = {
 }
 
 // NOTE Should be passing state in as a prop for Modal Controller to read
+// TODO For any state passing as props, UPDATE TO USE THE CONTEXT API AT SOME POINT
 
 export class ModalController extends Component<Props, any>{
   constructor(props: Props) {
@@ -23,8 +24,8 @@ export class ModalController extends Component<Props, any>{
     }
   }
 
-  renderModal= (): ReactElement<any, any> | null => {
-    const { toDisplay, handleCloseFn } = this.props;
+  renderModal = (): ReactElement<any, any> | null => {
+    const { toDisplay, renderCards, handleCloseFn, handleCardFn } = this.props;
     switch(toDisplay) {
       case 'HELP':
         return (
@@ -43,6 +44,8 @@ export class ModalController extends Component<Props, any>{
           return (
             <AddMore
               id='add-more'
+              renderCards={renderCards}
+              handleCardFn={handleCardFn}
               handleCloseFn={handleCloseFn}
             />
           );
@@ -85,7 +88,14 @@ export class ModalController extends Component<Props, any>{
 type Modals = 'HELP' | 'ADD' | 'BASIC'
 
 interface Props {
-  id ?: string
+  id           ?: string
+  renderCards   : RenderCards
+  handleCardFn  : any
   handleCloseFn : any
-  toDisplay ?: Modals | null
+  toDisplay    ?: Modals | null
+}
+
+interface RenderCards {
+  basic1 : boolean
+  basic2 : boolean
 }
