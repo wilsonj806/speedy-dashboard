@@ -3,8 +3,8 @@ import { storiesOf } from '@storybook/react';
 
 import { ModalController } from '../react/components/presentational/ModalController/ModalController';
 
-import { LoremPartial } from '../react/components/app-specific/LoremPartial';
-import { CatPartial } from '../react/components/app-specific/CatPartial';
+import { LoremCard } from '../react/components/app-specific/LoremCard';
+import { CatCard } from '../react/components/app-specific/CatCard';
 import { AddMore } from '../react/components/app-specific/AddMore/AddMore';
 import { MinIntAdd } from '../react/components/app-specific/AddMore/MinIntAdd';
 
@@ -28,7 +28,7 @@ storiesOf('App Specific/ Lorem Card', module)
   .add('Lorem Card', () => {
     return (
       <div style={cssCenter}>
-        <LoremPartial/>
+        <LoremCard/>
       </div>
     )
   });
@@ -37,7 +37,7 @@ storiesOf('App Specific/ Cat Card', module)
   .add('Cat Card', () => {
     return (
       <div style={cssCenter}>
-        <CatPartial/>
+        <CatCard/>
       </div>
     )
   });

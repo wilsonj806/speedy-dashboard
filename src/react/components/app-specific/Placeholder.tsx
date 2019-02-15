@@ -10,7 +10,7 @@ import { Dash } from '../presentational/Dash/Dash';
 
 const BasicCard = (
   <Card
-    key={0}
+    key={1}
     id='basicCard1'
     type='basic basic1'
   >
@@ -35,7 +35,7 @@ const BasicCard = (
 )
 const BasicCard2 = (
   <Card
-    key={1}
+    key={0}
     id='basicCard2'
     type='basic basic2'
   >

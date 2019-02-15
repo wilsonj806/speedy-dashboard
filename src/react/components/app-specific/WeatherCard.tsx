@@ -37,7 +37,7 @@ type State = Readonly<typeof initialState>
 const weatherEndpoint = 'https://www.metaweather.com/api/'
 const corsProxy = 'https://cors-anywhere.herokuapp.com/'
 
-export class WeatherPartial extends Component<any, State> {
+export class WeatherCard extends Component<any, State> {
 
   readonly state: State = initialState;
 

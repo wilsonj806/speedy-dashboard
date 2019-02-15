@@ -39,13 +39,13 @@ type State = Readonly<typeof initialState>
 const externalCorsProxy = 'https://cors-anywhere.herokuapp.com/';
 const loremEndpoint = 'https://loripsum.net/api/1/short/plaintext';
 
-export class LoremPartial extends Component<any, State> {
+export class LoremCard extends Component<any, State> {
   readonly state: State = initialState;
 
   getLoremFetch = async () => {
     const responseStr = await fetch(externalCorsProxy + loremEndpoint, fetchInit)
-      .then((blob: any) => blob.clone())
-      .then((val: any) => {
+      .then((blob: any): Promise<Response> => blob.clone())
+      .then((val: Response): Promise<string> => {
         const response = val.text();
         return response;
       })

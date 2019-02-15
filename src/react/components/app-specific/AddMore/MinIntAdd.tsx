@@ -6,6 +6,28 @@ import { ModalController } from '../../presentational/ModalController/ModalContr
 
 import { BasicCard, BasicCard2 } from '../Placeholder';
 
+/* TODO Add handling for adding UNIQUE KEYS for each Card rendered in
+Something something:
+addchild() {
+  React.Children.count()
+  React.Children.map(children, () => {
+    React.cloneElement()
+  }
+}
+
+OR:
+const initialState = {
+  countCards: 0
+}
+addCard = (): Array<ReactElements> {
+  // check state
+  // get list of current children that are Cards
+  const newCHild = React.cloneElement(children, {key = awerweraw})
+  currentLIst.push(newChild)
+) */
+// TODO Look into using React refs for checking ReactNodes as well
+
+
 interface BasicObj {
   [key: string] : any
 }
@@ -81,28 +103,29 @@ export class MinIntAdd extends Component<Props, State> {
     const { basic1, basic2} = renderCards;
     const generalStyling = {
       background: 'rgb(255, 185, 55)',
-      height: '100vh'
+      height: '100vh',
+      padding: '10px',
     }
     return (
       <>
-      <ModalController
-        renderCards={renderCards}
-        handleCloseFn={this.hideModal}
-        handleCardFn={this.toggleCardState}
-        toDisplay={toDisplay}
-      />
-      <div
-        style={generalStyling}
-        onClick={this.toggleCardState}
-      >
-        { (basic1 === true) ? BasicCard : null}
-        { (basic2 === true) ? BasicCard2 : null}
-        <Button
-          target='ADD'
-          innerText='Add More Cards'
-          handleClickFn={this.handleModalDisplay}
+        <ModalController
+          renderCards={renderCards}
+          handleCloseFn={this.hideModal}
+          handleCardFn={this.toggleCardState}
+          toDisplay={toDisplay}
         />
-      </div>
+        <div
+          style={generalStyling}
+          onClick={this.toggleCardState}
+        >
+          { (basic1 === true) ? BasicCard : null}
+          { (basic2 === true) ? BasicCard2 : null}
+          <Button
+            target='ADD'
+            innerText='Add More Cards'
+            handleClickFn={this.handleModalDisplay}
+          />
+        </div>
       </>
     )
   }
