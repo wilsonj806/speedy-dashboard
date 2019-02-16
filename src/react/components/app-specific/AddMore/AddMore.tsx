@@ -12,25 +12,8 @@ import '../Comp-modifiers.css';
 
 // TODO Refactor to accomodate for the ModalController.tsx component
 
-interface CardsToDisplay {
-  basic1 : boolean
-  basic2 : boolean
-}
 
-interface AddModalProps {
-  id             ?: string
-  renderCards     : RenderCards
-  handleCloseFn  ?: any
-  handleCardFn    : any
-  cardsToDisplay ?: CardsToDisplay
-}
-
-interface RenderCards {
-  basic1 : boolean
-  basic2 : boolean
-}
-
-export class AddMore extends Component<AddModalProps> {
+export class AddMore extends Component<Local.AddModalProps> {
 
   render = (): ReactElement<any, any> => {
     const { id, handleCloseFn, handleCardFn, renderCards } = this.props

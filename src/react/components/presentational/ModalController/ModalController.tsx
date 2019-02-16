@@ -12,8 +12,8 @@ const initialState: Local.BasicObj = {
 // NOTE Should be passing state in as a prop for Modal Controller to read
 // TODO For any state passing as props, UPDATE TO USE THE CONTEXT API AT SOME POINT
 // TODO Look into using React refs for passing props also
-export class ModalController extends Component<ModalControllerProps, any>{
-  constructor(props: ModalControllerProps) {
+export class ModalController extends Component<Local.ModalControllerProps, any>{
+  constructor(props: Local.ModalControllerProps) {
     super(props);
     if (!this.props.toDisplay) {
       this.state = initialState;
@@ -26,7 +26,6 @@ export class ModalController extends Component<ModalControllerProps, any>{
       case 'HELP':
         return (
           <Modal
-            key={1}
             id='help'
             type='help'
             headerText={'It\'s me the help Modal!'}
@@ -48,7 +47,6 @@ export class ModalController extends Component<ModalControllerProps, any>{
       case 'BASIC':
         return(
           <Modal
-            key={1}
             id='basic'
             type='basic'
             headerText='This is a Basic modal that is expected to work'
@@ -81,17 +79,3 @@ export class ModalController extends Component<ModalControllerProps, any>{
   }
 }
 
-type Modals = 'HELP' | 'ADD' | 'BASIC'
-
-interface ModalControllerProps {
-  id           ?: string
-  renderCards   : RenderCards
-  handleCardFn  : any
-  handleCloseFn : any
-  toDisplay    ?: Modals | null
-}
-
-interface RenderCards {
-  basic1 : boolean
-  basic2 : boolean
-}

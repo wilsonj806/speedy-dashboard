@@ -2,13 +2,7 @@ import React ,{ Component, ReactNode, ReactChild } from 'react';
 
 import './Heading.css'
 
-interface Props {
-  type?: string,
-  headingLvl: number,
-  children: string,
-};
-
-export const Heading = (props: Props): JSX.Element => {
+export const Heading = (props: Local.HeadingProps): JSX.Element => {
   const { children, type, headingLvl } = props;
   if (!children) throw new Error('Erorr expecting children elements');
   switch(headingLvl) {

@@ -10,11 +10,6 @@ import { Card } from '../Card/Card';
  */
 
 /* NOTE AddMore Prop is for DIRECTLY adding in a <Card/> that will tell the main app to show a Modal interface for adding additional Cards in */
-interface Props {
-  type?: string
-  AddMore: ReactElement<any, any> | null
-  children: ReactNode | null
-}
 
 const sayHi = () => console.log('hi');
 
@@ -31,9 +26,9 @@ const AddCard = (
   </Card>
 )
 
-export class Dash extends Component<Props> {
+export class Dash extends Component<Local.DashProps> {
   render() {
-    const { type, children, AddMore } = this.props
+    const { type, children, AddMore } = this.props;
     if ((isTypedObj(AddMore, 'type')) &&(AddMore.type.name === 'Card')) {
       const AddAdditionalCards = AddMore;
       return (

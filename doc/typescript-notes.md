@@ -15,3 +15,7 @@
   ```
 - For this project as we want to be able to call our custom types anywhere without imports, we add it as a namespace so that it can be accessed globally
 - However, we also add it as a module export so you can manually import it into files
+
+## Decorators
+
+- Aspect Oriented Programming/ separation of cross-cutting concerns
