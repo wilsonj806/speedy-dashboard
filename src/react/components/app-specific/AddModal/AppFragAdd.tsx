@@ -6,7 +6,7 @@ import { ModalController } from '../../presentational/ModalController/ModalContr
 
 import { BasicCard, BasicCard2 } from '../../Placeholder';
 
-import { AddCardState as renderCards, RenderModalState  } from '../../State';
+import { AddCardState as renderCards, RenderModalState  } from '../../../State';
 
 /* TODO Add handling for adding UNIQUE KEYS for each Card rendered in
 Something something:

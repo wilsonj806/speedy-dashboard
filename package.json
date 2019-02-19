@@ -3,6 +3,10 @@
   "version": "0.25.0",
   "private": true,
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wilsonj806/speedy-dashboard.git"
+  },
   "dependencies": {
     "react": "^16.7.0",
     "react-dom": "^16.7.0",

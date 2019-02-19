@@ -11,16 +11,16 @@ export as namespace Local;
 declare namespace LocalTypes {
   /** Types for HTTP Requests
    *
-  */
+   *
+   */
   type AccessTypes = 'GET' | 'POST' | 'PUT'
   type FetchMode = 'cors' | 'no-cors' | 'same-origin'
   type CredentialTypes = "same-origin" | "include" | "omit" | undefined
 
-
   /** Other types
    *
    *
-  */
+   */
 
   type Modals = 'HELP' | 'ADD' | 'BASIC'
   type InputTypes = 'text' | 'number' | 'radio' | 'checkbox'
@@ -34,7 +34,7 @@ declare namespace LocalTypes {
   /** Interfaces
    *
    *
-  */
+   */
 
   interface BasicObj { [key: string]: any}
 
@@ -47,7 +47,7 @@ declare namespace LocalTypes {
   /** React Element Props and related interfaces
    *
    *
-  */
+   */
 
   interface FieldProps {
     type            : InputTypes
@@ -92,7 +92,7 @@ declare namespace LocalTypes {
 
   interface DashProps {
     type    ?: string
-    AddMore  : React.ReactElement<any, any> | null
+    AddCard  : React.ReactElement<any, any> | null
     children : React.ReactNode | null
   }
 
@@ -112,9 +112,16 @@ declare namespace LocalTypes {
     cardsToDisplay ?: CardsToDisplay
   }
 
+  /** State related
+   *
+   *
+   */
+
   interface RenderCards {
-    basic1 : boolean
-    basic2 : boolean
+    basic1 ?: boolean
+    basic2 ?: boolean
+    lorem  ?: boolean
+    catch  ?: boolean
   }
 
   interface CardsToDisplay {

@@ -7,7 +7,7 @@ import { Button } from '../base/Button/Button';
 
 import { Card } from '../presentational/Card/Card';
 
-import { LoremGETState } from '../State';
+import { LoremGETState } from '../../State';
 
 import './Comp-modifiers.css';
 
@@ -15,6 +15,8 @@ import './Comp-modifiers.css';
 fully integrate everything in.
 Also note that the methods should be slightly renamed when copying them in
 */
+
+// TODO Remove one of the Lorem methods, don't need both Fetch and XHR
 
 // REVIEW If a Node server is integrated in for CORS AND it can do 'GET' on Loripsum.net, switch out the thing
 
@@ -57,7 +59,7 @@ export class LoremCard extends Component<any, State> {
     xhr.send();
   }
 
-  render =(): ReactElement<any, any> => {
+  render = (): ReactElement<any, any> => {
     const { loremStr } = this.state;
     return (
       <Card

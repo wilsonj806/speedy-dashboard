@@ -1,6 +1,6 @@
 import React ,{ Component, ReactNode, ReactElement, ReactNodeArray } from 'react';
 
-import { AddMore } from '../../app-specific/AddMore/AddMore';
+import { AddModal } from '../../app-specific/AddModal/AddModal';
 import { Modal } from './Modal/Modal';
 
 import './Modal.css';
@@ -37,7 +37,7 @@ export class ModalController extends Component<Local.ModalControllerProps, any>{
 
       case 'ADD':
           return (
-            <AddMore
+            <AddModal
               id='add-more'
               renderCards={renderCards}
               handleCardFn={handleCardFn}

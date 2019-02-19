@@ -28,9 +28,9 @@ const AddCard = (
 
 export class Dash extends Component<Local.DashProps> {
   render() {
-    const { type, children, AddMore } = this.props;
-    if ((isTypedObj(AddMore, 'type')) &&(AddMore.type.name === 'Card')) {
-      const AddAdditionalCards = AddMore;
+    const { type, children, AddCard } = this.props;
+    if ((isTypedObj(AddCard, 'type')) &&(AddCard.type.name === 'Card')) {
+      const AddAdditionalCards = AddCard;
       return (
         <section
           className={`dash ${type ? `dash--${type}` : ''}`}
@@ -39,7 +39,7 @@ export class Dash extends Component<Local.DashProps> {
           {AddAdditionalCards}
         </section>
       )
-    } else if (AddMore === null) {
+    } else if (AddCard === null) {
       return (
         <section
           className={`dash ${type ? `dash--${type}` : ''}`}
@@ -48,7 +48,7 @@ export class Dash extends Component<Local.DashProps> {
         </section>
       )
     } else {
-      throw new Error('Error expecting AddMore to be a Card')
+      throw new Error('Error expecting AddCard to be a Card')
     }
   }
 }

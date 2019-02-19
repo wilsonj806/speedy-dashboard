@@ -13,7 +13,7 @@ import '../Comp-modifiers.css';
 // TODO Refactor to accomodate for the ModalController.tsx component
 
 
-export class AddMore extends Component<Local.AddModalProps> {
+export class AddModal extends Component<Local.AddModalProps, any> {
 
   render = (): ReactElement<any, any> => {
     const { id, handleCloseFn, handleCardFn, renderCards } = this.props

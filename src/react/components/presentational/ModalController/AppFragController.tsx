@@ -4,7 +4,7 @@ import { Button } from '../../base/Button/Button';
 import { Modal } from './Modal/Modal';
 import { ModalController } from './ModalController';
 
-import { AddCardState as renderCards, RenderModalState  } from '../../State';
+import { AddCardState as renderCards, RenderModalState  } from '../../../State';
 
 import './Modal.css';
 

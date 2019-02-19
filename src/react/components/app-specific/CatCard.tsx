@@ -7,7 +7,7 @@ import { Button } from '../base/Button/Button';
 
 import { Card } from '../presentational/Card/Card';
 
-import { CatGETState } from '../State';
+import { CatGETState } from '../../State';
 
 import './Comp-modifiers.css';
 

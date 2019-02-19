@@ -23,7 +23,7 @@ const sayHi = (event: React.MouseEvent<HTMLInputElement>) => {
   console.log('hi');
 };
 
-const AddMore = (
+const AddCard = (
   <Card
     type='add-cards'
   >
@@ -88,7 +88,7 @@ storiesOf('Presentational Components/ Dash', module)
   .add('dash that should throw', () => {
     return (
       <Dash
-      AddMore={<span>hi</span>}
+      AddCard={<span>hi</span>}
       >
           {null}
         </Dash>
@@ -98,7 +98,7 @@ storiesOf('Presentational Components/ Dash', module)
     return (
       <Dash
         type='storybook-test'
-        AddMore={AddMore}
+        AddCard={AddCard}
       >
         {null}
       </Dash>
@@ -108,7 +108,7 @@ storiesOf('Presentational Components/ Dash', module)
     return (
       <Dash
         type='storybook-test'
-        AddMore={null}
+        AddCard={null}
       >
         {[BasicCard, BasicCard]}
       </Dash>
@@ -118,7 +118,7 @@ storiesOf('Presentational Components/ Dash', module)
     return (
       <Dash
         type='storybook-test'
-        AddMore={null}
+        AddCard={null}
       >
         {[BasicCard, BasicCard, BasicCard, BasicCard, BasicCard, BasicCard]}
       </Dash>
@@ -128,7 +128,7 @@ storiesOf('Presentational Components/ Dash', module)
     return (
       <Dash
         type='storybook-test'
-        AddMore={AddMore}
+        AddCard={AddCard}
       >
         {[BasicCard, BasicCard, BasicCard, BasicCard, BasicCard, BasicCard]}
       </Dash>

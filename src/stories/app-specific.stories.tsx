@@ -1,13 +1,12 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 
-import { ModalController } from '../react/components/presentational/ModalController/ModalController';
-
 import { LoremCard } from '../react/components/app-specific/LoremCard';
 import { CatCard } from '../react/components/app-specific/CatCard';
-import { AddMore } from '../react/components/app-specific/AddMore/AddMore';
-import { AppFragAdd } from '../react/components/app-specific/AddMore/AppFragAdd';
+import { AddModal } from '../react/components/app-specific/AddModal/AddModal';
+import { AppFragAdd } from '../react/components/app-specific/AddModal/AppFragAdd';
 
+import { App } from '../react/App';
 
 import '../react/stylesheets/index.css';
 
@@ -45,7 +44,7 @@ storiesOf('App Specific/ Cat Card', module)
 storiesOf('App Specific/ Add More Cards Dialog', module)
   .add('Basic Add More Dialog', () => {
     return (
-      <AddMore
+      <AddModal
         renderCards={{
           basic1: false,
           basic2: false
@@ -61,3 +60,11 @@ storiesOf('App Specific/ Add More Cards Dialog', module)
       />
     )
   });
+
+storiesOf('App Specific/ App', module)
+  .add('App', () => {
+    return (
+      <App
+      />
+    )
+  })
