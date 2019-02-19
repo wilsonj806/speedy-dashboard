@@ -31,7 +31,6 @@ The goal of this project is to build off of the work done by [React Array Method
 
 ### Features to be implemented by v0.5.0
 
-- Modal for adding cards in
 - Support for larger cards/ cards that change size
 - Implementation for all cards requiring simple API calls
 - Modals for adding cards, and an information/ help dialog
@@ -51,6 +50,8 @@ The goal of this project is to build off of the work done by [React Array Method
 ### Post v1.0.0
 
 - Tests for components using Jest, Enzyme, and etc
+- Multiple cards that display API data
+- Redux integration to accomodate the above
 
 ## Cloning instructions
 
