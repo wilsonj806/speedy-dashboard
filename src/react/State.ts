@@ -23,6 +23,8 @@ const CatGETState: Local.BasicObj = {
 const AppState: Local.BasicObj = {
   toDisplay: null,
   renderCards: {
+    basic1: false,
+    basic2: false,
     lorem: false,
     cat: false,
   },

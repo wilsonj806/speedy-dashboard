@@ -15,7 +15,7 @@ const sayHi = () => console.log('hi');
 
 /* TODO Add something to handle the case of maximum number of cards rendered(probably in the form of a modal) */
 
-const AddCard = (
+const EmptyInd = (
   <Card
     type='ind-add'
   >
@@ -29,14 +29,13 @@ const AddCard = (
 export class Dash extends Component<Local.DashProps> {
   render() {
     const { type, children, AddCard } = this.props;
-    if ((isTypedObj(AddCard, 'type')) &&(AddCard.type.name === 'Card')) {
-      const AddAdditionalCards = AddCard;
+    if ((isTypedObj(AddCard, 'type')) &&(AddCard.type.name === 'AddCard')) {
       return (
         <section
           className={`dash ${type ? `dash--${type}` : ''}`}
         >
-          {children ? children : AddCard}
-          {AddAdditionalCards}
+          {children ? children : EmptyInd}
+          {AddCard}
         </section>
       )
     } else if (AddCard === null) {
@@ -44,7 +43,7 @@ export class Dash extends Component<Local.DashProps> {
         <section
           className={`dash ${type ? `dash--${type}` : ''}`}
         >
-          {children ? children : AddCard}
+          {children ? children : EmptyInd}
         </section>
       )
     } else {

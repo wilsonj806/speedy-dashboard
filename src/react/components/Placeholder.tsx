@@ -8,6 +8,10 @@ import { Form } from './stateful/Forms/Form';
 import { Modal } from './presentational/ModalController/Modal/Modal';
 import { Dash } from './presentational/Dash/Dash';
 
+const sayHi = (event: React.MouseEvent<HTMLInputElement>) => {
+  console.log('hi');
+};
+
 const BasicCard = (
   <Card
     key={1}
@@ -60,6 +64,7 @@ const BasicCard2 = (
 )
 
 export {
+  sayHi,
   BasicCard,
   BasicCard2,
 }

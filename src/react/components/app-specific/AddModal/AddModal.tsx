@@ -27,13 +27,27 @@ export class AddModal extends Component<Local.AddModalProps, any> {
         handleCloseFn={handleCloseFn}
       >
         <Button
+          key={0}
           innerText={renderCards.basic1 === false ? 'Add card 1' : 'Remove card 1'}
           target='basic1'
           handleClickFn={handleCardFn}
-        />
+          />
         <Button
+          key={1}
           innerText={renderCards.basic2 === false ? 'Add card 2' : 'Remove card 2'}
           target='basic2'
+          handleClickFn={handleCardFn}
+          />
+        <Button
+          key={2}
+          innerText={renderCards.cat === false ? 'Add cat card' : 'Remove cat card'}
+          target='cat'
+          handleClickFn={handleCardFn}
+          />
+        <Button
+          key={4}
+          innerText={renderCards.lorem === false ? 'Add lorem card' : 'Remove lorem card'}
+          target='lorem'
           handleClickFn={handleCardFn}
         />
       </Modal>

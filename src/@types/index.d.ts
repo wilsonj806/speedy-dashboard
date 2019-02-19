@@ -112,6 +112,10 @@ declare namespace LocalTypes {
     cardsToDisplay ?: CardsToDisplay
   }
 
+  interface AddCardProps {
+    handleAddFn : any
+  }
+
   /** State related
    *
    *
@@ -121,17 +125,7 @@ declare namespace LocalTypes {
     basic1 ?: boolean
     basic2 ?: boolean
     lorem  ?: boolean
-    catch  ?: boolean
-  }
-
-  interface CardsToDisplay {
-    basic1 : boolean
-    basic2 : boolean
-  }
-
-  interface RenderCards {
-    basic1 : boolean
-    basic2 : boolean
+    cat  ?: boolean
   }
 }
 

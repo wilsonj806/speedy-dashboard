@@ -3,14 +3,13 @@ import React, { Component } from 'react';
 import { ModalController } from './components/presentational/ModalController/ModalController'
 import { Dash } from './components/presentational/Dash/Dash'
 
-import { AddModal } from './components/app-specific/AddModal/AddModal'
+import { AddCard } from './components/app-specific/AddCard'
 
-import { AppState } from './State';
+import { AppState } from './State'
 
 
 type State = Readonly<typeof AppState>;
 
-// NOTE In terms of order, put the <Modal/> component first
 export class App extends Component<any, State> {
   readonly state:State = AppState;
 
@@ -59,11 +58,12 @@ export class App extends Component<any, State> {
       });
       }
     } else {
-      throw new Error('aaaaaaa broken things')
+      throw new Error(`Expecting event target to be an instance of HTMLElement,
+      got ${event.target} instead`)
     }
   }
 
-  // TODO figure out what the hell Dash.props.AddMore is
+  // TODO add Card rendering using React.cloneElement()
   render() {
     const { toDisplay, renderCards } = this.state
     return(
@@ -75,8 +75,11 @@ export class App extends Component<any, State> {
           toDisplay={toDisplay}
         />
         <Dash
-          AddCard={null}
-
+          AddCard={
+            <AddCard
+              handleAddFn={this.handleModalDisplay}
+            />
+          }
         >
           {null}
         </Dash>

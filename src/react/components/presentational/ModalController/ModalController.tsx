@@ -66,13 +66,13 @@ export class ModalController extends Component<Local.ModalControllerProps, any>{
     return (
       <>
         { toRender == null ? null :
-        (<section
-          id={id ? id : 'modal-controller'}
-          className='modal-wrapper'
-          onClick={handleCloseFn}
-        >
-          {toRender}
-        </section>)
+          (<section
+            id={id ? id : 'modal-controller'}
+            className='modal-wrapper'
+            onClick={handleCloseFn}
+          >
+            {toRender}
+          </section>)
         }
       </>
   )

@@ -13,6 +13,7 @@ import { Dash } from '../react/components/presentational/Dash/Dash';
 import { ModalController } from '../react/components/presentational/ModalController/ModalController';
 import { AppFragController } from '../react/components/presentational/ModalController/AppFragController';
 
+import { AddCard } from '../react/components/app-specific/AddCard';
 
 import '../react/stylesheets/index.css';
 
@@ -23,7 +24,7 @@ const sayHi = (event: React.MouseEvent<HTMLInputElement>) => {
   console.log('hi');
 };
 
-const AddCard = (
+/* const AddCard = (
   <Card
     type='add-cards'
   >
@@ -34,13 +35,13 @@ const AddCard = (
           <Button
             type='add-cards'
             innerText='&#43;'
-            target='addCards'
+            target='AddCards'
             handleClickFn={sayHi}
           />
         )
     }}
   </Card>
-);
+); */
 
 const BasicCard = (
   <Card
@@ -88,7 +89,7 @@ storiesOf('Presentational Components/ Dash', module)
   .add('dash that should throw', () => {
     return (
       <Dash
-      AddCard={<span>hi</span>}
+        AddCard={<span>hi</span>}
       >
           {null}
         </Dash>
@@ -98,7 +99,10 @@ storiesOf('Presentational Components/ Dash', module)
     return (
       <Dash
         type='storybook-test'
-        AddCard={AddCard}
+        AddCard={
+        <AddCard
+          handleAddFn={sayHi}
+        />}
       >
         {null}
       </Dash>
@@ -128,7 +132,10 @@ storiesOf('Presentational Components/ Dash', module)
     return (
       <Dash
         type='storybook-test'
-        AddCard={AddCard}
+        AddCard={
+          <AddCard
+            handleAddFn={sayHi}
+          />}
       >
         {[BasicCard, BasicCard, BasicCard, BasicCard, BasicCard, BasicCard]}
       </Dash>
