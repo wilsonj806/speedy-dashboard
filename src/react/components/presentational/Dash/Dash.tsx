@@ -18,6 +18,7 @@ const sayHi = () => console.log('hi');
 const EmptyInd = (
   <Card
     type='ind-add'
+    id='ind-add'
   >
     {{
       header: null,
@@ -34,7 +35,7 @@ export class Dash extends Component<Local.DashProps> {
         <section
           className={`dash ${type ? `dash--${type}` : ''}`}
         >
-          {children ? children : EmptyInd}
+          {children != null ? children : EmptyInd}
           {AddCard}
         </section>
       )
@@ -43,7 +44,7 @@ export class Dash extends Component<Local.DashProps> {
         <section
           className={`dash ${type ? `dash--${type}` : ''}`}
         >
-          {children ? children : EmptyInd}
+          {children != null ? children : EmptyInd}
         </section>
       )
     } else {

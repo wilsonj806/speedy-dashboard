@@ -26,6 +26,7 @@ export class AddCard extends Component<Local.AddCardProps> {
     return (
       <Card
         type='add-cards'
+        id='add-cards'
       >
         {childrenObj}
       </Card>

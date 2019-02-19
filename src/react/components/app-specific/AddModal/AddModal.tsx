@@ -45,7 +45,7 @@ export class AddModal extends Component<Local.AddModalProps, any> {
           handleClickFn={handleCardFn}
           />
         <Button
-          key={4}
+          key={3}
           innerText={renderCards.lorem === false ? 'Add lorem card' : 'Remove lorem card'}
           target='lorem'
           handleClickFn={handleCardFn}

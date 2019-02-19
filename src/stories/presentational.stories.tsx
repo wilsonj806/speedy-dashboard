@@ -24,25 +24,6 @@ const sayHi = (event: React.MouseEvent<HTMLInputElement>) => {
   console.log('hi');
 };
 
-/* const AddCard = (
-  <Card
-    type='add-cards'
-  >
-    {{
-        header: (<Heading type='ind-add' headingLvl={2}>Add Cards In!</Heading>),
-        content: null,
-        action: (
-          <Button
-            type='add-cards'
-            innerText='&#43;'
-            target='AddCards'
-            handleClickFn={sayHi}
-          />
-        )
-    }}
-  </Card>
-); */
-
 const BasicCard = (
   <Card
     type='basic'
@@ -141,29 +122,7 @@ storiesOf('Presentational Components/ Dash', module)
       </Dash>
     )
   });
-/*
-storiesOf('Presentational Components/ Form', module)
-  .add('New form', () => {
-    return (
-      <Form
-        handleSubmitFn={sayHi}
-      >
-        {[
-          {
-            type:'text',
-            name:'task',
-            value:''
-          },
-          {
-            type:'text',
-            name: 'priority',
-            value:''
-          },
-        ]}
-      </Form>
-    )
-  });
- */
+
 storiesOf('Presentational Components/ Modal', module)
   .add('a basic modal', () => {
     return (

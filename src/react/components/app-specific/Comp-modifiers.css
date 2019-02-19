@@ -1,11 +1,11 @@
 /* NOTE Component Modifers
 Holds custom component styling */
 
-.card.card--lorem{
+#lorem{
   height: auto;
 }
 
-.card.card--cat{
+#cat{
   height: auto;
 }
 
@@ -13,7 +13,7 @@ Holds custom component styling */
   max-height: 15rem;
 }
 
-.card.card--add-cards{
+#add-cards{
   max-width: 12rem;
   display: flex;
   flex-flow: column nowrap;
@@ -21,7 +21,7 @@ Holds custom component styling */
   align-items: center;
 }
 
-.card.card--add-cards > .card__header{
+#add-cards > .card__header{
   border-bottom: 0;
 }
 

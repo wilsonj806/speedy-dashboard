@@ -1,9 +1,13 @@
-import React, { Component } from 'react';
+import React, { Component, ReactElement } from 'react';
 
 import { ModalController } from './components/presentational/ModalController/ModalController'
 import { Dash } from './components/presentational/Dash/Dash'
 
 import { AddCard } from './components/app-specific/AddCard'
+import { CatCard } from './components/app-specific/CatCard'
+import { LoremCard } from './components/app-specific/LoremCard'
+
+import { BasicCard, BasicCard2 } from './components/Placeholder'
 
 import { AppState } from './State'
 
@@ -63,9 +67,49 @@ export class App extends Component<any, State> {
     }
   }
 
+  renderCardsState = (): ReactElement<any, any>[] | null => {
+    const { renderCards } = this.state;
+    // TODO find a way to fetch the current list of children
+    const childArr: Array<ReactElement<any, any>> = [];
+    for (const key in renderCards) {
+      switch (key) {
+        case 'cat':
+          if (renderCards[key] === true) {
+            const Cat = <CatCard/>;
+            childArr.push(Cat);
+            break;
+          }
+        case 'lorem':
+          if (renderCards[key] === true) {
+            const card = <LoremCard/>;
+            childArr.push(card);
+            break;
+          }
+        case 'basic1':
+          if (renderCards[key] === true) {
+            const card = BasicCard;
+            childArr.push(card);
+            break;
+          }
+        case 'basic2':
+          if (renderCards[key] === true) {
+            const card = BasicCard2;
+            childArr.push(card);
+            break;
+          }
+        default:
+          break;
+      }
+    }
+    const length = childArr.length;
+    return length === 0 ? null : childArr;
+  }
+
   // TODO add Card rendering using React.cloneElement()
+  // TODO add keys to each card
   render() {
     const { toDisplay, renderCards } = this.state
+    const childrenFromState = this.renderCardsState();
     return(
       <main>
         <ModalController
@@ -81,7 +125,7 @@ export class App extends Component<any, State> {
             />
           }
         >
-          {null}
+          {childrenFromState}
         </Dash>
       </main>
     )

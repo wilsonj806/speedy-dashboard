@@ -87,6 +87,7 @@ declare namespace LocalTypes {
   interface CardProps {
     id       ?: string
     type     ?: string
+    index    ?: number
     children  : BasicCard
   }
 

@@ -13,7 +13,7 @@
   min-height: 100vh;
 }
 
-.card.card--ind-add{
+#ind-add{
   max-width: 12rem;
   border: 3px dashed rgb(175, 175, 175);
   background: rgba(255, 255, 255, 0.95);
