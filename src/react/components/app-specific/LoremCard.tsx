@@ -67,14 +67,19 @@ export class LoremCard extends Component<any, State> {
         id='lorem'
       >
         {{
-          header: (
+          header: ([
             <Heading
               type=''
               headingLvl={2}
             >
               Lorem Ipsum Generator
-            </Heading>
-          ),
+            </Heading>,
+            <Button
+              type='close'
+              target='lorem'
+              innerText='&times;'
+            />
+          ]),
           content: (
             <Paragraph
               type='lorem'

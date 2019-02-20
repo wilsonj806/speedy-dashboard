@@ -14,7 +14,7 @@ const sayHi = (event: React.MouseEvent<HTMLInputElement>) => {
 
 const BasicCard = (
   <Card
-    key={1}
+    key={undefined}
     id='basicCard1'
     type='basic basic1'
   >
@@ -39,7 +39,7 @@ const BasicCard = (
 )
 const BasicCard2 = (
   <Card
-    key={0}
+    key={undefined}
     id='basicCard2'
     type='basic basic2'
   >

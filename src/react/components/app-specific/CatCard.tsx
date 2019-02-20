@@ -79,14 +79,19 @@ export class CatCard extends Component<any, State> {
         id='cat'
       >
         {{
-          header: (
+          header: ([
             <Heading
               type=''
               headingLvl={2}
             >
               Cat Pics and Facts
-            </Heading>
-          ),
+            </Heading>,
+            <Button
+              type='close'
+              target='cat'
+              innerText='&times;'
+            />
+          ]),
           content: (
             <>
             <Paragraph

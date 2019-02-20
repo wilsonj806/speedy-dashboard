@@ -92,9 +92,10 @@ declare namespace LocalTypes {
   }
 
   interface DashProps {
-    type    ?: string
-    AddCard  : React.ReactElement<any, any> | null
-    children : React.ReactNode | null
+    type              ?: string
+    AddCard            : React.ReactElement<any, any> | null
+    children           : React.ReactNode | null
+    handleCardCloseFn ?: any
   }
 
   interface ModalControllerProps {
