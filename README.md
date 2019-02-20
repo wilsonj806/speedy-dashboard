@@ -42,12 +42,12 @@ The goal of this project is to build off of the work done by [React Array Method
 
 ### Features to be implemented by v1.0.0
 
-- Support for drag and dropping cards around
 - Full styling for components
 - Sidebar for adding preset cards quickly
 
 ### Post v1.0.0
 
+- Support for drag and dropping cards around
 - Tests for components using Jest, Enzyme, and etc
 - Multiple cards that display API data
 - Redux integration to accomodate the above

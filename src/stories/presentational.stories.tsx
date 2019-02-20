@@ -15,7 +15,6 @@ import { AppFragController } from '../react/components/presentational/ModalContr
 
 import { AddCard } from '../react/components/app-specific/AddCard';
 
-import '../react/stylesheets/index.css';
 
 // NOTE Dummy Functions
 

@@ -9,8 +9,6 @@ import { AppFragAdd } from '../react/components/app-specific/AddModal/AppFragAdd
 
 import { App } from '../react/App';
 
-import '../react/stylesheets/index.css';
-
 // NOTE Dummy Functions
 
 const sayHi = (event: React.MouseEvent<HTMLInputElement>) => {
