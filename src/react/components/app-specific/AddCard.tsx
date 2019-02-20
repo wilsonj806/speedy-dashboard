@@ -7,10 +7,8 @@ import { Card } from '../presentational/Card/Card';
 
 import './Comp-modifiers.css';
 
-export class AddCard extends Component<Local.AddCardProps> {
-
-  render = (): ReactElement<any, any> => {
-    const { handleAddFn } = this.props;
+export const AddCard = (props: Local.AddCardProps): ReactElement<any, any> => {
+    const { handleAddFn } = props;
     const childrenObj = {
       header: (<Heading type='ind-add' headingLvl={2}>Add Cards In!</Heading>),
       content: (null),
@@ -31,5 +29,4 @@ export class AddCard extends Component<Local.AddCardProps> {
         {childrenObj}
       </Card>
     )
-  }
 }

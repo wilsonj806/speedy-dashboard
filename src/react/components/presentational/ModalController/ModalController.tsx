@@ -1,6 +1,7 @@
 import React ,{ Component, ReactNode, ReactElement, ReactNodeArray } from 'react';
 
 import { AddModal } from '../../app-specific/AddModal/AddModal';
+import { InfoModal } from '../../app-specific/InfoModal/InfoModal';
 import { Modal } from './Modal/Modal';
 
 import './Modal.css';
@@ -23,22 +24,17 @@ export class ModalController extends Component<Local.ModalControllerProps, any>{
   renderModal = (): ReactElement<any, any> | null => {
     const { toDisplay, renderCards, handleCloseFn, handleCardFn } = this.props;
     switch(toDisplay) {
-      case 'HELP':
+      case 'INFO':
         return (
-          <Modal
-            id='help'
-            type='help'
-            headerText={'It\'s me the help Modal!'}
+          <InfoModal
             handleCloseFn={handleCloseFn}
-          >
-            <p>I'm the helper modal. Hi!</p>
-          </Modal>
+          />
+
         );
 
       case 'ADD':
           return (
             <AddModal
-              id='add-more'
               renderCards={renderCards}
               handleCardFn={handleCardFn}
               handleCloseFn={handleCloseFn}

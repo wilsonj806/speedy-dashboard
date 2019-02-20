@@ -1,18 +1,16 @@
-import React ,{ Component, ReactNode, ReactChild } from 'react';
-import { isFunc } from '../../../../helper/typeCheck';
-import { capitalizeString } from '../../../../helper/helperUtils';
+import React ,{ Component, ReactElement } from 'react';
 
 import { Button } from '../../../base/Button/Button';
 import { Heading } from '../../../base/Heading/Heading';
 import '../Modal.css';
 
-export class Modal extends Component<Props> {
+export class Modal extends Component<Local.ModalProps> {
   constructor(props: any) {
     super(props);
     if (!this.props.handleCloseFn) {console.warn('warning expecting a parent to handle <Modal/> render state')}
   }
 
-  render() {
+  render = (): ReactElement<any, any> => {
     const { type, children, headerText, contentModifier, handleCloseFn, id } = this.props;
     return (
         <section
@@ -42,17 +40,4 @@ export class Modal extends Component<Props> {
         </section>
     )
   }
-}
-
-interface Props {
-  id               : string
-  type             : string,
-  headerText       : string
-  children         : ReactNode
-  handleCloseFn   ?: any
-  contentModifier ?: string
-}
-
-interface ModalState {
-  [key: string]: any
 }

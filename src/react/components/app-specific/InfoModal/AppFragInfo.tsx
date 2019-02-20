@@ -40,7 +40,7 @@ const initialState: BasicObj = Object.assign({}, RenderModalState, {
 
 type State = Readonly<typeof initialState>
 
-export class AppFragAdd extends Component<any, State> {
+export class AppFragInfo extends Component<any, State> {
   readonly state: State = initialState;
 
   handleModalDisplay = (event: React.MouseEvent<HTMLElement>): void => {
@@ -115,8 +115,9 @@ export class AppFragAdd extends Component<any, State> {
           { (basic1 === true) ? BasicCard : null}
           { (basic2 === true) ? BasicCard2 : null}
           <Button
-            target='ADD'
-            innerText='Add More Cards'
+            type='info'
+            target='INFO'
+            innerText='Info'
             handleClickFn={this.handleModalDisplay}
           />
         </div>

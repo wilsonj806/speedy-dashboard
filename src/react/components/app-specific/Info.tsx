@@ -10,7 +10,7 @@ export const Info = (props: Local.InfoButtonProps): ReactElement<any, any> => {
       <Button
         type='page-info'
         innerText='?'
-        target='HELP'
+        target='INFO'
         handleClickFn={handleDisplayFn}
       />
     )

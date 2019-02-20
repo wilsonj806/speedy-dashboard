@@ -7,6 +7,8 @@ import { CatCard } from '../react/components/app-specific/CatCard';
 import { AddCard } from '../react/components/app-specific/AddCard';
 import { AddModal } from '../react/components/app-specific/AddModal/AddModal';
 import { AppFragAdd } from '../react/components/app-specific/AddModal/AppFragAdd';
+import { InfoModal } from '../react/components/app-specific/InfoModal/InfoModal';
+import { AppFragInfo } from '../react/components/app-specific/InfoModal/AppFragInfo';
 
 import { App } from '../react/App';
 
@@ -63,7 +65,7 @@ storiesOf('App Specific/ Cat Card', module)
     )
   });
 
-storiesOf('App Specific/ Add More Cards Dialog', module)
+storiesOf('App Specific/ Add More Cards Modal', module)
   .add('Basic Add More Dialog', () => {
     return (
       <AddModal
@@ -83,10 +85,26 @@ storiesOf('App Specific/ Add More Cards Dialog', module)
     )
   });
 
-storiesOf('App Specific/ App', module)
+storiesOf('App Specific/ Info Modal', module)
+  .add('Basic Info Dialog', () => {
+    return (
+      <InfoModal
+
+      />
+    )
+  })
+  .add('App fragment with Info', () => {
+    return (
+      <AppFragInfo
+
+      />
+    )
+  });
+
+  storiesOf('App Specific/ App', module)
   .add('App', () => {
     return (
       <App
       />
     )
-  })
+  });

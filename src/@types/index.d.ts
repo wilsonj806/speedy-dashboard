@@ -1,3 +1,5 @@
+import { Children } from "react";
+
 // Type Declarations for the Speedy-Dashboard project
 // Project repo: https://github.com/wilsonj806/speedy-dashboard
 // Declarations by: Wilson Jiang
@@ -22,7 +24,7 @@ declare namespace LocalTypes {
    *
    */
 
-  type Modals = 'HELP' | 'ADD' | 'BASIC'
+  type Modals = 'INFO' | 'ADD' | 'BASIC'
   type InputTypes = 'text' | 'number' | 'radio' | 'checkbox'
   type BasicCard = {
     header   : React.ReactElement<any> | React.ReactElement<any>[] | null,
@@ -98,6 +100,15 @@ declare namespace LocalTypes {
     handleCardCloseFn ?: any
   }
 
+  interface ModalProps {
+    id               : string
+    type             : string,
+    headerText       : string
+    children         : ReactNode
+    handleCloseFn   ?: any
+    contentModifier ?: string
+  }
+
   interface ModalControllerProps {
     id           ?: string
     renderCards   : RenderCards
@@ -112,6 +123,11 @@ declare namespace LocalTypes {
     handleCloseFn  ?: any
     handleCardFn    : any
     cardsToDisplay ?: CardsToDisplay
+  }
+
+  interface InfoModalProps {
+    id             ?: string
+    handleCloseFn  ?: any
   }
 
   interface AddCardProps {
