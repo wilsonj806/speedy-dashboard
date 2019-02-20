@@ -43,3 +43,23 @@ Holds custom component styling */
   background: var(--primaryActBlue);
   box-shadow: 4px 4px 3px rgba(0, 0, 0, 0.1);
 }
+
+.btn--page-info{
+  position: absolute;
+  bottom: 3rem;
+  right: 3rem;
+  height: 3rem;
+  width: 3rem;
+  border-radius: 1.5rem;
+  background: var(--info);
+  font-size: 1.5rem;
+  font-weight: 500;
+  font-family: Helvetica, Arial, sans-serif;
+}
+.btn--page-info:hover{
+  background: var(--infoAct);
+}
+.btn--page-info:active{
+  background: var(--infoAct);
+  box-shadow: 4px 4px 3px rgba(0, 0, 0, 0.1);
+}

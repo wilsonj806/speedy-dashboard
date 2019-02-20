@@ -118,6 +118,9 @@ declare namespace LocalTypes {
     handleAddFn : any
   }
 
+  interface InfoButtonProps {
+    handleDisplayFn : any | null
+  }
   /** State related
    *
    *

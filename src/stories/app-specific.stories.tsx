@@ -1,6 +1,7 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 
+import { Info } from '../react/components/app-specific/Info';
 import { LoremCard } from '../react/components/app-specific/LoremCard';
 import { CatCard } from '../react/components/app-specific/CatCard';
 import { AddCard } from '../react/components/app-specific/AddCard';
@@ -21,6 +22,17 @@ const cssCenter = {
   alignItems: 'center',
   background: 'rgb(255, 185, 55)'
 }
+
+storiesOf('App Specific/ Help Button', module)
+  .add('Help Button', () => {
+    return (
+      <div style={cssCenter}>
+        <Info
+          handleDisplayFn={sayHi}
+        />
+      </div>
+    )
+  });
 
 storiesOf('App Specific/ Add Cards', module)
   .add('Add Cards', () => {

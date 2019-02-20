@@ -1,8 +1,9 @@
 import React, { Component, ReactElement, MouseEvent } from 'react';
 
-import { ModalController } from './components/presentational/ModalController/ModalController'
 import { Dash } from './components/presentational/Dash/Dash'
+import { ModalController } from './components/presentational/ModalController/ModalController'
 
+import { Info } from './components/app-specific/Info'
 import { AddCard } from './components/app-specific/AddCard'
 import { CatCard } from './components/app-specific/CatCard'
 import { LoremCard } from './components/app-specific/LoremCard'
@@ -121,24 +122,29 @@ export class App extends Component<any, State> {
     const { toDisplay, renderCards } = this.state
     const childrenFromState = this.renderCardsState();
     return (
-      <main>
+      <>
         <ModalController
           toDisplay={toDisplay}
           renderCards={renderCards}
           handleCloseFn={this.hideModal}
           handleCardFn={this.toggleCardState}
         />
-        <Dash
-          AddCard={
-            <AddCard
-              handleAddFn={this.handleModalDisplay}
-            />
-          }
-          handleCardCloseFn={this.toggleCardState}
-        >
-          {childrenFromState}
-        </Dash>
-      </main>
+        <main>
+          <Dash
+            AddCard={
+              <AddCard
+                handleAddFn={this.handleModalDisplay}
+              />
+            }
+            handleCardCloseFn={this.toggleCardState}
+          >
+            {childrenFromState}
+          </Dash>
+        </main>
+        <Info
+          handleDisplayFn={this.handleModalDisplay}
+        />
+      </>
     )
   }
 }
