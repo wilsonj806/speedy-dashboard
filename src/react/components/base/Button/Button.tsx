@@ -2,22 +2,10 @@ import React ,{ Component, ReactNode, ReactChild } from 'react';
 
 import './Button.css';
 
-interface Props {
-  id               ?: string
-  type             ?: string
-  innerText         : string | null
-  isHTMLInputSubmit?: boolean
-  children         ?: ReactNode
-  handleClickFn    ?: any
-  target           ?: string
-}
-
 // TODO Revise to be a Functional component
 
-export const Button = (props: Props): JSX.Element => {
+export const Button = (props: Local.ButtonProps): JSX.Element => {
   const { type, innerText, isHTMLInputSubmit, handleClickFn, target } = props;
-
-  const btnClass = (type && (type !== 'submit')) ? type : 'std';
   if (isHTMLInputSubmit === true && handleClickFn != null) {
     return(
       <input

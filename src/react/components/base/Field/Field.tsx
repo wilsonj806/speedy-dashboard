@@ -1,24 +1,13 @@
 import React ,{ Component, ReactNode, ReactChild } from 'react';
 import { capitalizeString } from '../../../helper/helperUtils';
 
-type InputTypes = 'text' | 'number' | 'radio' | 'checkbox'
-
-
-interface Props {
-  type: InputTypes
-  name: string
-  handleChangeFn?: any
-  noLabel?: boolean
-  value?: string
-}
-
 const initialState = {
   value: ''
 }
 
 type State = Readonly<typeof initialState>;
 
-export class Field extends Component<Props, State> {
+export class Field extends Component<Local.FieldProps, State> {
   constructor(props: any) {
     super(props);
   }

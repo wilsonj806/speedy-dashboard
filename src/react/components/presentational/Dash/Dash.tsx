@@ -10,19 +10,15 @@ import { Card } from '../Card/Card';
  */
 
 /* NOTE AddMore Prop is for DIRECTLY adding in a <Card/> that will tell the main app to show a Modal interface for adding additional Cards in */
-interface Props {
-  type?: string
-  AddMore: ReactElement<any, any> | null
-  children: ReactNode | null
-}
 
 const sayHi = () => console.log('hi');
 
 /* TODO Add something to handle the case of maximum number of cards rendered(probably in the form of a modal) */
 
-const AddCard = (
+const EmptyInd = (
   <Card
     type='ind-add'
+    id='ind-add'
   >
     {{
       header: null,
@@ -31,29 +27,28 @@ const AddCard = (
   </Card>
 )
 
-export class Dash extends Component<Props> {
+export class Dash extends Component<Local.DashProps> {
   render() {
-    const { type, children, AddMore } = this.props
-    if ((isTypedObj(AddMore, 'type')) &&(AddMore.type.name === 'Card')) {
-      const AddAdditionalCards = AddMore;
+    const { type, children, AddCard } = this.props;
+    if ((isTypedObj(AddCard, 'type')) &&(AddCard.type.name === 'AddCard')) {
       return (
         <section
           className={`dash ${type ? `dash--${type}` : ''}`}
         >
-          {children ? children : AddCard}
-          {AddAdditionalCards}
+          {children != null ? children : EmptyInd}
+          {AddCard}
         </section>
       )
-    } else if (AddMore === null) {
+    } else if (AddCard === null) {
       return (
         <section
           className={`dash ${type ? `dash--${type}` : ''}`}
         >
-          {children ? children : AddCard}
+          {children != null ? children : EmptyInd}
         </section>
       )
     } else {
-      throw new Error('Error expecting AddMore to be a Card')
+      throw new Error('Error expecting AddCard to be a Card')
     }
   }
 }

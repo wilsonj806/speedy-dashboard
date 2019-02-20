@@ -2,28 +2,15 @@ import React ,{ Component, ReactElement, ReactChild } from 'react';
 
 import './Card.css';
 
-interface Props {
-  id?: string,
-  type?: string,
-  children: BasicCard,
-};
-
-
-type BasicCard = {
-  header: ReactElement<any> | ReactElement<any>[] | null,
-  media?: ReactChild,
-  content: ReactElement<any> | ReactElement<any>[] | null,
-  action?: ReactElement<any> | ReactElement<any>[]
-};
-
-export class Card extends Component<Props> {
+export class Card extends Component<Local.CardProps> {
   render() {
-    const { children, type } = this.props;
+    const { children, type, id } = this.props;
     if (!children) throw new Error('Erorr expecting children elements');
       const { header, content, media, action } = children;
       return(
         <div
           className={`card ${type ? `card--${type}` : ''}`}
+          id={id}
         >
           {header ? <header className='card__header'>{header}</header> : null}
           {media ? <div className='card__media'>{media}</div> : null}

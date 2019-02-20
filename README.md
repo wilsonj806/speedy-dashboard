@@ -31,13 +31,12 @@ The goal of this project is to build off of the work done by [React Array Method
 
 ### Features to be implemented by v0.5.0
 
-- Support for larger cards/ cards that change size
 - Implementation for all cards requiring simple API calls
 - Modals for adding cards, and an information/ help dialog
+- Start integration for all components
 
 ### Features to be implemented by v0.75.0
 
-- At least one card that makes calls with OAuth/ to a RESTful API
 - Partial styling, probably based on something on Dribble
 - **Ideally** a proxy set up for development to help handle API calls
 

@@ -1,14 +1,45 @@
 /* NOTE Component Modifers
 Holds custom component styling */
 
-.card--lorem{
+#lorem{
   height: auto;
 }
 
-.card--cat{
+#cat{
   height: auto;
 }
 
-.card__content > .image{
+.card.card__content > .image{
   max-height: 15rem;
+}
+
+#add-cards{
+  max-width: 12rem;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+#add-cards > .card__header{
+  border-bottom: 0;
+}
+
+.btn--add-cards{
+  height: 8rem;
+  width: 8rem;
+  border-radius: 5rem;
+  font-size: 5rem;
+  background: var(--primaryBlue);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn--add-cards:hover{
+  background: var(--primaryActBlue);
+}
+.btn--add-cards:active{
+  background: var(--primaryActBlue);
+  box-shadow: 4px 4px 3px rgba(0, 0, 0, 0.1);
 }

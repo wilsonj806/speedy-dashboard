@@ -23,7 +23,7 @@
   font-size: 1rem;
 }
 
-.btn:not(.btn--modal-header){
+.btn:not(.btn--close){
   box-shadow: 6px 6px 3px rgba(0, 0, 0, 0.1);
 }
 
@@ -60,8 +60,9 @@
   box-shadow: 4px 4px 3px rgba(0, 0, 0, 0.1);
 }
 
-.btn--modal-header{
+.btn--close{
   color: grey;
   background: transparent;
   border: 0 solid transparent;
+  font-size: 1.5rem;
 }
