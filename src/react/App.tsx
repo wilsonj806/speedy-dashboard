@@ -22,7 +22,6 @@ export class App extends Component<any, State> {
   handleModalDisplay = (event: React.MouseEvent<HTMLElement>): void => {
     if (!(event.target instanceof HTMLElement)) throw new Error(`Expecting a HTMLElement as the target of the event, got ${event.target} instead`);
     const { target } = event.target.dataset;
-
     this.setState({
       toDisplay: target
     });

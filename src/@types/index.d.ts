@@ -26,11 +26,20 @@ declare namespace LocalTypes {
 
   type Modals = 'INFO' | 'ADD' | 'BASIC'
   type InputTypes = 'text' | 'number' | 'radio' | 'checkbox'
+  type ChildrenArray = Array<ReactElement<any, any> | FieldTemplate>
+
   type BasicCard = {
-    header   : React.ReactElement<any> | React.ReactElement<any>[] | null,
-    media   ?: React.ReactChild,
-    content  : React.ReactElement<any> | React.ReactElement<any>[] | null,
+    header   : React.ReactElement<any> | React.ReactElement<any>[] | null
+    media   ?: React.ReactElement<any>
+    content  : React.ReactElement<any> | React.ReactElement<any>[] | null
     action  ?: React.ReactElement<any> | React.ReactElement<any>[]
+  }
+
+  type FieldTemplate = {
+    type     : Local.InputTypes
+    name     : string
+    noLabel ?: boolean
+    value   ?: any
   }
 
   /** Interfaces
@@ -45,6 +54,7 @@ declare namespace LocalTypes {
     mode    : Local.FetchMode
     header ?: object
   }
+
 
   /** React Element Props and related interfaces
    *
@@ -117,6 +127,12 @@ declare namespace LocalTypes {
     toDisplay    ?: Modals | null
   }
 
+  interface FormProps {
+    type           ?: string
+    handleSubmitFn  : any
+    handleChangeFn ?: any
+    children       ?: FieldTemplate | ReactElement<any, any> | ChildrenArray
+  }
   interface AddModalProps {
     id             ?: string
     renderCards     : RenderCards
@@ -146,7 +162,7 @@ declare namespace LocalTypes {
     basic1 ?: boolean
     basic2 ?: boolean
     lorem  ?: boolean
-    cat  ?: boolean
+    cat    ?: boolean
   }
 }
 

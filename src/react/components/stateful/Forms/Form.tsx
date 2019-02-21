@@ -1,23 +1,10 @@
 import React ,{ Component, ReactElement } from 'react';
-import { isTypedObj, isFunc } from '../../../helper/typeCheck';
+import { isTypedObj, isFunc, isPrimative } from '../../../helper/typeCheck';
 import { Field } from './Field/Field';
 import { Button } from '../../base/Button/Button';
 import { any } from 'prop-types';
 
 //TODO Make the keys for state settable by the user
-type FieldTemplate = {
-  type    : string
-  name    : string
-  noLabel?: boolean
-  value  ?: any
-}
-
-interface FormProps {
-  type          ?: Local.InputTypes
-  handleSubmitFn : any
-  handleChangeFn?: any
-  children      ?: Array<FieldTemplate>
-}
 
 const initialState: { [key: string]: any } = {
   task    : '',
@@ -26,41 +13,55 @@ const initialState: { [key: string]: any } = {
 
 type State = Readonly<typeof initialState>;
 
-export class Form extends Component<FormProps, State> {
+export class Form extends Component<Local.FormProps, State> {
   constructor(props: any) {
     super(props);
   }
   readonly state: State = initialState;
 
-  renderChildren() {
-    const { children } = this.props;
-    if ((children == null)) throw new Error('Error, expecting children')
-    if (children instanceof  Array) {
-      const toRender  = children.map((child: object, index: number): ReactElement<any, any> | object=> {
-        if (isTypedObj(child, 'props')) return child;
-        const { handleChangeFn } = this.props;
-        const { type, name, noLabel } = child
+  renderChildren = (): (ReactElement<any, any> | null)[] | ReactElement<any, any> | null => {
+    const { children, handleChangeFn } = this.props;
+    if (children == null) throw new Error('Error expecting children');
+    if (Array.isArray(children)) {
+      const toRender = (children as Local.ChildrenArray).map((child: Local.FieldTemplate | ReactElement<any>, index: number): ReactElement<any, any> | null=> {
+        if (React.isValidElement(child)) return child;
+
+        if (isTypedObj(child, 'name') && isTypedObj(child, 'type')) {
+          const { type, name, noLabel } = child as Local.FieldTemplate;
+          return (
+            <Field
+              key={index}
+              type={type}
+              name={name}
+              noLabel={noLabel ? noLabel : false}
+              value={this.state[`${name}`]}
+              handleChangeFn={handleChangeFn ? handleChangeFn : this.handleFormChangeDefault}
+            />
+            )
+        } else {
+          return null
+        }
+      });
+      return toRender;
+    } else {
+      if (React.isValidElement(children)) return children;
+      if (isTypedObj(children, 'name') && isTypedObj(children, 'type')) {
+        const { type, name, noLabel } = children as Local.FieldTemplate;
         return (
           <Field
-            key={index}
             type={type}
-            name={`${name}`}
+            name={name}
             value={this.state[`${name}`]}
-            noLabel={noLabel}
+            noLabel={noLabel ? noLabel : false}
             handleChangeFn={handleChangeFn ? handleChangeFn : this.handleFormChangeDefault}
           />
         )
-      });
-      return toRender;
+      }
+      return null;
     }
-    throw new Error(`Error: Expecting an array of format:
-        ReactElement[]
-      OR
-        an array filled with FieldTemplate objects
-    `)
   }
 
-  handleFormChangeDefault = (event: React.ChangeEvent<HTMLInputElement>) => {
+  handleFormChangeDefault = (event: React.ChangeEvent<HTMLInputElement>): void => {
     const {name, value}: {name: string, value: string} = event.target;
     if (Object.keys(this.state).includes(name)){
       this.setState({
@@ -72,7 +73,7 @@ export class Form extends Component<FormProps, State> {
     }
   }
 
-  submitForm = (event: React.MouseEvent<HTMLInputElement>) => {
+  submitForm = (event: React.MouseEvent<HTMLInputElement>): void => {
     event.preventDefault();
     const { handleSubmitFn } = this.props;
     if (isFunc(handleSubmitFn) !== true) throw new Error('Error!: expecting this.props.handleSubmitFn to be a Function!');
@@ -80,7 +81,7 @@ export class Form extends Component<FormProps, State> {
     this.setState(initialState);
   }
 
-  render() {
+  render = (): ReactElement<any, any> => {
     const { children, type } = this.props
     if (!children) throw new Error('Error expecting children')
     const toRender = this.renderChildren();
