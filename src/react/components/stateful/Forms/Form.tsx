@@ -1,13 +1,10 @@
-import React ,{ Component, ReactNode, ReactElement, ReactNodeArray } from 'react';
+import React ,{ Component, ReactElement } from 'react';
 import { isTypedObj, isFunc } from '../../../helper/typeCheck';
-import { Field } from '../../base/Field/Field';
+import { Field } from './Field/Field';
 import { Button } from '../../base/Button/Button';
+import { any } from 'prop-types';
 
 //TODO Make the keys for state settable by the user
-
-// FIXME Below isn't DRY, find a way to export standard types and interfaces
-type InputTypes = 'text' | 'number' | 'radio' | 'checkbox'
-
 type FieldTemplate = {
   type    : string
   name    : string
@@ -15,15 +12,13 @@ type FieldTemplate = {
   value  ?: any
 }
 
-interface Props {
-  type          ?: string
+interface FormProps {
+  type          ?: Local.InputTypes
   handleSubmitFn : any
   handleChangeFn?: any
   children      ?: Array<FieldTemplate>
 }
 
-/* NOTE If <Form/> is to be reused, convert initialState into an Interface and let
-the user define the keys of State via Props */
 const initialState: { [key: string]: any } = {
   task    : '',
   priority: ''
@@ -31,7 +26,7 @@ const initialState: { [key: string]: any } = {
 
 type State = Readonly<typeof initialState>;
 
-export class Form extends Component<Props, State>{
+export class Form extends Component<FormProps, State> {
   constructor(props: any) {
     super(props);
   }
@@ -41,7 +36,7 @@ export class Form extends Component<Props, State>{
     const { children } = this.props;
     if ((children == null)) throw new Error('Error, expecting children')
     if (children instanceof  Array) {
-      const toRender  = children.map((child: any, index: number): ReactNode => {
+      const toRender  = children.map((child: object, index: number): ReactElement<any, any> | object=> {
         if (isTypedObj(child, 'props')) return child;
         const { handleChangeFn } = this.props;
         const { type, name, noLabel } = child
