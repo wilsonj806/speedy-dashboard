@@ -6,17 +6,21 @@ import { any } from 'prop-types';
 
 //TODO Make the keys for state settable by the user
 
-const initialState: { [key: string]: any } = {
-  task    : '',
-  priority: ''
+// REVIEW Technically don't need State for Field so figure out if its worth having at all
+
+const initialState: Local.BasicObj = {
+  ['task']     : '',
+  ['priority'] : ''
 }
 
 type State = Readonly<typeof initialState>;
 
 export class Form extends Component<Local.FormProps, State> {
-  constructor(props: any) {
+  // NOTE this is for when Form is eventually extended to accept a prop for setting up custom/ user-submitted Form input names
+  constructor(props: Local.FormProps) {
     super(props);
   }
+
   readonly state: State = initialState;
 
   renderChildren = (): (ReactElement<any, any> | null)[] | ReactElement<any, any> | null => {
@@ -62,7 +66,7 @@ export class Form extends Component<Local.FormProps, State> {
   }
 
   handleFormChangeDefault = (event: React.ChangeEvent<HTMLInputElement>): void => {
-    const {name, value}: {name: string, value: string} = event.target;
+    const { name, value }: { name: string, value: string } = event.target;
     if (Object.keys(this.state).includes(name)){
       this.setState({
         [name] : value
@@ -73,10 +77,9 @@ export class Form extends Component<Local.FormProps, State> {
     }
   }
 
-  submitForm = (event: React.MouseEvent<HTMLInputElement>): void => {
+  submitForm: Local.VoidFn = (event: React.MouseEvent<HTMLInputElement>): void => {
     event.preventDefault();
     const { handleSubmitFn } = this.props;
-    if (isFunc(handleSubmitFn) !== true) throw new Error('Error!: expecting this.props.handleSubmitFn to be a Function!');
     handleSubmitFn(this.state);
     this.setState(initialState);
   }

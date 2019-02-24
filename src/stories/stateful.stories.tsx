@@ -21,7 +21,7 @@ const sayHi = (event: React.MouseEvent<HTMLInputElement>) => {
 };
 
 storiesOf('Stateful/ Form', module)
-  .add('Form yeet aaaa dab', () => {
+  .add('Form', () => {
     return (
       <div style={cssCenter}>
         <Form
@@ -30,7 +30,7 @@ storiesOf('Stateful/ Form', module)
           {[
             {
               type: 'text',
-              name: 'sample'
+              name: 'task'
             }
           ]}
         </Form>

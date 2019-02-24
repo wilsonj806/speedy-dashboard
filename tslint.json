@@ -3,7 +3,10 @@
     "tslint-clean-code"
   ],
   "rules": {
-    "newspaper-order": true
+    "newspaper-order": true,
+    "interface-over-type-literal": true,
+    "increment-decrement": true,
+    "newline-before-return": true,
   },
   "defaultSeverity": "warning",
    "linterOptions": {

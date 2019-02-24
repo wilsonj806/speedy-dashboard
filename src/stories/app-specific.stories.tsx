@@ -10,8 +10,6 @@ import { AppFragAdd } from '../react/components/app-specific/AddModal/AppFragAdd
 import { InfoModal } from '../react/components/app-specific/InfoModal/InfoModal';
 import { AppFragInfo } from '../react/components/app-specific/InfoModal/AppFragInfo';
 
-import { App } from '../react/App';
-
 // NOTE Dummy Functions
 
 const sayHi = (event: React.MouseEvent<HTMLInputElement>) => {
@@ -101,10 +99,3 @@ storiesOf('App Specific/ Info Modal', module)
     )
   });
 
-  storiesOf('App Specific/ App', module)
-  .add('App', () => {
-    return (
-      <App
-      />
-    )
-  });

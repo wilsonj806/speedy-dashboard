@@ -1,4 +1,5 @@
 import { Children } from "react";
+import { any } from "prop-types";
 
 // Type Declarations for the Speedy-Dashboard project
 // Project repo: https://github.com/wilsonj806/speedy-dashboard
@@ -28,26 +29,16 @@ declare namespace LocalTypes {
   type InputTypes = 'text' | 'number' | 'radio' | 'checkbox'
   type ChildrenArray = Array<ReactElement<any, any> | FieldTemplate>
 
-  type BasicCard = {
-    header   : React.ReactElement<any> | React.ReactElement<any>[] | null
-    media   ?: React.ReactElement<any>
-    content  : React.ReactElement<any> | React.ReactElement<any>[] | null
-    action  ?: React.ReactElement<any> | React.ReactElement<any>[]
-  }
-
-  type FieldTemplate = {
-    type     : Local.InputTypes
-    name     : string
-    noLabel ?: boolean
-    value   ?: any
-  }
-
-  /** Interfaces
+  /** NOTE Interfaces
    *
    *
    */
 
   interface BasicObj { [key: string]: any}
+
+  interface VoidFn extends Function {
+    (val: any): void
+  }
 
   interface FetchParam {
     method  : Local.AccessTypes
@@ -55,16 +46,34 @@ declare namespace LocalTypes {
     header ?: object
   }
 
+  interface BasicCard {
+    header   : React.ReactElement<any> | React.ReactElement<any>[] | null
+    media   ?: React.ReactElement<any>
+    content  : React.ReactElement<any> | React.ReactElement<any>[] | null
+    action  ?: React.ReactElement<any> | React.ReactElement<any>[]
+  }
 
-  /** React Element Props and related interfaces
+  interface FieldTemplate {
+    type     : Local.InputTypes
+    name     : string
+    noLabel ?: boolean
+    value   ?: any
+  }
+
+  /** NOTE React Element Props and related interfaces
    *
    *
    */
 
+  interface ListItemProps extends BasicObj {
+    type ?: string
+    children : ReactElement<any, any> | ReactElement<any, any>[]
+  }
+
   interface FieldProps {
     type            : InputTypes
     name            : string
-    handleChangeFn ?: any
+    handleChangeFn  : VoidFn
     noLabel        ?: boolean
     value          ?: string
   }
@@ -75,7 +84,7 @@ declare namespace LocalTypes {
     innerText          : string | null
     isHTMLInputSubmit ?: boolean
     children          ?: React.ReactNode
-    handleClickFn     ?: any
+    handleClickFn      : VoidFn
     target            ?: string
   }
 
@@ -129,7 +138,7 @@ declare namespace LocalTypes {
 
   interface FormProps {
     type           ?: string
-    handleSubmitFn  : any
+    handleSubmitFn  : VoidFn
     handleChangeFn ?: any
     children       ?: FieldTemplate | ReactElement<any, any> | ChildrenArray
   }
@@ -153,7 +162,8 @@ declare namespace LocalTypes {
   interface InfoButtonProps {
     handleDisplayFn : any | null
   }
-  /** State related
+
+  /** NOTE State related
    *
    *
    */

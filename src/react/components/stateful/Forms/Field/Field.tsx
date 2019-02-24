@@ -1,28 +1,12 @@
-import React ,{ Component, ReactNode, ReactChild } from 'react';
+import React ,{ Component, ReactElement } from 'react';
 import { capitalizeString } from '../../../../helper/helperUtils';
 
-const initialState = {
-  value: ''
-}
 
-type State = Readonly<typeof initialState>;
-
-export class Field extends Component<Local.FieldProps, State> {
-  constructor(props: any) {
-    super(props);
-  }
-  readonly state: State = initialState;
-
-  handleChangeDefault = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const { value }: { value: any } = event.target;
-    this.setState({
-      'value' : value
-    });
-  }
-
-  render() {
-    const { type, name, noLabel, handleChangeFn, value } = this.props;
-    const handleChange = handleChangeFn || this.handleChangeDefault;
+export const Field = (props: Local.FieldProps): ReactElement<any, any> => {
+    const { type, name, noLabel, handleChangeFn, value } = props;
+    if (handleChangeFn == null) throw new Error(`
+      Error expecting a Function for handleChangeFn, got ${handleChangeFn} instead
+    `)
     if (noLabel !== true) {
       const labelText = capitalizeString(name);
       return(
@@ -38,20 +22,17 @@ export class Field extends Component<Local.FieldProps, State> {
             type={`${type}`}
             name={`${name}`}
             value={value}
-            onChange={handleChange}
+            onChange={handleChangeFn}
           />
         </>
       )
     }
     return(
-      <>
         <input
           type={`${type}`}
           name={`${name}`}
           value={value}
-          onChange={handleChange}
+          onChange={handleChangeFn}
         />
-      </>
     )
-  }
 }
