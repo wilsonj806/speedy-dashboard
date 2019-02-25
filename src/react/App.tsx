@@ -19,7 +19,7 @@ type State = Readonly<typeof AppState>;
 export class App extends Component<any, State> {
   readonly state: State = AppState;
 
-  handleModalDisplay = (event: React.MouseEvent<HTMLElement>): void => {
+  handleModalDisplay: Local.VoidFn = (event: React.MouseEvent<HTMLElement>): void => {
     if (!(event.target instanceof HTMLElement)) throw new Error(`Expecting a HTMLElement as the target of the event, got ${event.target} instead`);
     const { target } = event.target.dataset;
     this.setState({
@@ -27,7 +27,7 @@ export class App extends Component<any, State> {
     });
   }
 
-  hideModal = (event: MouseEvent<HTMLElement>): void => {
+  hideModal: Local.VoidFn = (event: MouseEvent<HTMLElement>): void => {
     if (!(event.target instanceof HTMLElement)) throw new Error(`Expecting a HTMLElement as the target of the event, got ${event.target} instead`);
 
     const targetModalClass = ['modal-wrapper', 'btn--close'];

@@ -20,7 +20,7 @@ type State = Readonly<typeof initialState>
 export class AppFragController extends Component<any, State> {
   readonly state: State = initialState;
 
-  handleModalDisplay = (event: React.MouseEvent<HTMLElement>): void => {
+  handleModalDisplay: Local.VoidFn = (event: React.MouseEvent<HTMLElement>): void => {
     if (!(event.target instanceof HTMLElement)) {
       throw new Error(`
         Expecting a HTMLElement as the target of the event, got ${event.target} instead

@@ -2,7 +2,6 @@ import React ,{ Component, ReactElement } from 'react';
 import { isTypedObj, isFunc, isPrimative } from '../../../helper/typeCheck';
 import { Field } from './Field/Field';
 import { Button } from '../../base/Button/Button';
-import { any } from 'prop-types';
 
 //TODO Make the keys for state settable by the user
 
@@ -23,29 +22,35 @@ export class Form extends Component<Local.FormProps, State> {
 
   readonly state: State = initialState;
 
-  renderChildren = (): (ReactElement<any, any> | null)[] | ReactElement<any, any> | null => {
+  private mapChildren = (child: Local.FieldTemplate | ReactElement<any>, index: number)
+    : ReactElement<any, any> | null => {
+
+    const { handleChangeFn } = this.props;
+    if (React.isValidElement(child)) return child;
+
+    if (isTypedObj(child, 'name') && isTypedObj(child, 'type')) {
+      const { type, name, noLabel } = child as Local.FieldTemplate;
+      return (
+        <Field
+          key={index}
+          type={type}
+          name={name}
+          noLabel={noLabel ? noLabel : false}
+          value={this.state[`${name}`]}
+          handleChangeFn={handleChangeFn ? handleChangeFn : this.handleFormChangeDefault}
+        />
+        )
+    } else {
+      return null
+    }
+  }
+
+  renderChildren = (): Array< ReactElement<any, any> | null > | ReactElement<any, any> | null => {
     const { children, handleChangeFn } = this.props;
     if (children == null) throw new Error('Error expecting children');
     if (Array.isArray(children)) {
-      const toRender = (children as Local.ChildrenArray).map((child: Local.FieldTemplate | ReactElement<any>, index: number): ReactElement<any, any> | null=> {
-        if (React.isValidElement(child)) return child;
-
-        if (isTypedObj(child, 'name') && isTypedObj(child, 'type')) {
-          const { type, name, noLabel } = child as Local.FieldTemplate;
-          return (
-            <Field
-              key={index}
-              type={type}
-              name={name}
-              noLabel={noLabel ? noLabel : false}
-              value={this.state[`${name}`]}
-              handleChangeFn={handleChangeFn ? handleChangeFn : this.handleFormChangeDefault}
-            />
-            )
-        } else {
-          return null
-        }
-      });
+      const toRender = (children as Local.ChildrenArray)
+        .map(this.mapChildren);
       return toRender;
     } else {
       if (React.isValidElement(children)) return children;
@@ -65,7 +70,7 @@ export class Form extends Component<Local.FormProps, State> {
     }
   }
 
-  handleFormChangeDefault = (event: React.ChangeEvent<HTMLInputElement>): void => {
+  handleFormChangeDefault: Local.VoidFn = (event: React.ChangeEvent<HTMLInputElement>): void => {
     const { name, value }: { name: string, value: string } = event.target;
     if (Object.keys(this.state).includes(name)){
       this.setState({

@@ -3,21 +3,26 @@ import { storiesOf } from '@storybook/react';
 
 import { Heading } from '../react/components/base/Heading/Heading';
 import { Paragraph } from '../react/components/base/Paragraph/Paragraph';
-import { Button } from '../react/components/base/Button/Button';
 
 import { Card } from '../react/components/presentational/Card/Card';
+import { ListItem } from '../react/components/presentational/List/ListItem/ListItem';
 import { Modal } from '../react/components/presentational/ModalController/Modal/Modal';
 
 
 import { Dash } from '../react/components/presentational/Dash/Dash';
+import { List } from '../react/components/presentational/List/List';
 import { ModalController } from '../react/components/presentational/ModalController/ModalController';
 import { AppFragController } from '../react/components/presentational/ModalController/AppFragController';
 
 import { AddCard } from '../react/components/app-specific/AddCard';
 
-
-// NOTE Dummy Functions
-
+const cssCenter = {
+  height: '100vh',
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  background: 'rgb(255, 185, 55)'
+}
 
 const sayHi = (event: React.MouseEvent<HTMLInputElement>) => {
   console.log('hi');
@@ -122,6 +127,26 @@ storiesOf('Presentational Components/ Dash', module)
     )
   });
 
+storiesOf('Presentational Components/ Lists', module)
+  .add('a basic list', () => {
+    return (
+      <div
+        style={cssCenter}
+      >
+        <List
+          listType={'ul'}
+        >
+          {[
+            'hi',
+            'hello',
+            'konichiwa',
+            'hola'
+            ]}
+        </List>
+      </div>
+    )
+  });
+
 storiesOf('Presentational Components/ Modal', module)
   .add('a basic modal', () => {
     return (
@@ -134,12 +159,6 @@ storiesOf('Presentational Components/ Modal', module)
       />
     )
   });
-
-
-  const generalStyling = {
-    background: 'rgb(180,255,90)',
-    height: '100vh'
-  }
 
 
   storiesOf('Presentational Components/ ModalController', module)
@@ -155,9 +174,7 @@ storiesOf('Presentational Components/ Modal', module)
             handleCloseFn={null}
             toDisplay='BASIC'
           />
-          <section
-            style={generalStyling}
-          >
+          <section>
             <Paragraph>
             beyond what I'm trying to accomplish for v0.5.0. It probably will be added in at some point though as copy and pasting in the text into the relevant secti
             </Paragraph>

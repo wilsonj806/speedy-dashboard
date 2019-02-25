@@ -6,7 +6,7 @@ import './Button.css';
 
 export const Button = (props: Local.ButtonProps): ReactElement<any, any> => {
   const { type, innerText, isHTMLInputSubmit, handleClickFn, target } = props;
-  if (handleClickFn == null) throw new Error('Error')
+
   if (isHTMLInputSubmit === true ) {
     return(
       <input

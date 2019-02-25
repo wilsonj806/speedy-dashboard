@@ -26,6 +26,7 @@ declare namespace LocalTypes {
    */
 
   type Modals = 'INFO' | 'ADD' | 'BASIC'
+  type ListTypes = 'ul' | 'ol' // | 'dl'
   type InputTypes = 'text' | 'number' | 'radio' | 'checkbox'
   type ChildrenArray = Array<ReactElement<any, any> | FieldTemplate>
 
@@ -84,7 +85,7 @@ declare namespace LocalTypes {
     innerText          : string | null
     isHTMLInputSubmit ?: boolean
     children          ?: React.ReactNode
-    handleClickFn      : VoidFn
+    handleClickFn     ?: VoidFn
     target            ?: string
   }
 
@@ -115,7 +116,7 @@ declare namespace LocalTypes {
   interface DashProps {
     type              ?: string
     AddCard            : React.ReactElement<any, any> | null
-    children           : React.ReactNode | null
+    children           : React.ReactElement<any, any> | null | React.ReactElement<any, any>[]
     handleCardCloseFn ?: any
   }
 
@@ -128,6 +129,18 @@ declare namespace LocalTypes {
     contentModifier ?: string
   }
 
+  interface ListProps {
+    type ?: string
+    listType : ListTypes
+    children : ReactNode
+  }
+  interface FormProps {
+    type           ?: string
+    handleSubmitFn  : VoidFn
+    handleChangeFn ?: any
+    children       ?: FieldTemplate | ReactElement<any, any> | ChildrenArray
+  }
+
   interface ModalControllerProps {
     id           ?: string
     renderCards   : RenderCards
@@ -136,12 +149,6 @@ declare namespace LocalTypes {
     toDisplay    ?: Modals | null
   }
 
-  interface FormProps {
-    type           ?: string
-    handleSubmitFn  : VoidFn
-    handleChangeFn ?: any
-    children       ?: FieldTemplate | ReactElement<any, any> | ChildrenArray
-  }
   interface AddModalProps {
     id             ?: string
     renderCards     : RenderCards
