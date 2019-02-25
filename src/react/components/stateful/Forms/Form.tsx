@@ -5,8 +5,6 @@ import { Button } from '../../base/Button/Button';
 
 //TODO Make the keys for state settable by the user
 
-// REVIEW Technically don't need State for Field so figure out if its worth having at all
-
 const initialState: Local.BasicObj = {
   ['task']     : '',
   ['priority'] : ''
@@ -70,7 +68,7 @@ export class Form extends Component<Local.FormProps, State> {
     }
   }
 
-  handleFormChangeDefault: Local.VoidFn = (event: React.ChangeEvent<HTMLInputElement>): void => {
+  private handleFormChangeDefault: Local.VoidFn = (event: React.ChangeEvent<HTMLInputElement>): void => {
     const { name, value }: { name: string, value: string } = event.target;
     if (Object.keys(this.state).includes(name)){
       this.setState({

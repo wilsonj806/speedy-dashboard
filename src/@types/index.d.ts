@@ -1,5 +1,3 @@
-import { Children } from "react";
-import { any } from "prop-types";
 
 // Type Declarations for the Speedy-Dashboard project
 // Project repo: https://github.com/wilsonj806/speedy-dashboard
@@ -7,6 +5,8 @@ import { any } from "prop-types";
 
 // tslint:disable-next-line:export-just-namespace
 /// <reference types="react" />
+
+import { ReactElement, ReactNode } from "react";
 
 export = LocalTypes;
 export as namespace Local;
@@ -68,13 +68,14 @@ declare namespace LocalTypes {
 
   interface ListItemProps extends BasicObj {
     type ?: string
-    children : ReactElement<any, any> | ReactElement<any, any>[]
+    children : React.ReactNode | React.ReactNode[]
   }
 
   interface FieldProps {
+    id             ?: string
     type            : InputTypes
     name            : string
-    handleChangeFn  : VoidFn
+    handleChangeFn ?: VoidFn
     noLabel        ?: boolean
     value          ?: string
   }
@@ -168,6 +169,11 @@ declare namespace LocalTypes {
 
   interface InfoButtonProps {
     handleDisplayFn : any | null
+  }
+
+  interface TodoCardProps {
+    handleChangeFn : VoidFn
+    handleSubmitFn : VoidFn
   }
 
   /** NOTE State related

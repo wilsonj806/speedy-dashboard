@@ -128,13 +128,31 @@ storiesOf('Presentational Components/ Dash', module)
   });
 
 storiesOf('Presentational Components/ Lists', module)
-  .add('a basic list', () => {
+  .add('a basic unordered list', () => {
     return (
       <div
         style={cssCenter}
       >
         <List
           listType={'ul'}
+        >
+          {[
+            'hi',
+            'hello',
+            'konichiwa',
+            'hola'
+            ]}
+        </List>
+      </div>
+    )
+  })
+  .add('a basic ordered list', () => {
+    return (
+      <div
+        style={cssCenter}
+      >
+        <List
+          listType={'ol'}
         >
           {[
             'hi',

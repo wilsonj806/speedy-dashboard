@@ -8,7 +8,8 @@ export const Field = (props: Local.FieldProps): ReactElement<any, any> => {
       Error expecting a Function for handleChangeFn, got ${handleChangeFn} instead
     `)
     if (noLabel !== true) {
-      const labelText = capitalizeString(name);
+      const checkType = (type === 'radio') ? value : name;
+      const labelText = capitalizeString(checkType!);
       return(
         <>
           <label

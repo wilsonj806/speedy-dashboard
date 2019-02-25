@@ -8,7 +8,7 @@ export class Card extends Component<Local.CardProps> {
     if (!children) throw new Error('Erorr expecting children elements');
       const { header, content, media, action } = children;
       return(
-        <div
+        <section
           className={`card ${type ? `card--${type}` : ''}`}
           id={id}
         >
@@ -16,7 +16,7 @@ export class Card extends Component<Local.CardProps> {
           {media ? <div className='card__media'>{media}</div> : null}
           {content ? <div className='card__content'>{content}</div> : null}
           {action ? <div className='card__actions'>{action}</div> : null}
-        </div>
+        </section>
       )
   }
 }

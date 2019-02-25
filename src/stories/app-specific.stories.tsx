@@ -9,6 +9,7 @@ import { AddModal } from '../react/components/app-specific/AddModal/AddModal';
 import { AppFragAdd } from '../react/components/app-specific/AddModal/AppFragAdd';
 import { InfoModal } from '../react/components/app-specific/InfoModal/InfoModal';
 import { AppFragInfo } from '../react/components/app-specific/InfoModal/AppFragInfo';
+import { ToDoCard } from '../react/components/app-specific/ToDoCard/ToDoCard';
 
 // NOTE Dummy Functions
 
@@ -99,3 +100,12 @@ storiesOf('App Specific/ Info Modal', module)
     )
   });
 
+storiesOf('App Specific/ To Do Card', module)
+  .add('To Do Card', () => {
+    return (
+      <ToDoCard
+        handleChangeFn={sayHi}
+        handleSubmitFn={sayHi}
+      />
+    )
+  })
