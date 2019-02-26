@@ -1,6 +1,7 @@
 import React, {ReactNode} from 'react';
 import { storiesOf } from '@storybook/react';
 
+import { Field } from '../react/components/stateful/Forms/Field/Field';
 import { Heading } from '../react/components/base/Heading/Heading';
 import { Paragraph } from '../react/components/base/Paragraph/Paragraph';
 import { Button } from '../react/components/base/Button/Button';
@@ -21,18 +22,56 @@ const sayHi = (event: React.MouseEvent<HTMLInputElement>) => {
 };
 
 storiesOf('Stateful/ Form', module)
-  .add('Form', () => {
+  .add('A basic form', () => {
     return (
       <div style={cssCenter}>
         <Form
           handleSubmitFn={sayHi}
         >
-          {[
-            {
-              type: 'text',
-              name: 'task'
-            }
-          ]}
+            <Field
+              type='radio'
+              name='priority'
+              value='high'
+              />
+            <Field
+              type='radio'
+              name='priority'
+              value='medium'
+              />
+            <Field
+              type='radio'
+              name='priority'
+              value='low'
+              />
+        </Form>
+      </div>
+    )
+  })
+  .add('A form with a fieldset as a child', () => {
+    return (
+      <div style={cssCenter}>
+        <Form
+          handleSubmitFn={sayHi}
+          handleChangeFn={sayHi}
+        >
+          <fieldset>
+            <legend>Task Priority</legend>
+            <Field
+              type='radio'
+              name='priority'
+              value='high'
+              />
+            <Field
+              type='radio'
+              name='priority'
+              value='medium'
+              />
+            <Field
+              type='radio'
+              name='priority'
+              value='low'
+              />
+          </fieldset>
         </Form>
       </div>
     )

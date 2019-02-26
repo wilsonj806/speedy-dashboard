@@ -5,11 +5,12 @@ import { Info } from '../react/components/app-specific/Info';
 import { LoremCard } from '../react/components/app-specific/LoremCard';
 import { CatCard } from '../react/components/app-specific/CatCard';
 import { AddCard } from '../react/components/app-specific/AddCard';
+import { TodoCard } from '../react/components/app-specific/TodoCard/TodoCard';
 import { AddModal } from '../react/components/app-specific/AddModal/AddModal';
 import { AppFragAdd } from '../react/components/app-specific/AddModal/AppFragAdd';
 import { InfoModal } from '../react/components/app-specific/InfoModal/InfoModal';
 import { AppFragInfo } from '../react/components/app-specific/InfoModal/AppFragInfo';
-import { ToDoCard } from '../react/components/app-specific/ToDoCard/ToDoCard';
+import { AppFragTodo } from '../react/components/app-specific/TodoCard/AppFragTodo';
 
 // NOTE Dummy Functions
 
@@ -64,6 +65,23 @@ storiesOf('App Specific/ Cat Card', module)
     )
   });
 
+storiesOf('App Specific/ To Do Card', module)
+  .add('To Do Card', () => {
+    return (
+      <TodoCard
+        handleChangeFn={sayHi}
+        handleSubmitFn={sayHi}
+      />
+    )
+  })
+  .add('App fragment', () => {
+    return (
+      <AppFragTodo
+
+      />
+    )
+  })
+
 storiesOf('App Specific/ Add More Cards Modal', module)
   .add('Basic Add More Dialog', () => {
     return (
@@ -100,12 +118,3 @@ storiesOf('App Specific/ Info Modal', module)
     )
   });
 
-storiesOf('App Specific/ To Do Card', module)
-  .add('To Do Card', () => {
-    return (
-      <ToDoCard
-        handleChangeFn={sayHi}
-        handleSubmitFn={sayHi}
-      />
-    )
-  })

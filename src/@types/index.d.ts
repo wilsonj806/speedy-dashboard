@@ -28,7 +28,6 @@ declare namespace LocalTypes {
   type Modals = 'INFO' | 'ADD' | 'BASIC'
   type ListTypes = 'ul' | 'ol' // | 'dl'
   type InputTypes = 'text' | 'number' | 'radio' | 'checkbox'
-  type ChildrenArray = Array<ReactElement<any, any> | FieldTemplate>
 
   /** NOTE Interfaces
    *
@@ -52,13 +51,6 @@ declare namespace LocalTypes {
     media   ?: React.ReactElement<any>
     content  : React.ReactElement<any> | React.ReactElement<any>[] | null
     action  ?: React.ReactElement<any> | React.ReactElement<any>[]
-  }
-
-  interface FieldTemplate {
-    type     : Local.InputTypes
-    name     : string
-    noLabel ?: boolean
-    value   ?: any
   }
 
   /** NOTE React Element Props and related interfaces
@@ -139,7 +131,7 @@ declare namespace LocalTypes {
     type           ?: string
     handleSubmitFn  : VoidFn
     handleChangeFn ?: any
-    children       ?: FieldTemplate | ReactElement<any, any> | ChildrenArray
+    children       ?: | ReactElement<any, any> | ReactElement<any, any>[]
   }
 
   interface ModalControllerProps {
@@ -172,8 +164,8 @@ declare namespace LocalTypes {
   }
 
   interface TodoCardProps {
-    handleChangeFn : VoidFn
-    handleSubmitFn : VoidFn
+    handleChangeFn ?: VoidFn
+    handleSubmitFn ?: VoidFn
   }
 
   /** NOTE State related
