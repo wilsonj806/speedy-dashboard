@@ -13,6 +13,33 @@ Holds custom component styling */
   max-height: 15rem;
 }
 
+.priority {
+  margin: 0;
+  padding: 0;
+  height: 1rem;
+  width: 1rem;
+  border-radius: 0.5rem;
+}
+
+#todo {
+  height: 15rem;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: flex-start;
+  align-items: center;
+  flex-basis: 16rem;
+  flex-grow: 2;
+  flex-shrink: 0;
+}
+
+#todo > .card__content{
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
 #add-cards{
   max-width: 12rem;
   display: flex;

@@ -7,6 +7,7 @@ import { Paragraph } from '../react/components/base/Paragraph/Paragraph';
 import { Button } from '../react/components/base/Button/Button';
 import { Card } from '../react/components/presentational/Card/Card';
 import { Dash } from '../react/components/presentational/Dash/Dash';
+import { FormFancy } from '../react/components/stateful/Forms/FormFancy';
 import { Form } from '../react/components/stateful/Forms/Form';
 
 const cssCenter = {

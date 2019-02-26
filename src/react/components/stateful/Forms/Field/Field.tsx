@@ -3,8 +3,8 @@ import { capitalizeString } from '../../../../helper/helperUtils';
 
 
 export const Field = (props: Local.FieldProps): ReactElement<any, any> => {
-    const { type, name, noLabel, handleChangeFn, value } = props;
-    if (handleChangeFn == null) throw new Error(`
+    const { type, name, noLabel, handleChangeFn, handleClickFn, value } = props;
+    if (handleChangeFn == null && handleClickFn == null) throw new Error(`
       Error expecting a Function for handleChangeFn, got ${handleChangeFn} instead
     `)
     if (noLabel !== true) {
@@ -23,17 +23,19 @@ export const Field = (props: Local.FieldProps): ReactElement<any, any> => {
             type={`${type}`}
             name={`${name}`}
             value={value}
-            onChange={handleChangeFn}
-          />
+            onClick={handleClickFn ? handleClickFn : undefined}
+            onChange={handleChangeFn ? handleChangeFn : undefined}
+            />
         </>
       )
     }
     return(
-        <input
-          type={`${type}`}
-          name={`${name}`}
-          value={value}
-          onChange={handleChangeFn}
+      <input
+        type={`${type}`}
+        name={`${name}`}
+        value={value}
+        onClick={handleClickFn ? handleClickFn : undefined}
+          onChange={handleChangeFn ? handleChangeFn : undefined}
         />
     )
 }

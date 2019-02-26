@@ -67,7 +67,8 @@ declare namespace LocalTypes {
     id             ?: string
     type            : InputTypes
     name            : string
-    handleChangeFn ?: VoidFn
+    handleChangeFn ?: VoidFn | undefined
+    handleClickFn  ?: VoidFn | undefined
     noLabel        ?: boolean
     value          ?: string
   }
@@ -128,6 +129,7 @@ declare namespace LocalTypes {
     children : ReactNode
   }
   interface FormProps {
+    id             ?: string
     type           ?: string
     handleSubmitFn  : VoidFn
     handleChangeFn ?: any

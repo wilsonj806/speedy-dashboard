@@ -76,9 +76,9 @@ storiesOf('App Specific/ To Do Card', module)
   })
   .add('App fragment', () => {
     return (
-      <AppFragTodo
-
-      />
+      <div style={cssCenter}>
+        <AppFragTodo/>
+      </div>
     )
   })
 

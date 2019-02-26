@@ -35,30 +35,9 @@ export class TodoCard extends Component<Local.TodoCardProps, any> {
           content: (
             <>
             <Form
+              id='todo-form'
               handleSubmitFn={handleSubmitFn ? handleSubmitFn : sayHi}
             >
-              <fieldset>
-                <legend>Task Priority</legend>
-                <Field
-                  type='radio'
-                  name='priority'
-                  value='high'
-                  />
-                <Field
-                  type='radio'
-                  name='priority'
-                  value='medium'
-                  />
-                <Field
-                  type='radio'
-                  name='priority'
-                  value='low'
-                  />
-              </fieldset>
-              <Field
-                type='text'
-                name='task'
-              />
             </Form>
 
             <List
