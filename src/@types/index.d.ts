@@ -174,6 +174,13 @@ declare namespace LocalTypes {
     handleSubmitFn ?: VoidFn
   }
 
+  interface TodoEntryProps {
+    index          : string
+    task           : 'High' | 'Medium' | 'Low'
+    priority       : string
+    handleDeleteFn : VoidFn
+  }
+
   /** NOTE State related
    *
    *

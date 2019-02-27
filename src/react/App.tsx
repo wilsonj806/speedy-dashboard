@@ -9,7 +9,8 @@ import { ModalController } from './components/presentational/ModalController/Mod
 import { Info } from './components/app-specific/Info'
 import { AddCard } from './components/app-specific/AddCard'
 import { CatCard } from './components/app-specific/CatCard'
-import { TodoCard, renderTemplate } from './components/app-specific/TodoCard/TodoCard';
+import { TodoCard } from './components/app-specific/TodoCard/TodoCard';
+import { TodoEntry } from './components/app-specific/TodoCard/TodoEntry';
 import { LoremCard } from './components/app-specific/LoremCard'
 
 import { BasicCard, BasicCard2 } from './components/Placeholder'
@@ -48,12 +49,10 @@ export class App extends Component<any, State> {
     }
   }
 
-  handleSubmit = (state: Local.BasicObj): void => {
-    const { listEle } = this.state;
-    const arr = renderTemplate(state, listEle.length, this.handleEntryDelete);
+  handleSubmit = (childState: any): any => {
     this.setState((prevState: State) => {
       const { listEle } = prevState;
-      listEle.push(arr);
+      listEle.push(childState);
       return (
         {
           'listEle': listEle,
@@ -73,6 +72,20 @@ export class App extends Component<any, State> {
       })
     }
   }
+
+  renderTemplate = (val: Local.BasicObj, index: number): ReactElement<any> => {
+    const { task, priority } = val;
+    return (
+      <TodoEntry
+        key={index}
+        index={`${index}`}
+        task={task}
+        priority={priority}
+        handleDeleteFn={this.handleEntryDelete}
+      />
+    )
+  }
+
 
   toggleCardState = (event: MouseEvent<HTMLElement>): void => {
     if (event.target instanceof HTMLElement) {
@@ -128,10 +141,11 @@ export class App extends Component<any, State> {
         case 'todo':
           if (renderCards[key] === true) {
             const { listEle } = this.state
+            const toRender = listEle.length > 0 ? listEle.map(this.renderTemplate) : null;
             const Card = <TodoCard
               handleSubmitFn={this.handleSubmit}
             >
-            { listEle ? listEle : null }
+            { toRender }
             </TodoCard>
             ;
             childArr.push(Card);

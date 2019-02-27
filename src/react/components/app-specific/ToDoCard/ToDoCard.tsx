@@ -3,7 +3,6 @@ import React, { Component, ReactElement } from 'react';
 import { Field } from '../../stateful/Forms/Field/Field';
 import { Heading } from '../../base/Heading/Heading';
 import { Button } from '../../base/Button/Button';
-import { Paragraph } from '../../base/Paragraph/Paragraph';
 
 import { Card } from '../../presentational/Card/Card';
 import { List } from '../../presentational/List/List';
@@ -17,7 +16,7 @@ const sayHi = () => console.warn('Expecting a function');
 class TodoCard extends Component<Local.TodoCardProps, any> {
 
   render = (): ReactElement<any, any> => {
-    const { children, handleChangeFn, handleSubmitFn } = this.props;
+    const { children, handleSubmitFn } = this.props;
     const length = Array.isArray(children) ? children.length : null;
     const toRender = children ? children : 'Add some tasks!';
     return (
@@ -51,8 +50,8 @@ class TodoCard extends Component<Local.TodoCardProps, any> {
 
             { length !== 0 ? (
               <List
-              type='todo'
-              listType='ul'
+                type='todo'
+                listType='ul'
               >
                 {toRender}
               </List>
@@ -65,42 +64,4 @@ class TodoCard extends Component<Local.TodoCardProps, any> {
   }
 }
 
-const renderTemplate = (val: Local.BasicObj, index: number, handleClick: Local.VoidFn): Array<ReactElement<any>> => {
-  const { task, priority } = val;
-  const flex = {
-    display: 'flex',
-    flexFlow: 'row nowrap',
-    justifyContent: 'flex-start',
-    alignItems: 'baseline',
-    marginLeft: '0.5rem',
-    width: '5rem'
-  }
-  const priorityDiv = (
-    <div
-      key={0}
-      style={flex}
-    >
-      <div className={`priority priority--${priority}`}></div>
-      <span>{priority}</span>
-    </div>
-  );
-  const deleteBtn = (
-    <Button
-      key={1}
-      type='danger'
-      target={index}
-      innerText='Delete'
-      handleClickFn={handleClick}
-    />
-  )
-  const prgh = (
-    <Paragraph
-      key={2}
-      type='todo'
-    >{ task }
-    </Paragraph>
-  );
-  return [priorityDiv, prgh, deleteBtn];
-}
-
-export { TodoCard, renderTemplate}
+export { TodoCard }
