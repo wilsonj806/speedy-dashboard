@@ -61,13 +61,13 @@ export class AppFragTodo extends Component<any, State> {
   }
 
   render = (): ReactElement<any, any> => {
-    const toRender = null;
+    const { listEle } = this.state
     return (
       <div>
         <TodoCard
           handleSubmitFn={ this.handleSubmit }
         >
-          {toRender}
+          {listEle}
         </TodoCard>
       </div>
     )

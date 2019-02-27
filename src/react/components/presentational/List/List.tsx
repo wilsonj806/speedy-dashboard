@@ -9,9 +9,10 @@ export class List extends Component<Local.ListProps, any> {
   renderChildren = (): ReactElement<any, any> | ReactElement<any, any>[] => {
     const { children } = this.props;
     if (children instanceof Array) {
-      const toRender = children.map((child: any): ReactElement<any, any> => {
+      const toRender = children.map((child: any, index: number): ReactElement<any, any> => {
         return (
           <ListItem
+            key={index}
           >
             {child}
           </ListItem>

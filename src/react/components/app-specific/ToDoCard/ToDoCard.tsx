@@ -40,11 +40,14 @@ export class TodoCard extends Component<Local.TodoCardProps, any> {
             >
             </Form>
 
-            <List
+            { children.length > 0 ? (
+              <List
+              type='todo'
               listType='ul'
             >
               {toRender}
             </List>
+            ) : null}
             </>
           )
         }}

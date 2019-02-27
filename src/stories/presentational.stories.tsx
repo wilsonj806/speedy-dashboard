@@ -45,7 +45,7 @@ const BasicCard = (
   </Card>
 )
 
-storiesOf('Presentational Components/ Card', module)
+storiesOf('Presentational/ Card', module)
   .add('basic card', () => {
     return (
       <Card
@@ -70,7 +70,7 @@ storiesOf('Presentational Components/ Card', module)
     )
 });
 
-storiesOf('Presentational Components/ Dash', module)
+storiesOf('Presentational/ Dash', module)
   .add('dash that should throw', () => {
     return (
       <Dash
@@ -127,7 +127,7 @@ storiesOf('Presentational Components/ Dash', module)
     )
   });
 
-storiesOf('Presentational Components/ Lists', module)
+storiesOf('Presentational/ Lists', module)
   .add('a basic unordered list', () => {
     return (
       <div
@@ -165,7 +165,7 @@ storiesOf('Presentational Components/ Lists', module)
     )
   });
 
-storiesOf('Presentational Components/ Modal', module)
+storiesOf('Presentational/ Modal', module)
   .add('a basic modal', () => {
     return (
       <Modal
@@ -179,7 +179,7 @@ storiesOf('Presentational Components/ Modal', module)
   });
 
 
-  storiesOf('Presentational Components/ ModalController', module)
+  storiesOf('Presentational/ ModalController', module)
     .add('modal controller no parent state', () => {
       return(
         <>

@@ -60,6 +60,7 @@ declare namespace LocalTypes {
 
   interface ListItemProps extends BasicObj {
     type ?: string
+    index ?: number
     children : React.ReactNode | React.ReactNode[]
   }
 
@@ -71,6 +72,7 @@ declare namespace LocalTypes {
     handleClickFn  ?: VoidFn | undefined
     noLabel        ?: boolean
     value          ?: string
+    required       ?: boolean
   }
 
   interface ButtonProps {

@@ -36,37 +36,44 @@ export class Form extends Component<Local.FormProps, State> {
   submitForm: Local.VoidFn = (event: React.MouseEvent<HTMLInputElement>): void => {
     event.preventDefault();
     const { handleSubmitFn } = this.props;
+    // check to make sure Form has all the data required for submission
+    if (Object.values(this.state).some((val: any) => val === '')) return;
     handleSubmitFn(this.state);
-    this.setState(()=> {
-      return initialState
+    this.setState((prevState: State)=> {
+      return {
+        ...initialState,
+        priority: prevState.priority
+      }
     });
   }
 
   render = (): ReactElement<any, any> => {
     const { type, id, handleChangeFn } = this.props
-    // const toRender = this.renderChildren();
     return (
       <form
-        id={`${id ? id: ''}`}
-        className={`form ${type ? `form--${type}` : ''}`}
+        id={`${id ? id: '' }`}
+        className={`form ${ type ? `form--${ type }` : '' }`}
       >
         <fieldset>
           <legend>Task Priority</legend>
           <Field
             type='radio'
             name='priority'
+            required={ true }
             value='High'
             handleClickFn={ this.handleFormChangeDefault }
             />
           <Field
             type='radio'
             name='priority'
+            required={ true }
             value='Medium'
             handleClickFn={ this.handleFormChangeDefault }
             />
           <Field
             type='radio'
             name='priority'
+            required={ true }
             value='Low'
             handleClickFn={ this.handleFormChangeDefault }
             />
@@ -74,13 +81,14 @@ export class Form extends Component<Local.FormProps, State> {
         <Field
           type='text'
           name='task'
+          required={ true }
           value={ this.state.task }
           handleChangeFn={ this.handleFormChangeDefault }
           />
         <Button
           type='submit'
-          isHTMLInputSubmit={true}
-          innerText={null}
+          isHTMLInputSubmit={ true }
+          innerText={ null }
           handleClickFn={ this.submitForm }>
         </Button>
       </form>

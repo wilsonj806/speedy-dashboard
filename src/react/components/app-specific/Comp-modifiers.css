@@ -20,24 +20,40 @@ Holds custom component styling */
   width: 1rem;
   border-radius: 0.5rem;
 }
+.priority--High{
+  background: #F44336;
+}
+.priority--Medium{
+  background:#FFEB3B;
+}
+.priority--Low{
+  background: #4CAF50;
+}
 
 #todo {
   height: 15rem;
   display: flex;
-  flex-flow: column nowrap;
+  flex-flow: row wrap;
   justify-content: flex-start;
   align-items: center;
-  flex-basis: 16rem;
-  flex-grow: 2;
-  flex-shrink: 0;
+
+}
+
+#todo-form{
+  margin: 0 10px;
 }
 
 #todo > .card__content{
+  min-width: 16rem;
   display: flex;
-  flex-flow: column nowrap;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
+  flex-flow: row nowrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.ul--todo{
+  padding-left: .5rem;
+  list-style: none;
 }
 
 #add-cards{

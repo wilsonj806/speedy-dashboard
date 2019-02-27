@@ -26,7 +26,7 @@ storiesOf('Stateful/ Form', module)
   .add('A basic form', () => {
     return (
       <div style={cssCenter}>
-        <Form
+        <FormFancy
           handleSubmitFn={sayHi}
         >
             <Field
@@ -44,14 +44,14 @@ storiesOf('Stateful/ Form', module)
               name='priority'
               value='low'
               />
-        </Form>
+        </FormFancy>
       </div>
     )
   })
   .add('A form with a fieldset as a child', () => {
     return (
       <div style={cssCenter}>
-        <Form
+        <FormFancy
           handleSubmitFn={sayHi}
           handleChangeFn={sayHi}
         >
@@ -73,7 +73,7 @@ storiesOf('Stateful/ Form', module)
               value='low'
               />
           </fieldset>
-        </Form>
+        </FormFancy>
       </div>
     )
   });
