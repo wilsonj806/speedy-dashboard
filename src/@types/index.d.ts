@@ -73,6 +73,8 @@ declare namespace LocalTypes {
     noLabel        ?: boolean
     value          ?: string
     required       ?: boolean
+    inputName      ?: string
+    labelName      ?: string
   }
 
   interface ButtonProps {

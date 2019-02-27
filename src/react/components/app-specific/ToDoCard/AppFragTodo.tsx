@@ -3,6 +3,7 @@ import React, { Component, ReactElement } from 'react';
 import { TodoCard } from './TodoCard';
 
 import { Button } from '../../base/Button/Button';
+import { Paragraph } from '../../base/Paragraph/Paragraph';
 
 import { List } from '../../presentational/List/List';
 import { ListItem } from '../../presentational/List/ListItem/ListItem';
@@ -29,22 +30,31 @@ export class AppFragTodo extends Component<any, State> {
       display: 'flex',
       flexFlow: 'row nowrap',
       justifyContent: 'flex-start',
-      alignItems: 'center'
+      alignItems: 'baseline',
+      marginLeft: '0.5rem',
+      width: '5rem'
     }
     const priorityDiv = (
       <div
         style={flex}
       >
-        <div className={`priority priority--${priority}`}></div> {priority}
+        <div className={`priority priority--${priority}`}></div>
+        <span>{priority}</span>
       </div>
     );
     const deleteBtn = (
       <Button
         type='danger'
-        innerText='&times; Delete'
+        innerText='Delete'
       />
     )
-    const arr = [priorityDiv, task, deleteBtn];
+    const prgh = (
+    <Paragraph
+      type='todo'
+    >{ task }
+    </Paragraph>
+    );
+    const arr = [priorityDiv, prgh, deleteBtn];
     this.setState((prevState: State) => {
       const { listEle } = prevState;
       listEle.push(arr);
@@ -67,7 +77,7 @@ export class AppFragTodo extends Component<any, State> {
         <TodoCard
           handleSubmitFn={ this.handleSubmit }
         >
-          {listEle}
+          { listEle ? listEle : null }
         </TodoCard>
       </div>
     )

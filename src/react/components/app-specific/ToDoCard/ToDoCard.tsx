@@ -17,6 +17,7 @@ export class TodoCard extends Component<Local.TodoCardProps, any> {
 
   render = (): ReactElement<any, any> => {
     const { children, handleChangeFn, handleSubmitFn } = this.props;
+    const length = Array.isArray(children) ? children.length : null;
     const toRender = children ? children : 'Add some tasks!';
     return (
       <Card
@@ -40,14 +41,14 @@ export class TodoCard extends Component<Local.TodoCardProps, any> {
             >
             </Form>
 
-            { children.length > 0 ? (
+            { length !== 0 ? (
               <List
               type='todo'
               listType='ul'
-            >
-              {toRender}
-            </List>
-            ) : null}
+              >
+                {toRender}
+              </List>
+            ) : null }
             </>
           )
         }}

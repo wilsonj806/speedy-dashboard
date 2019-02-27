@@ -59,6 +59,7 @@ export class Form extends Component<Local.FormProps, State> {
           <Field
             type='radio'
             name='priority'
+            labelName='todo--radio'
             required={ true }
             value='High'
             handleClickFn={ this.handleFormChangeDefault }
@@ -66,6 +67,7 @@ export class Form extends Component<Local.FormProps, State> {
           <Field
             type='radio'
             name='priority'
+            labelName='todo--radio'
             required={ true }
             value='Medium'
             handleClickFn={ this.handleFormChangeDefault }
@@ -73,6 +75,7 @@ export class Form extends Component<Local.FormProps, State> {
           <Field
             type='radio'
             name='priority'
+            labelName='todo--radio'
             required={ true }
             value='Low'
             handleClickFn={ this.handleFormChangeDefault }
