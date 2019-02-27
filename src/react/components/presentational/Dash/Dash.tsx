@@ -5,13 +5,7 @@ import './Dash.css';
 
 import { Card } from '../Card/Card';
 
-/* NOTE Dash will NOT know its children ahead of time
-  <Dash/> will however, have some preset components passed in because they'll need to be there one way or another
- */
-
 /* NOTE AddMore Prop is for DIRECTLY adding in a <Card/> that will tell the main app to show a Modal interface for adding additional Cards in */
-
-const sayHi = () => console.log('hi');
 
 /* TODO Add something to handle the case of maximum number of cards rendered(probably in the form of a modal) */
 
@@ -28,12 +22,13 @@ const EmptyInd = (
 )
 
 export class Dash extends Component<Local.DashProps> {
-  render() {
-    const { type, children, AddCard } = this.props;
+  render = (): ReactElement<any, any> => {
+    const { type, children, AddCard, handleCardCloseFn } = this.props;
     if ((isTypedObj(AddCard, 'type')) &&(AddCard.type.name === 'AddCard')) {
       return (
         <section
           className={`dash ${type ? `dash--${type}` : ''}`}
+          onClick={handleCardCloseFn}
         >
           {children != null ? children : EmptyInd}
           {AddCard}
@@ -43,6 +38,7 @@ export class Dash extends Component<Local.DashProps> {
       return (
         <section
           className={`dash ${type ? `dash--${type}` : ''}`}
+          onClick={handleCardCloseFn}
         >
           {children != null ? children : EmptyInd}
         </section>

@@ -1,15 +1,15 @@
 import React ,{ ReactElement } from 'react';
 
-import './Paragraph.css'
+import '../List.css'
 
-export const Paragraph = (props: Local.ParagraphProps): ReactElement<any, any> => {
+export const ListItem = (props: Local.ListItemProps): ReactElement<any, any> => {
   const { children, type } = props;
   if (!children) throw new Error('Erorr expecting children elements');
   return (
-    <p
-      className={`prgh ${type ? `prgh--${type}` : ''}`}
+    <li
+      className={`list-item ${type ? `list-item--${type}` : ''}`}
     >
       {children}
-    </p>
+    </li>
   )
 }

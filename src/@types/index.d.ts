@@ -1,9 +1,12 @@
+
 // Type Declarations for the Speedy-Dashboard project
 // Project repo: https://github.com/wilsonj806/speedy-dashboard
 // Declarations by: Wilson Jiang
 
 // tslint:disable-next-line:export-just-namespace
 /// <reference types="react" />
+
+import { ReactElement, ReactNode } from "react";
 
 export = LocalTypes;
 export as namespace Local;
@@ -22,21 +25,20 @@ declare namespace LocalTypes {
    *
    */
 
-  type Modals = 'HELP' | 'ADD' | 'BASIC'
+  type Modals = 'INFO' | 'ADD' | 'BASIC'
+  type ListTypes = 'ul' | 'ol' // | 'dl'
   type InputTypes = 'text' | 'number' | 'radio' | 'checkbox'
-  type BasicCard = {
-    header   : React.ReactElement<any> | React.ReactElement<any>[] | null,
-    media   ?: React.ReactChild,
-    content  : React.ReactElement<any> | React.ReactElement<any>[] | null,
-    action  ?: React.ReactElement<any> | React.ReactElement<any>[]
-  }
 
-  /** Interfaces
+  /** NOTE Interfaces
    *
    *
    */
 
   interface BasicObj { [key: string]: any}
+
+  interface VoidFn extends Function {
+    (val: any): void
+  }
 
   interface FetchParam {
     method  : Local.AccessTypes
@@ -44,17 +46,33 @@ declare namespace LocalTypes {
     header ?: object
   }
 
-  /** React Element Props and related interfaces
+  interface BasicCard {
+    header   : React.ReactElement<any> | React.ReactElement<any>[] | null
+    media   ?: React.ReactElement<any>
+    content  : React.ReactElement<any> | React.ReactElement<any>[] | null
+    action  ?: React.ReactElement<any> | React.ReactElement<any>[]
+  }
+
+  /** NOTE React Element Props and related interfaces
    *
    *
    */
 
+  interface ListItemProps extends BasicObj {
+    type ?: string
+    index ?: number
+    children : React.ReactNode | React.ReactNode[]
+  }
+
   interface FieldProps {
+    id             ?: string
     type            : InputTypes
     name            : string
-    handleChangeFn ?: any
+    handleChangeFn ?: VoidFn | undefined
+    handleClickFn  ?: VoidFn | undefined
     noLabel        ?: boolean
     value          ?: string
+    required       ?: boolean
   }
 
   interface ButtonProps {
@@ -63,7 +81,7 @@ declare namespace LocalTypes {
     innerText          : string | null
     isHTMLInputSubmit ?: boolean
     children          ?: React.ReactNode
-    handleClickFn     ?: any
+    handleClickFn     ?: VoidFn
     target            ?: string
   }
 
@@ -92,9 +110,32 @@ declare namespace LocalTypes {
   }
 
   interface DashProps {
-    type    ?: string
-    AddCard  : React.ReactElement<any, any> | null
-    children : React.ReactNode | null
+    type              ?: string
+    AddCard            : React.ReactElement<any, any> | null
+    children           : React.ReactElement<any, any> | null | React.ReactElement<any, any>[]
+    handleCardCloseFn ?: any
+  }
+
+  interface ModalProps {
+    id               : string
+    type             : string,
+    headerText       : string
+    children         : ReactNode
+    handleCloseFn   ?: any
+    contentModifier ?: string
+  }
+
+  interface ListProps {
+    type ?: string
+    listType : ListTypes
+    children : ReactNode
+  }
+  interface FormProps {
+    id             ?: string
+    type           ?: string
+    handleSubmitFn  : VoidFn
+    handleChangeFn ?: any
+    children       ?: | ReactElement<any, any> | ReactElement<any, any>[]
   }
 
   interface ModalControllerProps {
@@ -113,11 +154,25 @@ declare namespace LocalTypes {
     cardsToDisplay ?: CardsToDisplay
   }
 
+  interface InfoModalProps {
+    id             ?: string
+    handleCloseFn  ?: any
+  }
+
   interface AddCardProps {
     handleAddFn : any
   }
 
-  /** State related
+  interface InfoButtonProps {
+    handleDisplayFn : any | null
+  }
+
+  interface TodoCardProps {
+    handleChangeFn ?: VoidFn
+    handleSubmitFn ?: VoidFn
+  }
+
+  /** NOTE State related
    *
    *
    */
@@ -126,7 +181,7 @@ declare namespace LocalTypes {
     basic1 ?: boolean
     basic2 ?: boolean
     lorem  ?: boolean
-    cat  ?: boolean
+    cat    ?: boolean
   }
 }
 

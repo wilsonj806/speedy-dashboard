@@ -1,15 +1,16 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 
+import { Info } from '../react/components/app-specific/Info';
 import { LoremCard } from '../react/components/app-specific/LoremCard';
 import { CatCard } from '../react/components/app-specific/CatCard';
 import { AddCard } from '../react/components/app-specific/AddCard';
+import { TodoCard } from '../react/components/app-specific/TodoCard/TodoCard';
 import { AddModal } from '../react/components/app-specific/AddModal/AddModal';
 import { AppFragAdd } from '../react/components/app-specific/AddModal/AppFragAdd';
-
-import { App } from '../react/App';
-
-import '../react/stylesheets/index.css';
+import { InfoModal } from '../react/components/app-specific/InfoModal/InfoModal';
+import { AppFragInfo } from '../react/components/app-specific/InfoModal/AppFragInfo';
+import { AppFragTodo } from '../react/components/app-specific/TodoCard/AppFragTodo';
 
 // NOTE Dummy Functions
 
@@ -23,6 +24,17 @@ const cssCenter = {
   alignItems: 'center',
   background: 'rgb(255, 185, 55)'
 }
+
+storiesOf('App Specific/ Help Button', module)
+  .add('Help Button', () => {
+    return (
+      <div style={cssCenter}>
+        <Info
+          handleDisplayFn={sayHi}
+        />
+      </div>
+    )
+  });
 
 storiesOf('App Specific/ Add Cards', module)
   .add('Add Cards', () => {
@@ -53,7 +65,24 @@ storiesOf('App Specific/ Cat Card', module)
     )
   });
 
-storiesOf('App Specific/ Add More Cards Dialog', module)
+storiesOf('App Specific/ To Do Card', module)
+  .add('To Do Card', () => {
+    return (
+      <TodoCard
+        handleChangeFn={sayHi}
+        handleSubmitFn={sayHi}
+      />
+    )
+  })
+  .add('App fragment', () => {
+    return (
+      <div style={cssCenter}>
+        <AppFragTodo/>
+      </div>
+    )
+  })
+
+storiesOf('App Specific/ Add More Cards Modal', module)
   .add('Basic Add More Dialog', () => {
     return (
       <AddModal
@@ -73,10 +102,19 @@ storiesOf('App Specific/ Add More Cards Dialog', module)
     )
   });
 
-storiesOf('App Specific/ App', module)
-  .add('App', () => {
+storiesOf('App Specific/ Info Modal', module)
+  .add('Basic Info Dialog', () => {
     return (
-      <App
+      <InfoModal
+
       />
     )
   })
+  .add('App fragment with Info', () => {
+    return (
+      <AppFragInfo
+
+      />
+    )
+  });
+

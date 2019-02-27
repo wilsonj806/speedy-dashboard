@@ -27,10 +27,7 @@ const AppState: Local.BasicObj = {
     basic2: false,
     lorem: false,
     cat: false,
-  },
-  loremStr: null,
-  catFact: null,
-  catImg: null,
+  }
 }
 
 export {

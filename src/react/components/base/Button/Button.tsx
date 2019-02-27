@@ -1,12 +1,13 @@
-import React ,{ Component, ReactNode, ReactChild } from 'react';
+import React ,{ Component, ReactElement } from 'react';
 
 import './Button.css';
 
 // TODO Revise to be a Functional component
 
-export const Button = (props: Local.ButtonProps): JSX.Element => {
+export const Button = (props: Local.ButtonProps): ReactElement<any, any> => {
   const { type, innerText, isHTMLInputSubmit, handleClickFn, target } = props;
-  if (isHTMLInputSubmit === true && handleClickFn != null) {
+
+  if (isHTMLInputSubmit === true ) {
     return(
       <input
         className={`btn btn--submit`}

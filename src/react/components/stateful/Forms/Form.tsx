@@ -1,104 +1,95 @@
-import React ,{ Component, ReactNode, ReactElement, ReactNodeArray } from 'react';
-import { isTypedObj, isFunc } from '../../../helper/typeCheck';
-import { Field } from '../../base/Field/Field';
+import React ,{ Component, ReactElement } from 'react';
+import { isTypedObj, isFunc, isPrimative } from '../../../helper/typeCheck';
+import { Field } from './Field/Field';
 import { Button } from '../../base/Button/Button';
 
 //TODO Make the keys for state settable by the user
 
-// FIXME Below isn't DRY, find a way to export standard types and interfaces
-type InputTypes = 'text' | 'number' | 'radio' | 'checkbox'
-
-type FieldTemplate = {
-  type    : string
-  name    : string
-  noLabel?: boolean
-  value  ?: any
-}
-
-interface Props {
-  type          ?: string
-  handleSubmitFn : any
-  handleChangeFn?: any
-  children      ?: Array<FieldTemplate>
-}
-
-/* NOTE If <Form/> is to be reused, convert initialState into an Interface and let
-the user define the keys of State via Props */
-const initialState: { [key: string]: any } = {
-  task    : '',
+const initialState: Local.BasicObj = {
+  task: '',
   priority: ''
 }
 
 type State = Readonly<typeof initialState>;
 
-export class Form extends Component<Props, State>{
-  constructor(props: any) {
+export class Form extends Component<Local.FormProps, State> {
+  // NOTE this is for when Form is eventually extended to accept a prop for setting up custom/ user-submitted Form input names
+  constructor(props: Local.FormProps) {
     super(props);
   }
+
   readonly state: State = initialState;
 
-  renderChildren() {
-    const { children } = this.props;
-    if ((children == null)) throw new Error('Error, expecting children')
-    if (children instanceof  Array) {
-      const toRender  = children.map((child: any, index: number): ReactNode => {
-        if (isTypedObj(child, 'props')) return child;
-        const { handleChangeFn } = this.props;
-        const { type, name, noLabel } = child
-        return (
-          <Field
-            key={index}
-            type={type}
-            name={`${name}`}
-            value={this.state[`${name}`]}
-            noLabel={noLabel}
-            handleChangeFn={handleChangeFn ? handleChangeFn : this.handleFormChangeDefault}
-          />
-        )
-      });
-      return toRender;
-    }
-    throw new Error(`Error: Expecting an array of format:
-        ReactElement[]
-      OR
-        an array filled with FieldTemplate objects
-    `)
-  }
-
-  handleFormChangeDefault = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const {name, value}: {name: string, value: string} = event.target;
+  handleFormChangeDefault: Local.VoidFn = (event: React.ChangeEvent<HTMLInputElement>): void => {
+    const { name, value }: { name: string, value: string } = event.target;
     if (Object.keys(this.state).includes(name)){
       this.setState({
-        [name] : value
+          [name] : value
       } as Pick<State, keyof State>);
+      return;
     }
     else {
-      throw new Error('Error: Keys in State don\'t match');
+      throw new Error('Error: Keys in State don\'t match')
     }
   }
 
-  submitForm = (event: React.MouseEvent<HTMLInputElement>) => {
+  submitForm: Local.VoidFn = (event: React.MouseEvent<HTMLInputElement>): void => {
     event.preventDefault();
     const { handleSubmitFn } = this.props;
-    if (isFunc(handleSubmitFn) !== true) throw new Error('Error!: expecting this.props.handleSubmitFn to be a Function!');
+    // check to make sure Form has all the data required for submission
+    if (Object.values(this.state).some((val: any) => val === '')) return;
     handleSubmitFn(this.state);
-    this.setState(initialState);
+    this.setState((prevState: State)=> {
+      return {
+        ...initialState,
+        priority: prevState.priority
+      }
+    });
   }
 
-  render() {
-    const { children, type } = this.props
-    if (!children) throw new Error('Error expecting children')
-    const toRender = this.renderChildren();
+  render = (): ReactElement<any, any> => {
+    const { type, id, handleChangeFn } = this.props
     return (
       <form
-        className={`form ${type ? `form--${type}` : ''}`}
+        id={`${id ? id: '' }`}
+        className={`form ${ type ? `form--${ type }` : '' }`}
       >
-        {toRender}
+        <fieldset>
+          <legend>Task Priority</legend>
+          <Field
+            type='radio'
+            name='priority'
+            required={ true }
+            value='High'
+            handleClickFn={ this.handleFormChangeDefault }
+            />
+          <Field
+            type='radio'
+            name='priority'
+            required={ true }
+            value='Medium'
+            handleClickFn={ this.handleFormChangeDefault }
+            />
+          <Field
+            type='radio'
+            name='priority'
+            required={ true }
+            value='Low'
+            handleClickFn={ this.handleFormChangeDefault }
+            />
+        </fieldset>
+        <Field
+          type='text'
+          name='task'
+          required={ true }
+          value={ this.state.task }
+          handleChangeFn={ this.handleFormChangeDefault }
+          />
         <Button
           type='submit'
-          isHTMLInputSubmit={true}
-          innerText={null}
-          handleClickFn={this.submitForm}>
+          isHTMLInputSubmit={ true }
+          innerText={ null }
+          handleClickFn={ this.submitForm }>
         </Button>
       </form>
     )

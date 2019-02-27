@@ -13,6 +13,49 @@ Holds custom component styling */
   max-height: 15rem;
 }
 
+.priority {
+  margin: 0;
+  padding: 0;
+  height: 1rem;
+  width: 1rem;
+  border-radius: 0.5rem;
+}
+.priority--High{
+  background: #F44336;
+}
+.priority--Medium{
+  background:#FFEB3B;
+}
+.priority--Low{
+  background: #4CAF50;
+}
+
+#todo {
+  height: 15rem;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-start;
+  align-items: center;
+
+}
+
+#todo-form{
+  margin: 0 10px;
+}
+
+#todo > .card__content{
+  min-width: 16rem;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.ul--todo{
+  padding-left: .5rem;
+  list-style: none;
+}
+
 #add-cards{
   max-width: 12rem;
   display: flex;
@@ -41,5 +84,25 @@ Holds custom component styling */
 }
 .btn--add-cards:active{
   background: var(--primaryActBlue);
+  box-shadow: 4px 4px 3px rgba(0, 0, 0, 0.1);
+}
+
+.btn--page-info{
+  position: absolute;
+  bottom: 3rem;
+  right: 3rem;
+  height: 3rem;
+  width: 3rem;
+  border-radius: 1.5rem;
+  background: var(--info);
+  font-size: 1.5rem;
+  font-weight: 500;
+  font-family: Helvetica, Arial, sans-serif;
+}
+.btn--page-info:hover{
+  background: var(--infoAct);
+}
+.btn--page-info:active{
+  background: var(--infoAct);
   box-shadow: 4px 4px 3px rgba(0, 0, 0, 0.1);
 }

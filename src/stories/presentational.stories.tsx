@@ -3,22 +3,26 @@ import { storiesOf } from '@storybook/react';
 
 import { Heading } from '../react/components/base/Heading/Heading';
 import { Paragraph } from '../react/components/base/Paragraph/Paragraph';
-import { Button } from '../react/components/base/Button/Button';
 
 import { Card } from '../react/components/presentational/Card/Card';
+import { ListItem } from '../react/components/presentational/List/ListItem/ListItem';
 import { Modal } from '../react/components/presentational/ModalController/Modal/Modal';
 
 
 import { Dash } from '../react/components/presentational/Dash/Dash';
+import { List } from '../react/components/presentational/List/List';
 import { ModalController } from '../react/components/presentational/ModalController/ModalController';
 import { AppFragController } from '../react/components/presentational/ModalController/AppFragController';
 
 import { AddCard } from '../react/components/app-specific/AddCard';
 
-import '../react/stylesheets/index.css';
-
-// NOTE Dummy Functions
-
+const cssCenter = {
+  height: '100vh',
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  background: 'rgb(255, 185, 55)'
+}
 
 const sayHi = (event: React.MouseEvent<HTMLInputElement>) => {
   console.log('hi');
@@ -41,7 +45,7 @@ const BasicCard = (
   </Card>
 )
 
-storiesOf('Presentational Components/ Card', module)
+storiesOf('Presentational/ Card', module)
   .add('basic card', () => {
     return (
       <Card
@@ -66,7 +70,7 @@ storiesOf('Presentational Components/ Card', module)
     )
 });
 
-storiesOf('Presentational Components/ Dash', module)
+storiesOf('Presentational/ Dash', module)
   .add('dash that should throw', () => {
     return (
       <Dash
@@ -123,7 +127,45 @@ storiesOf('Presentational Components/ Dash', module)
     )
   });
 
-storiesOf('Presentational Components/ Modal', module)
+storiesOf('Presentational/ Lists', module)
+  .add('a basic unordered list', () => {
+    return (
+      <div
+        style={cssCenter}
+      >
+        <List
+          listType={'ul'}
+        >
+          {[
+            'hi',
+            'hello',
+            'konichiwa',
+            'hola'
+            ]}
+        </List>
+      </div>
+    )
+  })
+  .add('a basic ordered list', () => {
+    return (
+      <div
+        style={cssCenter}
+      >
+        <List
+          listType={'ol'}
+        >
+          {[
+            'hi',
+            'hello',
+            'konichiwa',
+            'hola'
+            ]}
+        </List>
+      </div>
+    )
+  });
+
+storiesOf('Presentational/ Modal', module)
   .add('a basic modal', () => {
     return (
       <Modal
@@ -137,13 +179,7 @@ storiesOf('Presentational Components/ Modal', module)
   });
 
 
-  const generalStyling = {
-    background: 'rgb(180,255,90)',
-    height: '100vh'
-  }
-
-
-  storiesOf('Presentational Components/ ModalController', module)
+  storiesOf('Presentational/ ModalController', module)
     .add('modal controller no parent state', () => {
       return(
         <>
@@ -156,9 +192,7 @@ storiesOf('Presentational Components/ Modal', module)
             handleCloseFn={null}
             toDisplay='BASIC'
           />
-          <section
-            style={generalStyling}
-          >
+          <section>
             <Paragraph>
             beyond what I'm trying to accomplish for v0.5.0. It probably will be added in at some point though as copy and pasting in the text into the relevant secti
             </Paragraph>
