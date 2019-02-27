@@ -1,6 +1,6 @@
 import React, { Component, ReactElement } from 'react';
 
-import { TodoCard } from './TodoCard';
+import { TodoCard, renderTemplate } from './TodoCard';
 
 import { Button } from '../../base/Button/Button';
 import { Paragraph } from '../../base/Paragraph/Paragraph';
@@ -23,38 +23,8 @@ type State = Readonly<typeof initialState>
 export class AppFragTodo extends Component<any, State> {
   readonly state: State = initialState;
 
-  handleSubmit = (val: any): any => {
-    // NOTE or replace with object.entries so its not tied too much to implementation/ so its less brittle
-    const { task, priority } = val;
-    const flex = {
-      display: 'flex',
-      flexFlow: 'row nowrap',
-      justifyContent: 'flex-start',
-      alignItems: 'baseline',
-      marginLeft: '0.5rem',
-      width: '5rem'
-    }
-    const priorityDiv = (
-      <div
-        style={flex}
-      >
-        <div className={`priority priority--${priority}`}></div>
-        <span>{priority}</span>
-      </div>
-    );
-    const deleteBtn = (
-      <Button
-        type='danger'
-        innerText='Delete'
-      />
-    )
-    const prgh = (
-    <Paragraph
-      type='todo'
-    >{ task }
-    </Paragraph>
-    );
-    const arr = [priorityDiv, prgh, deleteBtn];
+  handleSubmit = (state: any): any => {
+    const arr = renderTemplate(state);
     this.setState((prevState: State) => {
       const { listEle } = prevState;
       listEle.push(arr);

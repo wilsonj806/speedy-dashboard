@@ -184,6 +184,7 @@ declare namespace LocalTypes {
     basic2 ?: boolean
     lorem  ?: boolean
     cat    ?: boolean
+    todo   ?: boolean
   }
 }
 
