@@ -1,4 +1,4 @@
-import React, { Component, ReactElement } from 'react';
+import React, { Component, ReactElement, MouseEvent } from 'react';
 
 import { TodoCard, renderTemplate } from './TodoCard';
 
@@ -24,7 +24,8 @@ export class AppFragTodo extends Component<any, State> {
   readonly state: State = initialState;
 
   handleSubmit = (state: any): any => {
-    const arr = renderTemplate(state);
+    const { listEle } = this.state;
+    const arr = renderTemplate(state, listEle.length, this.handleEntryDelete);
     this.setState((prevState: State) => {
       const { listEle } = prevState;
       listEle.push(arr);
@@ -36,8 +37,17 @@ export class AppFragTodo extends Component<any, State> {
     });
   }
 
-  handleEntryDelete = () => {
-    console.log('hi');
+  handleEntryDelete = (event: MouseEvent<HTMLButtonElement>) => {
+    const { listEle } = this.state;
+    if (event.target instanceof HTMLElement) {
+      const { target } = event.target.dataset;
+      const index = parseInt(target);
+      this.setState((prevState: State): State => {
+        const { listEle: prevList } = prevState;
+        prevList.splice(index, 1);
+        return {};
+      })
+    }
   }
 
   render = (): ReactElement<any, any> => {

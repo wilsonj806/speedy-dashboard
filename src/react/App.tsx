@@ -48,8 +48,9 @@ export class App extends Component<any, State> {
     }
   }
 
-  handleSubmit = (state: any): void => {
-    const arr = renderTemplate(state);
+  handleSubmit = (state: Local.BasicObj): void => {
+    const { listEle } = this.state;
+    const arr = renderTemplate(state, listEle.length, this.handleEntryDelete);
     this.setState((prevState: State) => {
       const { listEle } = prevState;
       listEle.push(arr);
@@ -61,8 +62,16 @@ export class App extends Component<any, State> {
     });
   }
 
-  handleEntryDelete = () => {
-    console.log('hi');
+  handleEntryDelete = (event: MouseEvent<HTMLButtonElement>) => {
+    if (event.target instanceof HTMLElement) {
+      const { target } = event.target.dataset;
+      const index = parseInt(target!);
+      this.setState((prevState: State): State => {
+        const { listEle: prevList } = prevState;
+        prevList.splice(index, 1);
+        return {};
+      })
+    }
   }
 
   toggleCardState = (event: MouseEvent<HTMLElement>): void => {

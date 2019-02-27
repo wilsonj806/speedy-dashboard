@@ -28,12 +28,14 @@ class TodoCard extends Component<Local.TodoCardProps, any> {
         {{
           header: ([
             <Heading
+              key={0}
               type='md'
               headingLvl={3}
-            >
+              >
               To Do Card
             </Heading>,
             <Button
+              key={1}
               type='close'
               target='todo'
               innerText='&times;'
@@ -63,7 +65,7 @@ class TodoCard extends Component<Local.TodoCardProps, any> {
   }
 }
 
-const renderTemplate = (val: Local.BasicObj): Array<ReactElement<any>> => {
+const renderTemplate = (val: Local.BasicObj, index: number, handleClick: Local.VoidFn): Array<ReactElement<any>> => {
   const { task, priority } = val;
   const flex = {
     display: 'flex',
@@ -75,6 +77,7 @@ const renderTemplate = (val: Local.BasicObj): Array<ReactElement<any>> => {
   }
   const priorityDiv = (
     <div
+      key={0}
       style={flex}
     >
       <div className={`priority priority--${priority}`}></div>
@@ -83,15 +86,19 @@ const renderTemplate = (val: Local.BasicObj): Array<ReactElement<any>> => {
   );
   const deleteBtn = (
     <Button
+      key={1}
       type='danger'
+      target={index}
       innerText='Delete'
+      handleClickFn={handleClick}
     />
   )
   const prgh = (
-  <Paragraph
-    type='todo'
-  >{ task }
-  </Paragraph>
+    <Paragraph
+      key={2}
+      type='todo'
+    >{ task }
+    </Paragraph>
   );
   return [priorityDiv, prgh, deleteBtn];
 }
