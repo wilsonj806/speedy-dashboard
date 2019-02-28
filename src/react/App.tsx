@@ -9,8 +9,8 @@ import { ModalController } from './components/presentational/ModalController/Mod
 import { Info } from './components/app-specific/Info'
 import { AddCard } from './components/app-specific/AddCard'
 import { CatCard } from './components/app-specific/CatCard'
-import { TodoCard } from './components/app-specific/TodoCard/TodoCard';
-import { TodoEntry } from './components/app-specific/TodoCard/TodoEntry';
+import { TodoCard } from './components/app-specific/Todo/TodoCard';
+import { TodoEntry } from './components/app-specific/Todo/TodoEntry';
 import { LoremCard } from './components/app-specific/LoremCard'
 
 import { BasicCard, BasicCard2 } from './components/Placeholder'

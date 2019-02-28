@@ -37,7 +37,7 @@ type State = Readonly<typeof initialState>
 
 // REVIEW THE BELOW CORS ANYWHERE ADDITION IS ONLY FOR DEVELOPMENT
 // REMOVE THIS WHEN YOU DEPLOY OR IF YOU ADD A PROXY
-const externalCorsProxy = 'https://cors-anywhere.herokuapp.com/';
+const externalCorsProxy = process.env.NODE_ENV === 'development' ? 'https://cors-anywhere.herokuapp.com/' : '';
 const catEndpoint1 = 'https://cat-fact.herokuapp.com/facts/random';
 const catEndpoint2 = 'https://aws.random.cat/meow';
 
@@ -47,7 +47,6 @@ export class CatCard extends Component<any, State> {
   getCatFactFetch = async (): Promise<void> => {
     const responseStr: string | void = await fetch(externalCorsProxy + catEndpoint1, fetchInit)
       .then((blob: Response): Promise<Response> => {
-        console.log(blob);
         return blob.clone().json()
       })
       .then((val: any): string => {

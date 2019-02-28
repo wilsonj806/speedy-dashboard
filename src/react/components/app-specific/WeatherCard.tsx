@@ -21,14 +21,14 @@ type State = Readonly<typeof initialState>
 
 
 const weatherEndpoint = 'https://www.metaweather.com/api/'
-const corsProxy = 'https://cors-anywhere.herokuapp.com/'
+const externalCorsProxy = process.env.NODE_ENV === 'development' ? 'https://cors-anywhere.herokuapp.com/' : '';
 
 export class WeatherCard extends Component<any, State> {
 
   readonly state: State = initialState;
 
   getWeather = async (): Promise<void> => {
-    const responseStr = await fetch(weatherEndpoint + corsProxy, fetchInit)
+    const responseStr = await fetch(weatherEndpoint + externalCorsProxy, fetchInit)
       .then((blob: any) => {console.log(blob);return blob.clone().json()})
       .then((val: any) => {
         const response = val.text;

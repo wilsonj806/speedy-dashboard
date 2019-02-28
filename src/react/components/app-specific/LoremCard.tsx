@@ -29,7 +29,7 @@ const initialState: Local.BasicObj = { ...LoremGETState }
 
 type State = Readonly<typeof initialState>
 
-const externalCorsProxy = 'https://cors-anywhere.herokuapp.com/';
+const externalCorsProxy = process.env.NODE_ENV === 'development' ? 'https://cors-anywhere.herokuapp.com/' : '';
 const loremEndpoint = 'https://loripsum.net/api/1/short/plaintext';
 
 export class LoremCard extends Component<any, State> {
@@ -44,19 +44,6 @@ export class LoremCard extends Component<any, State> {
       })
     .catch((error: any) => console.error(error));
     this.setState({loremStr: responseStr});
-  }
-
-  getLoremXhr = (): void => {
-    const xhr = new XMLHttpRequest();
-    xhr.open('GET', loremEndpoint, true);
-    xhr.onload = () => {
-      if (xhr.status === 200) {
-        const length = xhr.responseText.length;
-        const xhrStr = xhr.responseText.toString().slice(2, length - 2);
-        this.setState({loremStr: xhrStr});
-      }
-    }
-    xhr.send();
   }
 
   render = (): ReactElement<any, any> => {
@@ -98,3 +85,17 @@ export class LoremCard extends Component<any, State> {
     )
   }
 }
+
+
+/* getLoremXhr = (): void => {
+  const xhr = new XMLHttpRequest();
+  xhr.open('GET', loremEndpoint, true);
+  xhr.onload = () => {
+    if (xhr.status === 200) {
+      const length = xhr.responseText.length;
+      const xhrStr = xhr.responseText.toString().slice(2, length - 2);
+      this.setState({loremStr: xhrStr});
+    }
+  }
+  xhr.send();
+} */
