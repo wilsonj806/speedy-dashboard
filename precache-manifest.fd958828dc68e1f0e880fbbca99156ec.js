@@ -4,19 +4,19 @@ self.__precacheManifest = [
     "url": "/speedy-dashboard/static/js/runtime~main.92eb2858.js"
   },
   {
-    "revision": "364db78cf0270ea8af29",
-    "url": "/speedy-dashboard/static/js/main.364db78c.chunk.js"
+    "revision": "364333efe54ad94bb483",
+    "url": "/speedy-dashboard/static/js/main.364333ef.chunk.js"
   },
   {
     "revision": "93a1c4d98e8fea98087e",
     "url": "/speedy-dashboard/static/js/2.93a1c4d9.chunk.js"
   },
   {
-    "revision": "364db78cf0270ea8af29",
+    "revision": "364333efe54ad94bb483",
     "url": "/speedy-dashboard/static/css/main.814582af.chunk.css"
   },
   {
-    "revision": "3ad8e53a10d42021c29e9b918ad08d8b",
+    "revision": "660791aff8ea6a76417bf3bc969471c2",
     "url": "/speedy-dashboard/index.html"
   }
 ];
