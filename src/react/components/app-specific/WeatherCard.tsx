@@ -21,7 +21,7 @@ type State = Readonly<typeof initialState>
 
 
 const weatherEndpoint = 'https://www.metaweather.com/api/'
-const externalCorsProxy = process.env.NODE_ENV === 'development' ? 'https://cors-anywhere.herokuapp.com/' : '';
+const externalCorsProxy ='https://cors-anywhere.herokuapp.com/';
 
 export class WeatherCard extends Component<any, State> {
 

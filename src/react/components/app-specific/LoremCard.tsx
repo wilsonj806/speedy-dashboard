@@ -11,25 +11,24 @@ import { LoremGETState } from '../../State';
 
 import './Comp-modifiers.css';
 
-/* NOTE This is an example of how an <App/> might integrate the Lorem card in and does not try to
-fully integrate everything in.
-Also note that the methods should be slightly renamed when copying them in
-*/
+/* const loremHeader = new Headers()
+loremHeader.append('Access-Control-Allow-Origin', 'https://wilsonj806.github.io/speedy-dashboard/');
+loremHeader.append('Content-Type', 'text/html; charset=utf-8');
 
-// TODO Remove one of the Lorem methods, don't need both Fetch and XHR
-
-// REVIEW If a Node server is integrated in for CORS AND it can do 'GET' on Loripsum.net, switch out the thing
-
+const sendHeader = process.env.NODE_ENV === 'development' ? undefined : loremHeader
+ */
 const fetchInit: Local.FetchParam = {
   method: 'GET',
-  mode: 'cors'
+  mode: 'cors',
 }
+
 
 const initialState: Local.BasicObj = { ...LoremGETState }
 
 type State = Readonly<typeof initialState>
 
-const externalCorsProxy = process.env.NODE_ENV === 'development' ? 'https://cors-anywhere.herokuapp.com/' : '';
+// const externalCorsProxy = process.env.NODE_ENV === 'development' ? 'https://cors-anywhere.herokuapp.com/' : '';
+const externalCorsProxy = 'https://cors-anywhere.herokuapp.com/';
 const loremEndpoint = 'https://loripsum.net/api/1/short/plaintext';
 
 export class LoremCard extends Component<any, State> {

@@ -8,10 +8,10 @@
 
 import { ReactElement, ReactNode } from "react";
 
-export = LocalTypes;
+export = SpeedyDashboardTypes;
 export as namespace Local;
 
-declare namespace LocalTypes {
+declare namespace SpeedyDashboardTypes {
   /** Types for HTTP Requests
    *
    *
@@ -195,6 +195,6 @@ declare namespace LocalTypes {
   }
 }
 
-declare module 'LocalProjectTypes' {
-  export = LocalProjectTypes;
+declare module 'SpeedyDashboardTypes' {
+  export = SpeedyDashboardTypes;
 }
