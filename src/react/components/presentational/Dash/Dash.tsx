@@ -1,6 +1,8 @@
 import React ,{ Component, ReactNode, ReactElement } from 'react';
 import { isPrimative, isTypedObj } from '../../../helper/typeCheck';
 
+import { AddCard } from '../../app-specific/AddCard';
+
 import './Dash.css';
 
 import { Card } from '../Card/Card';
@@ -24,7 +26,7 @@ const EmptyInd = (
 export class Dash extends Component<Local.DashProps> {
   render = (): ReactElement<any, any> => {
     const { type, children, AddCard, handleCardCloseFn } = this.props;
-    if ((isTypedObj(AddCard, 'type')) &&(AddCard.type.name === 'AddCard')) {
+    if (isAddCard(AddCard!)) {
       return (
         <section
           className={`dash ${type ? `dash--${type}` : ''}`}
@@ -47,4 +49,9 @@ export class Dash extends Component<Local.DashProps> {
       throw new Error('Error expecting AddCard to be a Card')
     }
   }
+}
+
+const isAddCard = (ele: ReactElement<any, any>): boolean => {
+  const AddCardName: string = AddCard.name;
+  return isTypedObj(ele, 'type') && ele.type.name === AddCardName;
 }

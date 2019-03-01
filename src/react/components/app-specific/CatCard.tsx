@@ -11,32 +11,22 @@ import { CatGETState } from '../../State';
 
 import './Comp-modifiers.css';
 
-
-/* NOTE This is an example of how an <App/> might integrate the Cat card in and does not try to
-fully integrate everything in.
-Also note that the methods should be slightly renamed when copying them in
-*/
-
 // NOTE API site https://alexwohlbruck.github.io/cat-facts/docs/endpoints/facts.html
 
-const catHeader = new Headers()
+/* const catHeader = new Headers()
 catHeader.append('Access-Control-Allow-Origin', '*');
-// catHeader.append('Access-Control-Allow-Credentials', 'true');
 
-
-const fetchInit: Local.FetchParam = {
+const sendHeader = process.env.NODE_ENV === 'development' ? undefined : catHeader
+ */const fetchInit: Local.FetchParam = {
   method: 'GET',
   mode: 'cors',
-  header: catHeader,
 }
 
 const initialState: Local.BasicObj = {...CatGETState }
 
 type State = Readonly<typeof initialState>
 
-
-// REVIEW THE BELOW CORS ANYWHERE ADDITION IS ONLY FOR DEVELOPMENT
-// REMOVE THIS WHEN YOU DEPLOY OR IF YOU ADD A PROXY
+// const externalCorsProxy = process.env.NODE_ENV === 'development' ? 'https://cors-anywhere.herokuapp.com/' : '';
 const externalCorsProxy = 'https://cors-anywhere.herokuapp.com/';
 const catEndpoint1 = 'https://cat-fact.herokuapp.com/facts/random';
 const catEndpoint2 = 'https://aws.random.cat/meow';
@@ -47,7 +37,6 @@ export class CatCard extends Component<any, State> {
   getCatFactFetch = async (): Promise<void> => {
     const responseStr: string | void = await fetch(externalCorsProxy + catEndpoint1, fetchInit)
       .then((blob: Response): Promise<Response> => {
-        console.log(blob);
         return blob.clone().json()
       })
       .then((val: any): string => {

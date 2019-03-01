@@ -1,11 +1,16 @@
 import React, { Component, ReactElement, MouseEvent } from 'react';
 
+import { Button } from './components/base/Button/Button';
+import { Paragraph } from './components/base/Paragraph/Paragraph';
+
 import { Dash } from './components/presentational/Dash/Dash'
 import { ModalController } from './components/presentational/ModalController/ModalController'
 
 import { Info } from './components/app-specific/Info'
 import { AddCard } from './components/app-specific/AddCard'
 import { CatCard } from './components/app-specific/CatCard'
+import { TodoCard } from './components/app-specific/Todo/TodoCard';
+import { TodoEntry } from './components/app-specific/Todo/TodoEntry';
 import { LoremCard } from './components/app-specific/LoremCard'
 
 import { BasicCard, BasicCard2 } from './components/Placeholder'
@@ -44,6 +49,44 @@ export class App extends Component<any, State> {
     }
   }
 
+  handleSubmit = (childState: any): any => {
+    this.setState((prevState: State) => {
+      const { listEle } = prevState;
+      listEle.push(childState);
+      return (
+        {
+          'listEle': listEle,
+        }
+      )
+    });
+  }
+
+  handleEntryDelete = (event: MouseEvent<HTMLButtonElement>) => {
+    if (event.target instanceof HTMLElement) {
+      const { target } = event.target.dataset;
+      const index = parseInt(target!);
+      this.setState((prevState: State): State => {
+        const { listEle: prevList } = prevState;
+        prevList.splice(index, 1);
+        return {};
+      })
+    }
+  }
+
+  renderTemplate = (val: Local.BasicObj, index: number): ReactElement<any> => {
+    const { task, priority } = val;
+    return (
+      <TodoEntry
+        key={index}
+        index={`${index}`}
+        task={task}
+        priority={priority}
+        handleDeleteFn={this.handleEntryDelete}
+      />
+    )
+  }
+
+
   toggleCardState = (event: MouseEvent<HTMLElement>): void => {
     if (event.target instanceof HTMLElement) {
       const { target } = event.target.dataset;
@@ -68,7 +111,7 @@ export class App extends Component<any, State> {
   }
 
   renderCardsState = (): ReactElement<any, any>[] | null => {
-    const { renderCards, renderCards2 } = this.state;
+    const { renderCards } = this.state;
     // TODO find a way to fetch the current list of children
     /*
       so instead of using switches and boolean, just use an array of strings?
@@ -92,6 +135,19 @@ export class App extends Component<any, State> {
         case 'lorem':
           if (renderCards[key] === true) {
             const Card = <LoremCard/>;
+            childArr.push(Card);
+            break;
+          }
+        case 'todo':
+          if (renderCards[key] === true) {
+            const { listEle } = this.state
+            const toRender = listEle.length > 0 ? listEle.map(this.renderTemplate) : null;
+            const Card = <TodoCard
+              handleSubmitFn={this.handleSubmit}
+            >
+            { toRender }
+            </TodoCard>
+            ;
             childArr.push(Card);
             break;
           }
