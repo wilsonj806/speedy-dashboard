@@ -5,12 +5,12 @@ import { Info } from '../react/components/app-specific/Info';
 import { LoremCard } from '../react/components/app-specific/LoremCard';
 import { CatCard } from '../react/components/app-specific/CatCard';
 import { AddCard } from '../react/components/app-specific/AddCard';
-import { TodoCard } from '../react/components/app-specific/TodoCard/TodoCard';
+import { TodoCard } from '../react/components/app-specific/Todo/TodoCard';
 import { AddModal } from '../react/components/app-specific/AddModal/AddModal';
 import { AppFragAdd } from '../react/components/app-specific/AddModal/AppFragAdd';
 import { InfoModal } from '../react/components/app-specific/InfoModal/InfoModal';
 import { AppFragInfo } from '../react/components/app-specific/InfoModal/AppFragInfo';
-import { AppFragTodo } from '../react/components/app-specific/TodoCard/AppFragTodo';
+import { AppFragTodo } from '../react/components/app-specific/Todo/AppFragTodo';
 
 // NOTE Dummy Functions
 

@@ -13,10 +13,11 @@ import '../Comp-modifiers.css';
 
 const sayHi = () => console.warn('Expecting a function');
 
-export class TodoCard extends Component<Local.TodoCardProps, any> {
+class TodoCard extends Component<Local.TodoCardProps, any> {
 
   render = (): ReactElement<any, any> => {
-    const { children, handleChangeFn, handleSubmitFn } = this.props;
+    const { children, handleSubmitFn } = this.props;
+    const length = Array.isArray(children) ? children.length : null;
     const toRender = children ? children : 'Add some tasks!';
     return (
       <Card
@@ -24,30 +25,44 @@ export class TodoCard extends Component<Local.TodoCardProps, any> {
         type='todo'
       >
         {{
-          header: (
+          header: ([
             <Heading
+              key={0}
               type='md'
               headingLvl={3}
-            >
+              >
               To Do Card
-            </Heading>
-          ),
+            </Heading>,
+            <Button
+              key={1}
+              type='close'
+              target='todo'
+              innerText='&times;'
+            />
+          ]),
           content: (
             <>
+            {/* <Heading
+              key={0}
+              type='sm'
+              headingLvl={4}
+              >
+              Form
+            </Heading> */}
             <Form
               id='todo-form'
               handleSubmitFn={handleSubmitFn ? handleSubmitFn : sayHi}
             >
             </Form>
 
-            { children.length > 0 ? (
+            { length !== 0 ? (
               <List
-              type='todo'
-              listType='ul'
-            >
-              {toRender}
-            </List>
-            ) : null}
+                type='todo'
+                listType='ul'
+              >
+                {toRender}
+              </List>
+            ) : null }
             </>
           )
         }}
@@ -55,3 +70,5 @@ export class TodoCard extends Component<Local.TodoCardProps, any> {
     )
   }
 }
+
+export { TodoCard }

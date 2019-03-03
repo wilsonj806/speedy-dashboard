@@ -44,6 +44,12 @@ export const AddModal = (props: Local.AddModalProps): ReactElement<any, any> => 
         target='lorem'
         handleClickFn={handleCardFn}
       />
+      <Button
+        key={4}
+        innerText={renderCards.todo === false ? 'Add Todo card' : 'Remove Todo card'}
+        target='todo'
+        handleClickFn={handleCardFn}
+      />
     </Modal>
   )
 }

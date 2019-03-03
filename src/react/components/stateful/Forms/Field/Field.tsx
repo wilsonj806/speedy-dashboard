@@ -10,33 +10,65 @@ export const Field = (props: Local.FieldProps): ReactElement<any, any> => {
       handleChangeFn,
       handleClickFn,
       value,
-      required
+      required,
+      inputName,
+      labelName
     } = props;
+
     if (handleChangeFn == null && handleClickFn == null) throw new Error(`
-      Error expecting a Function for handleChangeFn, got ${handleChangeFn} instead
+      Error expecting a Function for handleChangeFn AND handleClickFn
     `)
+
     if (noLabel !== true) {
       const checkType = (type === 'radio') ? value : name;
       const labelText = capitalizeString(checkType!);
-      return(
-        <>
-          <label
-            key={0}
-            htmlFor={`${name}`}
-          >
-            {labelText}
-          </label>
-          <input
-            key={1}
-            type={`${type}`}
-            name={`${name}`}
-            required={required ? required : false}
-            value={value}
-            onClick={handleClickFn ? handleClickFn : undefined}
-            onChange={handleChangeFn ? handleChangeFn : undefined}
-            />
-        </>
-      )
+      switch (type) {
+        case 'radio':
+          return (
+            <>
+              <input
+                key={1}
+                type={`${type}`}
+                name={`${name}`}
+                className={ inputName ? inputName : '' }
+                required={required ? required : false}
+                value={value}
+                onClick={handleClickFn ? handleClickFn : undefined}
+                onChange={handleChangeFn ? handleChangeFn : undefined}
+                />
+              <label
+                key={0}
+                className={ labelName ? labelName : '' }
+                htmlFor={`${name}`}
+              >
+                {labelText}
+              </label>
+            </>
+          )
+
+        default:
+        return (
+          <>
+            <label
+              key={0}
+              className={ labelName ? labelName : '' }
+              htmlFor={`${name}`}
+            >
+              {labelText}
+            </label>
+            <input
+              key={1}
+              type={`${type}`}
+              name={`${name}`}
+              className={ inputName ? inputName : '' }
+              required={required ? required : false}
+              value={value}
+              onClick={handleClickFn ? handleClickFn : undefined}
+              onChange={handleChangeFn ? handleChangeFn : undefined}
+              />
+          </>
+        )
+      }
     }
     return(
       <input

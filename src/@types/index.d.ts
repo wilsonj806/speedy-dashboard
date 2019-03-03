@@ -8,10 +8,10 @@
 
 import { ReactElement, ReactNode } from "react";
 
-export = LocalTypes;
+export = SpeedyDashboardTypes;
 export as namespace Local;
 
-declare namespace LocalTypes {
+declare namespace SpeedyDashboardTypes {
   /** Types for HTTP Requests
    *
    *
@@ -73,6 +73,8 @@ declare namespace LocalTypes {
     noLabel        ?: boolean
     value          ?: string
     required       ?: boolean
+    inputName      ?: string
+    labelName      ?: string
   }
 
   interface ButtonProps {
@@ -172,6 +174,13 @@ declare namespace LocalTypes {
     handleSubmitFn ?: VoidFn
   }
 
+  interface TodoEntryProps {
+    index          : string
+    task           : 'High' | 'Medium' | 'Low'
+    priority       : string
+    handleDeleteFn : VoidFn
+  }
+
   /** NOTE State related
    *
    *
@@ -182,9 +191,10 @@ declare namespace LocalTypes {
     basic2 ?: boolean
     lorem  ?: boolean
     cat    ?: boolean
+    todo   ?: boolean
   }
 }
 
-declare module 'LocalProjectTypes' {
-  export = LocalProjectTypes;
+declare module 'SpeedyDashboardTypes' {
+  export = SpeedyDashboardTypes;
 }
