@@ -1,5 +1,5 @@
-import React ,{ Component, ReactNode, ReactElement } from 'react';
-import { isPrimative, isTypedObj } from '../../../helper/typeCheck';
+import React ,{ Component, ReactElement } from 'react';
+import { isSameReactEle } from '../../../helper/typeCheck';
 
 import { AddCard } from '../../app-specific/AddCard';
 
@@ -25,15 +25,15 @@ const EmptyInd = (
 
 export class Dash extends Component<Local.DashProps> {
   render = (): ReactElement<any, any> => {
-    const { type, children, AddCard, handleCardCloseFn } = this.props;
-    if (isAddCard(AddCard!)) {
+    const { type, children, AddCardEle, handleCardCloseFn } = this.props;
+    if (isSameReactEle(AddCardEle!, AddCard)) {
       return (
         <section
           className={`dash ${type ? `dash--${type}` : ''}`}
           onClick={handleCardCloseFn}
         >
           {children != null ? children : EmptyInd}
-          {AddCard}
+          {AddCardEle}
         </section>
       )
     } else if (AddCard === null) {
@@ -49,9 +49,4 @@ export class Dash extends Component<Local.DashProps> {
       throw new Error('Error expecting AddCard to be a Card')
     }
   }
-}
-
-const isAddCard = (ele: ReactElement<any, any>): boolean => {
-  const AddCardName: string = AddCard.name;
-  return isTypedObj(ele, 'type') && ele.type.name === AddCardName;
 }

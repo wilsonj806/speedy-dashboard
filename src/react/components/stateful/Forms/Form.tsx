@@ -54,9 +54,12 @@ export class Form extends Component<Local.FormProps, State> {
         id={`${id ? id: '' }`}
         className={`form ${ type ? `form--${ type }` : '' }`}
       >
-        <fieldset>
+        <fieldset
+          key={0}
+        >
           <legend>Task Priority</legend>
           <Field
+            key={0}
             type='radio'
             name='priority'
             labelName='todo--radio'
@@ -65,6 +68,7 @@ export class Form extends Component<Local.FormProps, State> {
             handleClickFn={ this.handleFormChangeDefault }
             />
           <Field
+            key={1}
             type='radio'
             name='priority'
             labelName='todo--radio'
@@ -73,6 +77,7 @@ export class Form extends Component<Local.FormProps, State> {
             handleClickFn={ this.handleFormChangeDefault }
             />
           <Field
+            key={2}
             type='radio'
             name='priority'
             labelName='todo--radio'
@@ -82,6 +87,7 @@ export class Form extends Component<Local.FormProps, State> {
             />
         </fieldset>
         <Field
+          key={1}
           type='text'
           name='task'
           required={ true }
@@ -89,6 +95,7 @@ export class Form extends Component<Local.FormProps, State> {
           handleChangeFn={ this.handleFormChangeDefault }
           />
         <Button
+          key={2}
           type='submit'
           isHTMLInputSubmit={ true }
           innerText={ null }

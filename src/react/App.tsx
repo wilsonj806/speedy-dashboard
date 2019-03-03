@@ -186,7 +186,7 @@ export class App extends Component<any, State> {
         />
         <main>
           <Dash
-            AddCard={
+            AddCardEle={
               <AddCard
                 handleAddFn={this.handleModalDisplay}
               />
