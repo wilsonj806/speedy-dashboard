@@ -10,7 +10,6 @@ const initialState: Local.BasicObj = {
   toDisplay: ''
 }
 
-// NOTE Should be passing state in as a prop for Modal Controller to read
 // TODO For any state passing as props, UPDATE TO USE THE CONTEXT API AT SOME POINT
 // TODO Look into using React refs for passing props also
 export class ModalController extends Component<Local.ModalControllerProps, any>{

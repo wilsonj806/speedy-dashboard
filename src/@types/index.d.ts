@@ -26,19 +26,18 @@ declare namespace SpeedyDashboardTypes {
    */
 
   type Modals     = 'INFO' | 'ADD' | 'BASIC'
+  type DashCardOptions = 'todo' | 'cat' | 'lorem' | 'basic1' | 'basic2'
   type ListTypes  = 'ul' | 'ol' // | 'dl'
   type InputTypes = 'text' | 'number' | 'radio' | 'checkbox'
 
-  /** NOTE Interfaces and types for commonly used thing
+  /** NOTE Interfaces and types for commonly used things
    *
    *
    */
 
   interface BasicObj { [key: string]: any }
 
-  interface VoidFn extends Function {
-    (val: any): void
-  }
+  type VoidFn = (val: any) => void
 
   interface FetchParam {
     method  : Local.AccessTypes
@@ -83,8 +82,9 @@ declare namespace SpeedyDashboardTypes {
     innerText          : string | null
     isHTMLInputSubmit ?: boolean
     children          ?: React.ReactNode
-    handleClickFn     ?: VoidFn | null
+    handleClickFn     ?: VoidFn | undefined
     target            ?: string
+    className         ?: string
   }
 
   type HeadingProps = {
@@ -95,7 +95,7 @@ declare namespace SpeedyDashboardTypes {
 
   type ImageProps = {
     type ?: string
-    src   : string
+    src   : string | undefined
     alt   : string
   }
 
@@ -162,7 +162,7 @@ declare namespace SpeedyDashboardTypes {
   }
 
   type AddCardProps = {
-    handleAddFn : VoidFn | null
+    handleAddFn : VoidFn | undefined
   }
 
   interface InfoButtonProps {
@@ -179,6 +179,12 @@ declare namespace SpeedyDashboardTypes {
     task           : 'High' | 'Medium' | 'Low'
     priority       : string
     handleDeleteFn : VoidFn
+  }
+
+  type EntryCardProps = {
+    cardSwitch : DashCardOptions
+    renderCards : RenderCards
+    handleClickFn : VoidFn | undefined
   }
 
   /** NOTE State related
