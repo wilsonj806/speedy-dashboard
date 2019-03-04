@@ -74,7 +74,7 @@ storiesOf('Presentational/ Dash', module)
   .add('dash that should throw', () => {
     return (
       <Dash
-        AddCard={<span>hi</span>}
+        AddCardEle={<span>hi</span>}
       >
           {null}
         </Dash>
@@ -84,7 +84,7 @@ storiesOf('Presentational/ Dash', module)
     return (
       <Dash
         type='storybook-test'
-        AddCard={
+        AddCardEle={
         <AddCard
           handleAddFn={sayHi}
         />}
@@ -97,7 +97,7 @@ storiesOf('Presentational/ Dash', module)
     return (
       <Dash
         type='storybook-test'
-        AddCard={null}
+        AddCardEle={null}
       >
         {[BasicCard, BasicCard]}
       </Dash>
@@ -107,7 +107,7 @@ storiesOf('Presentational/ Dash', module)
     return (
       <Dash
         type='storybook-test'
-        AddCard={null}
+        AddCardEle={null}
       >
         {[BasicCard, BasicCard, BasicCard, BasicCard, BasicCard, BasicCard]}
       </Dash>
@@ -117,7 +117,7 @@ storiesOf('Presentational/ Dash', module)
     return (
       <Dash
         type='storybook-test'
-        AddCard={
+        AddCardEle={
           <AddCard
             handleAddFn={sayHi}
           />}

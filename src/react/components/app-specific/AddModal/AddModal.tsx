@@ -3,15 +3,20 @@
 import React, { ReactElement } from 'react';
 
 
+import { Image } from '../../base/Image/Image';
 import { Button } from '../../base/Button/Button';
+import { Paragraph } from '../../base/Paragraph/Paragraph';
+import { Card } from '../../presentational/Card/Card';
 
 import { Modal } from '../../presentational/ModalController/Modal/Modal';
 
-import '../Comp-modifiers.css';
+import { EntryCard } from './EntryCard';
+
+import './AddModal.css';
 
 export const AddModal = (props: Local.AddModalProps): ReactElement<any, any> => {
   const { id, handleCloseFn, handleCardFn, renderCards } = props
-
+  // TODO add EntryCard stuff in
   return(
     <Modal
       key={0}
@@ -20,34 +25,34 @@ export const AddModal = (props: Local.AddModalProps): ReactElement<any, any> => 
       headerText='Add Cards in'
       handleCloseFn={handleCloseFn}
     >
-      <Button
+      <EntryCard
         key={0}
-        innerText={renderCards.basic1 === false ? 'Add card 1' : 'Remove card 1'}
-        target='basic1'
-        handleClickFn={handleCardFn}
-        />
-      <Button
-        key={1}
-        innerText={renderCards.basic2 === false ? 'Add card 2' : 'Remove card 2'}
-        target='basic2'
-        handleClickFn={handleCardFn}
-        />
-      <Button
-        key={2}
-        innerText={renderCards.cat === false ? 'Add cat card' : 'Remove cat card'}
-        target='cat'
-        handleClickFn={handleCardFn}
-        />
-      <Button
-        key={3}
-        innerText={renderCards.lorem === false ? 'Add lorem card' : 'Remove lorem card'}
-        target='lorem'
+        cardSwitch='basic1'
+        renderCards={renderCards}
         handleClickFn={handleCardFn}
       />
-      <Button
+      <EntryCard
+        key={1}
+        cardSwitch='basic2'
+        renderCards={renderCards}
+        handleClickFn={handleCardFn}
+      />
+      <EntryCard
+        key={2}
+        cardSwitch='cat'
+        renderCards={renderCards}
+        handleClickFn={handleCardFn}
+      />
+      <EntryCard
+        key={3}
+        cardSwitch='lorem'
+        renderCards={renderCards}
+        handleClickFn={handleCardFn}
+      />
+      <EntryCard
         key={4}
-        innerText={renderCards.todo === false ? 'Add Todo card' : 'Remove Todo card'}
-        target='todo'
+        cardSwitch='todo'
+        renderCards={renderCards}
         handleClickFn={handleCardFn}
       />
     </Modal>
