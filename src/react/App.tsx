@@ -1,17 +1,15 @@
 import React, { Component, ReactElement, MouseEvent } from 'react';
 
-import { Button } from './components/base/Button/Button';
-import { Paragraph } from './components/base/Paragraph/Paragraph';
-
-import { Dash } from './components/presentational/Dash/Dash'
-import { ModalController } from './components/presentational/ModalController/ModalController'
-
-import { Info } from './components/app-specific/Info'
-import { AddCard } from './components/app-specific/AddCard'
-import { CatCard } from './components/app-specific/CatCard'
-import { TodoCard } from './components/app-specific/Todo/TodoCard';
-import { TodoEntry } from './components/app-specific/Todo/TodoEntry';
-import { LoremCard } from './components/app-specific/LoremCard'
+import {
+  Dash,
+  ModalController,
+  Info,
+  AddCard,
+  CatCard,
+  TodoCard,
+  TodoEntry,
+  LoremCard
+} from './components/component.lib';
 
 import { BasicCard, BasicCard2 } from './components/Placeholder'
 

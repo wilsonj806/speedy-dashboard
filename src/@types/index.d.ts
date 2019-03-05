@@ -35,9 +35,9 @@ declare namespace SpeedyDashboardTypes {
    *
    */
 
-  interface BasicObj { [key: string]: any }
-
   type VoidFn = (val: any) => void
+
+  interface BasicObj { [key: string]: any }
 
   interface FetchParam {
     method  : Local.AccessTypes
@@ -182,8 +182,8 @@ declare namespace SpeedyDashboardTypes {
   }
 
   type EntryCardProps = {
-    cardSwitch : DashCardOptions
-    renderCards : RenderCards
+    cardSwitch    : DashCardOptions
+    renderCards   : RenderCards
     handleClickFn : VoidFn | undefined
   }
 
@@ -192,12 +192,8 @@ declare namespace SpeedyDashboardTypes {
    *
    */
 
-  interface RenderCards {
-    basic1 ?: boolean
-    basic2 ?: boolean
-    lorem  ?: boolean
-    cat    ?: boolean
-    todo   ?: boolean
+  interface RenderCards extends BasicObj{
+    [cardName: DashCardOptions] : boolean
   }
 }
 

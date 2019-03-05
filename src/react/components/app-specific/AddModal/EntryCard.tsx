@@ -1,12 +1,8 @@
 import React, { ReactElement } from 'react';
 
-import { Image } from '../../base/Image/Image';
-import { Button } from '../../base/Button/Button';
-import { Paragraph } from '../../base/Paragraph/Paragraph';
-import { Card } from '../../presentational/Card/Card';
-import { Heading } from '../../base/Heading/Heading';
+import { Image, Button, Paragraph, Card, Heading } from '../../component.lib';
 
-export const EntryCard = (props: Local.EntryCardProps): ReactElement<any> | null => {
+export const EntryCard = (props: Local.EntryCardProps): ReactElement<Local.EntryCardProps> | null => {
   const { cardSwitch, renderCards, handleClickFn } = props;
   switch(cardSwitch) {
     case 'basic1':
