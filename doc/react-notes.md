@@ -5,7 +5,7 @@
 - Developing components in isolation from each other is great since you only code what is necessary for that component to work properly
   - integration on the other hand is going to be interesting since it's going to involve typing disparate pieces of the puzzle together
 
-- Wrapping a base component in a wrapper to extend functionality is very easy due to React's compositional nature and should be a normal pattern to use
+- ~~Wrapping a base component in a wrapper to extend functionality is very easy due to React's compositional nature and should be a normal pattern to use~~ Change this to HOCs
   - e.g
   ```ts
   import { Card } from './components/base/Card';
