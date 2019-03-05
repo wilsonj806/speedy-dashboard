@@ -2,7 +2,7 @@
 
 import React, { ReactElement } from 'react';
 
-import { Modal } from '../../presentational/ModalController/Modal/Modal';
+import { Modal } from '../../component.lib';
 
 import { EntryCard } from './EntryCard';
 

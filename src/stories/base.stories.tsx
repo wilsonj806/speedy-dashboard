@@ -1,10 +1,8 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 
-import { Button } from '../react/components/base/Button/Button';
-import { Field } from '../react/components/stateful/Forms/Field/Field';
-import { Heading } from '../react/components/base/Heading/Heading';
-import { Paragraph } from '../react/components/base/Paragraph/Paragraph';
+import { Button, Field, Heading, Paragraph } from '../react/components/component.lib';
+
 
 // NOTE Dummy Functions
 

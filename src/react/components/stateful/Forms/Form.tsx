@@ -1,7 +1,6 @@
 import React ,{ Component, ReactElement } from 'react';
-import { isTypedObj, isFunc, isPrimative } from '../../../helper/typeCheck';
-import { Field } from './Field/Field';
-import { Button } from '../../base/Button/Button';
+import { Field, Button } from '../../component.lib';
+
 
 //TODO Make the keys for state settable by the user
 

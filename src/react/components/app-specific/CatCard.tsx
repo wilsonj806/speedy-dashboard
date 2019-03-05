@@ -1,11 +1,6 @@
 import React, { Component, ReactElement } from 'react';
 
-import { Heading } from '../base/Heading/Heading';
-import { Image } from '../base/Image/Image';
-import { Paragraph } from '../base/Paragraph/Paragraph';
-import { Button } from '../base/Button/Button';
-
-import { Card } from '../presentational/Card/Card';
+import { Heading, Paragraph, Button, Card, Image } from '../component.lib';
 
 import { CatGETState } from '../../State';
 

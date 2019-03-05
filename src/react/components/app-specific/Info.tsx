@@ -1,6 +1,6 @@
 import React, { Component, ReactElement } from 'react';
 
-import { Button } from '../base/Button/Button';
+import { Button } from '../component.lib';
 
 import './Comp-modifiers.css';
 

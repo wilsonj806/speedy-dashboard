@@ -1,11 +1,9 @@
 import React ,{ Component, ReactElement } from 'react';
 import { isSameReactEle } from '../../../helper/typeCheck';
 
-import { AddCard } from '../../app-specific/AddCard';
+import { AddCard, Card } from '../../component.lib';
 
 import './Dash.css';
-
-import { Card } from '../Card/Card';
 
 /* NOTE AddMore Prop is for DIRECTLY adding in a <Card/> that will tell the main app to show a Modal interface for adding additional Cards in */
 
@@ -26,7 +24,7 @@ const EmptyInd = (
 export class Dash extends Component<Local.DashProps> {
   render = (): ReactElement<any, any> => {
     const { type, children, AddCardEle, handleCardCloseFn } = this.props;
-    if (isSameReactEle(AddCardEle!, AddCard)) {
+    if (AddCardEle != null && isSameReactEle(AddCardEle!, AddCard)) {
       return (
         <section
           className={`dash ${type ? `dash--${type}` : ''}`}
@@ -36,7 +34,7 @@ export class Dash extends Component<Local.DashProps> {
           {AddCardEle}
         </section>
       )
-    } else if (AddCard === null) {
+    } else if (AddCardEle === null) {
       return (
         <section
           className={`dash ${type ? `dash--${type}` : ''}`}

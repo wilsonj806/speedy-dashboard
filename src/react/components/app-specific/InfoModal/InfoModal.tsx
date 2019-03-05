@@ -3,9 +3,8 @@
 import React, { ReactElement } from 'react';
 
 
-import { Paragraph } from '../../base/Paragraph/Paragraph';
+import { Modal, Paragraph } from '../../component.lib';
 
-import { Modal } from '../../presentational/ModalController/Modal/Modal';
 
 import '../Comp-modifiers.css';
 
