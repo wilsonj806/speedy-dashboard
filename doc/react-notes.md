@@ -54,9 +54,42 @@
 
 ## Element Transforms
 
-- `React.cloneElement()`
+This section is for dealing with the manipulation and transformation of React children. It should be pretty self-explantory why this exists or why you might need it.
+
+- `React.cloneElement()` is the goto method for adding new properties to a component. There situations where you'll need to add properties to a component, but the parent won't know if the component will have that property when its passed in.
+  - the input parameters are as follows:
+    ```js
+      const newReactEle = React.cloneElement(element, [...newProps], [...elementChildren])
+    ```
+  - this is very similar to the below:
+    ```jsx
+      <element.type {...element.props} {...newProps}>{elementChildren}</element.type>
+    ```
+  - note that if a `key` prop or a `ref` is present on the element being passed in, it *WILL* be preserved and passed into the cloned element
+  - below is an example of a real use for `React.cloneElement()`
+    ```ts
+      if (React.isValidElement(child) && child.type !== 'fieldset') {
+        const addedProp = {
+          ['key']: index,
+          ['handleChangeFn']: handleChangeCheck
+        }
+        const modifiedChild = React.cloneElement(child, addedProp);
+      return modifiedChild;
+    }
+    ```
+- Additional resources on `React.cloneElement()` below:
   - [Medium article](https://medium.com/javascript-inside/transforming-elements-in-react-8e411c0f1bba)
   - [React.js docs entry on it](https://reactjs.org/docs/react-api.html#cloneelement)
   - [Relevant Stack Overflow](https://stackoverflow.com/questions/32370994/how-to-pass-props-to-this-props-children)
-- `React.Children.map()`
+
+- React also provides a series of utilities to help deal with the opaque data structure of `this.props.children`
+- These utilities are exposed via `React.Children` and let you do a variety of things
+- Also note that not all of the utility methods are discusssed here
+
+- `React.Children.map()` is analogous to `Array.prototype.map() with the following parameters:
+  ```js
+    const { children } = this.props;
+    const callbackFn = (child): ReactElement<any> => child;
+    const newChildrenArr = React.Children.map(children, callbackFn);
+  ```
   - [React.js docs entry on it](https://reactjs.org/docs/react-api.html#reactchildrenmap)
