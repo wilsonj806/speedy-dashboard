@@ -16,8 +16,8 @@ declare namespace SpeedyDashboardTypes {
    *
    *
    */
-  type AccessTypes = 'GET' | 'POST' | 'PUT'
-  type FetchMode = 'cors' | 'no-cors' | 'same-origin'
+  type AccessTypes     = 'GET' | 'POST' | 'PUT'
+  type FetchMode       = 'cors' | 'no-cors' | 'same-origin'
   type CredentialTypes = "same-origin" | "include" | "omit" | undefined
 
   /** Other types
@@ -25,20 +25,19 @@ declare namespace SpeedyDashboardTypes {
    *
    */
 
-  type Modals = 'INFO' | 'ADD' | 'BASIC'
-  type ListTypes = 'ul' | 'ol' // | 'dl'
+  type Modals     = 'INFO' | 'ADD' | 'BASIC'
+  type DashCardOptions = 'todo' | 'cat' | 'lorem' | 'basic1' | 'basic2'
+  type ListTypes  = 'ul' | 'ol' // | 'dl'
   type InputTypes = 'text' | 'number' | 'radio' | 'checkbox'
 
-  /** NOTE Interfaces
+  /** NOTE Interfaces and types for commonly used things
    *
    *
    */
 
-  interface BasicObj { [key: string]: any}
+  type VoidFn = (val: any) => void
 
-  interface VoidFn extends Function {
-    (val: any): void
-  }
+  interface BasicObj { [key: string]: any }
 
   interface FetchParam {
     method  : Local.AccessTypes
@@ -46,25 +45,25 @@ declare namespace SpeedyDashboardTypes {
     header ?: object
   }
 
-  interface BasicCard {
+  type BasicCard = {
     header   : React.ReactElement<any> | React.ReactElement<any>[] | null
     media   ?: React.ReactElement<any>
     content  : React.ReactElement<any> | React.ReactElement<any>[] | null
     action  ?: React.ReactElement<any> | React.ReactElement<any>[]
   }
 
-  /** NOTE React Element Props and related interfaces
+  /** NOTE React Element Props and related types
    *
    *
    */
 
-  interface ListItemProps extends BasicObj {
-    type ?: string
-    index ?: number
+  type ListItemProps = {
+    type    ?: string
+    index   ?: number
     children : React.ReactNode | React.ReactNode[]
   }
 
-  interface FieldProps {
+  type FieldProps = {
     id             ?: string
     type            : InputTypes
     name            : string
@@ -77,48 +76,49 @@ declare namespace SpeedyDashboardTypes {
     labelName      ?: string
   }
 
-  interface ButtonProps {
+  type ButtonProps = {
     id                ?: string
     type              ?: string
     innerText          : string | null
     isHTMLInputSubmit ?: boolean
     children          ?: React.ReactNode
-    handleClickFn     ?: VoidFn
+    handleClickFn     ?: VoidFn | undefined
     target            ?: string
+    className         ?: string
   }
 
-  interface HeadingProps {
+  type HeadingProps = {
     type      ?: string
     headingLvl : number
     children   : string
   }
 
-  interface ImageProps {
+  type ImageProps = {
     type ?: string
-    src   : string
+    src   : string | undefined
     alt   : string
   }
 
-  interface ParagraphProps {
+  type ParagraphProps = {
     type    ?: string
     children : any
   }
 
-  interface CardProps {
+  type CardProps = {
     id       ?: string
     type     ?: string
     index    ?: number
     children  : BasicCard
   }
 
-  interface DashProps {
+  type DashProps = {
     type              ?: string
-    AddCard            : React.ReactElement<any, any> | null
+    AddCardEle            : React.ReactElement<any, any> | null
     children           : React.ReactElement<any, any> | null | React.ReactElement<any, any>[]
     handleCardCloseFn ?: any
   }
 
-  interface ModalProps {
+  type ModalProps = {
     id               : string
     type             : string,
     headerText       : string
@@ -127,12 +127,12 @@ declare namespace SpeedyDashboardTypes {
     contentModifier ?: string
   }
 
-  interface ListProps {
+  type ListProps = {
     type ?: string
     listType : ListTypes
     children : ReactNode
   }
-  interface FormProps {
+  type FormProps = {
     id             ?: string
     type           ?: string
     handleSubmitFn  : VoidFn
@@ -140,7 +140,7 @@ declare namespace SpeedyDashboardTypes {
     children       ?: | ReactElement<any, any> | ReactElement<any, any>[]
   }
 
-  interface ModalControllerProps {
+  type ModalControllerProps = {
     id           ?: string
     renderCards   : RenderCards
     handleCardFn  : any
@@ -148,7 +148,7 @@ declare namespace SpeedyDashboardTypes {
     toDisplay    ?: Modals | null
   }
 
-  interface AddModalProps {
+  type AddModalProps = {
     id             ?: string
     renderCards     : RenderCards
     handleCloseFn  ?: any
@@ -156,29 +156,35 @@ declare namespace SpeedyDashboardTypes {
     cardsToDisplay ?: CardsToDisplay
   }
 
-  interface InfoModalProps {
+  type InfoModalProps = {
     id             ?: string
     handleCloseFn  ?: any
   }
 
-  interface AddCardProps {
-    handleAddFn : any
+  type AddCardProps = {
+    handleAddFn : VoidFn | undefined
   }
 
   interface InfoButtonProps {
     handleDisplayFn : any | null
   }
 
-  interface TodoCardProps {
+  type TodoCardProps = {
     handleChangeFn ?: VoidFn
     handleSubmitFn ?: VoidFn
   }
 
-  interface TodoEntryProps {
+  type TodoEntryProps = {
     index          : string
     task           : 'High' | 'Medium' | 'Low'
     priority       : string
     handleDeleteFn : VoidFn
+  }
+
+  type EntryCardProps = {
+    cardSwitch    : DashCardOptions
+    renderCards   : RenderCards
+    handleClickFn : VoidFn | undefined
   }
 
   /** NOTE State related
@@ -186,12 +192,8 @@ declare namespace SpeedyDashboardTypes {
    *
    */
 
-  interface RenderCards {
-    basic1 ?: boolean
-    basic2 ?: boolean
-    lorem  ?: boolean
-    cat    ?: boolean
-    todo   ?: boolean
+  interface RenderCards extends BasicObj{
+    [cardName: DashCardOptions] : boolean
   }
 }
 

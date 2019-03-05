@@ -1,7 +1,7 @@
 import React ,{ Component, ReactElement } from 'react';
 
-import { Button } from '../../../base/Button/Button';
-import { Heading } from '../../../base/Heading/Heading';
+import { Heading, Button } from '../../../component.lib';
+
 import '../Modal.css';
 
 export class Modal extends Component<Local.ModalProps> {

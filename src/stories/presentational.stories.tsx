@@ -1,20 +1,9 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 
-import { Heading } from '../react/components/base/Heading/Heading';
-import { Paragraph } from '../react/components/base/Paragraph/Paragraph';
+import { Heading, Paragraph, Card, Modal, Dash, List, ModalController, AddCard } from '../react/components/component.lib';
 
-import { Card } from '../react/components/presentational/Card/Card';
-import { ListItem } from '../react/components/presentational/List/ListItem/ListItem';
-import { Modal } from '../react/components/presentational/ModalController/Modal/Modal';
-
-
-import { Dash } from '../react/components/presentational/Dash/Dash';
-import { List } from '../react/components/presentational/List/List';
-import { ModalController } from '../react/components/presentational/ModalController/ModalController';
 import { AppFragController } from '../react/components/presentational/ModalController/AppFragController';
-
-import { AddCard } from '../react/components/app-specific/AddCard';
 
 const cssCenter = {
   height: '100vh',
@@ -74,7 +63,7 @@ storiesOf('Presentational/ Dash', module)
   .add('dash that should throw', () => {
     return (
       <Dash
-        AddCard={<span>hi</span>}
+        AddCardEle={<span>hi</span>}
       >
           {null}
         </Dash>
@@ -84,7 +73,7 @@ storiesOf('Presentational/ Dash', module)
     return (
       <Dash
         type='storybook-test'
-        AddCard={
+        AddCardEle={
         <AddCard
           handleAddFn={sayHi}
         />}
@@ -97,7 +86,7 @@ storiesOf('Presentational/ Dash', module)
     return (
       <Dash
         type='storybook-test'
-        AddCard={null}
+        AddCardEle={null}
       >
         {[BasicCard, BasicCard]}
       </Dash>
@@ -107,7 +96,7 @@ storiesOf('Presentational/ Dash', module)
     return (
       <Dash
         type='storybook-test'
-        AddCard={null}
+        AddCardEle={null}
       >
         {[BasicCard, BasicCard, BasicCard, BasicCard, BasicCard, BasicCard]}
       </Dash>
@@ -117,7 +106,7 @@ storiesOf('Presentational/ Dash', module)
     return (
       <Dash
         type='storybook-test'
-        AddCard={
+        AddCardEle={
           <AddCard
             handleAddFn={sayHi}
           />}

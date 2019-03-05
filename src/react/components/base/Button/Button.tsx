@@ -5,8 +5,9 @@ import './Button.css';
 // TODO Revise to be a Functional component
 
 export const Button = (props: Local.ButtonProps): ReactElement<any, any> => {
-  const { type, innerText, isHTMLInputSubmit, handleClickFn, target } = props;
+  const { type, innerText, isHTMLInputSubmit, handleClickFn, target, className } = props;
 
+  const classVar = className ? className : `btn ${type ? `btn--${type}` : 'btn--std'}`;
   if (isHTMLInputSubmit === true ) {
     return(
       <input
@@ -19,7 +20,7 @@ export const Button = (props: Local.ButtonProps): ReactElement<any, any> => {
   }
   return (
     <button
-      className={`btn ${type ? `btn--${type}` : 'btn--std'}`}
+      className={classVar}
       onClick={handleClickFn}
       data-target={target}
     >

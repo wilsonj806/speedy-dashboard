@@ -2,7 +2,7 @@ import React, { Component , ReactElement } from 'react';
 
 import './Image.css';
 
-const Image = (props: Local.ImageProps) => {
+const Image = (props: Local.ImageProps): ReactElement<any, any> => {
   const { src, alt, type } = props
   return (
     <img

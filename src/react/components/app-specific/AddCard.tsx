@@ -1,9 +1,6 @@
 import React, { Component, ReactElement } from 'react';
 
-import { Heading } from '../base/Heading/Heading';
-import { Button } from '../base/Button/Button';
-
-import { Card } from '../presentational/Card/Card';
+import { Heading, Button, Card } from '../component.lib';
 
 import './Comp-modifiers.css';
 

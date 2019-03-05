@@ -73,8 +73,8 @@ export class AppFragController extends Component<any, State> {
         style={generalStyling}
       >
         <Button
-          target='HELP'
-          innerText='Render Help'
+          target='INFO'
+          innerText='Render Info'
           handleClickFn={this.handleModalDisplay}
         />
         <Button

@@ -7,8 +7,16 @@ const isFunc = (obj: any): obj is Function =>
 const isTypedObj = <T extends object, P extends keyof T>(obj: T, keyFromType: P): obj is T =>
   isPrimative(obj) === false && obj != null && keyFromType in obj
 
+// NOTE unsure if isSameReactEle() can handle stateful  components
+
+const isSameReactEle = (ele: React.ReactElement<any, any>, eleToMatchWith: React.JSXElementConstructor<any>): boolean => {
+  const nameToMatch: string = eleToMatchWith.name;
+  return ele.type.name === nameToMatch;
+}
+
 export {
   isPrimative,
   isFunc,
   isTypedObj,
+  isSameReactEle
 }
