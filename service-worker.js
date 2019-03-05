@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/speedy-dashboard/precache-manifest.35a0a951fc7150fac4cc42d9ce258390.js"
+  "/speedy-dashboard/precache-manifest.2bb84a8e2d53a524de4f33305b10a178.js"
 );
 
 workbox.clientsClaim();
