@@ -9,9 +9,8 @@ import { List } from '../../presentational/List/List';
 
 import { Form } from '../../stateful/Forms/Form';
 
-import '../Comp-modifiers.css';
+import './Todo.css';
 
-const sayHi = () => console.warn('Expecting a function');
 
 class TodoCard extends Component<Local.TodoCardProps, any> {
 
@@ -51,7 +50,7 @@ class TodoCard extends Component<Local.TodoCardProps, any> {
             </Heading> */}
             <Form
               id='todo-form'
-              handleSubmitFn={handleSubmitFn ? handleSubmitFn : sayHi}
+              handleSubmitFn={handleSubmitFn}
             >
             </Form>
 
@@ -62,7 +61,7 @@ class TodoCard extends Component<Local.TodoCardProps, any> {
               >
                 {toRender}
               </List>
-            ) : null }
+            ) : <div style={{display: 'none'}}></div> }
             </>
           )
         }}

@@ -45,3 +45,4 @@ export { CatCard } from "./app-specific/CatCard";
 export { LoremCard } from "./app-specific/LoremCard";
 export { TodoCard } from "./app-specific/Todo/TodoCard";
 export { TodoEntry } from "./app-specific/Todo/TodoEntry";
+export { WeatherCard } from "./app-specific/WeatherCard";

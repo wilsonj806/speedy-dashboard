@@ -3,6 +3,7 @@ import React, { ReactElement } from 'react';
 import { Button } from '../../base/Button/Button';
 import { Paragraph } from '../../base/Paragraph/Paragraph';
 
+import './Todo.css';
 
 export const TodoEntry = (props: Local.TodoEntryProps): ReactElement<Local.TodoEntryProps> => {
   const { index, task, priority, handleDeleteFn } = props;

@@ -5,7 +5,7 @@ import { AppFragAdd } from '../react/components/app-specific/AddModal/AppFragAdd
 import { AppFragInfo } from '../react/components/app-specific/InfoModal/AppFragInfo';
 import { AppFragTodo } from '../react/components/app-specific/Todo/AppFragTodo';
 
-import { Info, InfoModal, AddCard, AddModal, CatCard, TodoCard, LoremCard } from '../react/components/component.lib';
+import { Info, InfoModal, AddCard, AddModal, CatCard, TodoCard, LoremCard, WeatherCard } from '../react/components/component.lib';
 
 // NOTE Dummy Functions
 
@@ -47,6 +47,15 @@ storiesOf('App Specific/ Lorem Card', module)
     return (
       <div style={cssCenter}>
         <LoremCard/>
+      </div>
+    )
+  });
+
+storiesOf('App Specific/ Weather Card', module)
+  .add('Weather Card', () => {
+    return (
+      <div style={cssCenter}>
+        <WeatherCard/>
       </div>
     )
   });

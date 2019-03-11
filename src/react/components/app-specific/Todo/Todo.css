@@ -1,0 +1,73 @@
+#todo {
+  max-height: 15rem;
+  max-width: 40rem;
+  width: auto;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+#todo-form{
+  grid-area: form;
+  margin: 0 10px;
+  max-width: 15rem;
+}
+
+#todo > .card__content{
+  width: 100%;
+  min-height: 12rem;
+  margin: 0.25rem 0;
+  padding: 0.5rem .75rem;
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas: "form list";
+}
+
+.ul--todo{
+  grid-area: list;
+  max-height: 9rem;
+  padding-left: 0.5rem;
+  list-style: none;
+  overflow-y: auto;
+}
+
+.ul--inactive{
+  display: none;
+}
+.list-item{
+  min-width: 16rem;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.prgh--todo{
+  margin-left: 0.5rem;
+  width: 12rem;
+  overflow: auto;
+  text-align: left;
+}
+
+.todo--radio{
+  margin-right: 0.5rem;
+}
+
+.priority {
+  margin: 0;
+  padding: 0;
+  height: 1rem;
+  width: 1rem;
+  border-radius: 0.5rem;
+}
+.priority--High{
+  background: #F44336;
+}
+.priority--Medium{
+  background:#FFEB3B;
+}
+.priority--Low{
+  background: #4CAF50;
+}

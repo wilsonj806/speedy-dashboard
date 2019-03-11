@@ -1,3 +1,10 @@
+/** REVIEW
+ * Note weather gets returned after you send a 5 digit WOEID code for the location
+ * Means the card has to ask for a location, query the API to make sure it's valid
+ * fetch the WOEID code for it and only then can it make the API call for the weather
+ *
+ */
+
 import React, { Component, ReactElement } from 'react';
 
 import { Heading, Paragraph, Button, Card } from '../component.lib';
@@ -23,9 +30,10 @@ export class WeatherCard extends Component<any, State> {
   readonly state: State = initialState;
 
   getWeather = async (): Promise<void> => {
-    const responseStr = await fetch(weatherEndpoint + externalCorsProxy, fetchInit)
-      .then((blob: any) => {console.log(blob);return blob.clone().json()})
+    const responseStr = await fetch(externalCorsProxy + weatherEndpoint, fetchInit)
+      .then((blob: any) => {console.log(blob);return blob.clone()})
       .then((val: any) => {
+        console.log(val);
         const response = val.text;
         return response;
       })

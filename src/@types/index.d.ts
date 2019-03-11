@@ -171,7 +171,7 @@ declare namespace SpeedyDashboardTypes {
 
   type TodoCardProps = {
     handleChangeFn ?: VoidFn
-    handleSubmitFn ?: VoidFn
+    handleSubmitFn : VoidFn
   }
 
   type TodoEntryProps = {
