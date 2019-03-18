@@ -30,29 +30,21 @@ export class CatCard extends Component<any, State> {
   readonly state: State = initialState;
 
   getCatFactFetch = async (): Promise<void> => {
-    const responseStr: string | void = await fetch(externalCorsProxy + catEndpoint1, fetchInit)
-      .then((blob: Response): Promise<Response> => {
-        return blob.clone().json()
-      })
-      .then((val: any): string => {
-        const response = val.text;
-        return response;
-      })
-    .catch((error: any) => console.error(error));
-
-    this.setState({catFact: responseStr});
-
-    const responseImg: string | void = await fetch(catEndpoint2, fetchInit)
-      .then((blob: Response): Promise<Response> => {
-        return blob.clone().json();
-      })
-      .then((val: any): string => {
-        const response = val.file;
-        return response;
-      })
-    .catch((error: any): void => console.error(error));
-
-    this.setState({catImg: responseImg});
+    try {
+      const resFactApi: Response = await fetch(externalCorsProxy + catEndpoint1, fetchInit);
+      const resImgApi: Response = await fetch(externalCorsProxy + catEndpoint2, fetchInit);
+      const resFactJson = await resFactApi.clone().json();
+      const resImgJson = await resImgApi.clone().json();
+      const text = resFactJson.text;
+      const img = resImgJson.file;
+      this.setState({
+        catFact: text,
+        catImg: img
+      });
+    }
+    catch (error) {
+      console.error(error);
+    }
   }
 
   render = (): ReactElement<any, any> => {

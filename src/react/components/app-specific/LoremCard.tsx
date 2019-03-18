@@ -30,14 +30,14 @@ export class LoremCard extends Component<any, State> {
   readonly state: State = initialState;
 
   getLoremFetch = async (): Promise<void> => {
-    const responseStr = await fetch(externalCorsProxy + loremEndpoint, fetchInit)
-      .then((blob: any): Promise<Response> => blob.clone())
-      .then((val: Response): Promise<string> => {
-        const response = val.text();
-        return response;
-      })
-    .catch((error: any) => console.error(error));
-    this.setState({loremStr: responseStr});
+    try {
+      const response: Response = await fetch(externalCorsProxy + loremEndpoint, fetchInit);
+      const responseTxt: string = await response.clone().text();
+      this.setState({loremStr: responseTxt});
+    }
+    catch(error) {
+      console.error(error);
+    }
   }
 
   render = (): ReactElement<any, any> => {
