@@ -15,7 +15,7 @@ Extra documentation is listed below:
 
 ## General Description
 
-A dashboard made with React, with part of the ideas for managing cards/ presentational containers already being done by my previous project, [React Array Method Visualizer](https://github.com/wilsonj806/react-array-method-visualizer).
+A dashboard made with React, with part of the ideas for managing cards/ presentational containers already being done by my previous project, which was a quick 1 week build of a React-TypeScript SPA.
 
 ## Goals and roadmap
 
